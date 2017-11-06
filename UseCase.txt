@@ -1,0 +1,19 @@
+@startuml
+
+title Use Case Diagram 
+
+left to right direction
+user --> (choisir repas)
+(choisir repas) --> (selectionner aliment)
+(selectionner aliment) --> (preparer aliment)
+(preparer aliment) <.down. (donner aux animaux) : extends
+(preparer aliment) <.down. (manger) : extends
+(preparer aliment) <.down. (compost) : extends
+(preparer aliment) <.down. (poubelle) : extends
+(preparer aliment) <.down. (frigo) : extends
+
+user --> (voir frigo)
+
+user --> (exporter donner)
+
+@enduml
