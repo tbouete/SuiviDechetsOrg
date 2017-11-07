@@ -10,9 +10,10 @@ user --> (choisir repas)
 (preparer aliment) <.down. (manger) : extends
 (preparer aliment) <.down. (compost) : extends
 (preparer aliment) <.down. (poubelle) : extends
-(preparer aliment) <.down. (frigo) : extends
+(preparer aliment) <.down. (stock) : extends
 
-user --> (voir frigo)
+user --> (voir stock)
+(voir stock) --> (selectionner aliment)
 
 user --> (exporter donner)
 
