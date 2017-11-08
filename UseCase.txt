@@ -4,7 +4,11 @@ title Use Case Diagram
 
 left to right direction
 user --> (choisir repas)
-(choisir repas) --> (selectionner aliment)
+(choisir repas) --> (voir stock)
+(choisir repas) --> (ajouter aliment)
+(choisir repas) --> (valider repas)
+(ajouter aliment) -->(selectionner aliment)
+(selectionner aliment) <.down. (voir stock) : extends
 (selectionner aliment) --> (preparer aliment)
 (preparer aliment) <.down. (donner aux animaux) : extends
 (preparer aliment) <.down. (manger) : extends
@@ -12,9 +16,7 @@ user --> (choisir repas)
 (preparer aliment) <.down. (poubelle) : extends
 (preparer aliment) <.down. (stock) : extends
 
-user --> (voir stock)
-(voir stock) --> (selectionner aliment)
 
-user --> (exporter donner)
+user --> (exporter donnees)
 
 @enduml
