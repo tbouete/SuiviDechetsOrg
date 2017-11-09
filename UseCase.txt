@@ -15,8 +15,6 @@ user --> (choisir repas)
 (preparer aliment) <.down. (compost) : extends
 (preparer aliment) <.down. (poubelle) : extends
 (preparer aliment) <.down. (stock) : extends
-
-
 user --> (exporter donnees)
 
 @enduml
