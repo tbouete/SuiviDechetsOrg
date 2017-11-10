@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.arnaudlabesque.dechetov0.SelectMealActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:background="#ffffff">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnPetitDej"
+                android:onClick="actionPetitDej"
+                android:layout_centerInParent="true"
+                android:src="@drawable/time_animation"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Petit-Déjeuner"
+                android:layout_gravity="center"
+                android:textColor="@color/colorPrimaryDark"/>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnDej"
+            android:onClick="actionDej"
+            android:layout_centerInParent="true"
+            android:src="@drawable/time_animation_dej"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Déjeuner"
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimaryDark"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnGouter"
+            android:onClick="actionGouter"
+            android:layout_centerInParent="true"
+            android:src="@drawable/time_animation"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Goûter"
+            android:textColor="@color/colorPrimaryDark"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnDiner"
+            android:onClick="actionDiner"
+            android:layout_centerInParent="true"
+            android:src="@drawable/time_animation"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dîner"
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimaryDark"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAutre"
+            android:onClick="actionAutre"
+            android:layout_centerInParent="true"
+            android:src="@drawable/time_animation"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Autre"
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimaryDark"/>
+    </LinearLayout>
+
+        <!--<Button
+            android:id="@+id/btnPetitDej"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="actionPetitDej"
+            android:text="Petit-Déjeuner" />
+
+        <Button
+            android:id="@+id/btnDej"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="actionDej"
+            android:text="Déjeuner" />
+
+        <Button
+            android:id="@+id/btnGouter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="actionGouter"
+            android:text="Goûter" />
+
+        <Button
+            android:id="@+id/btnDiner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="actionDiner"
+            android:text="Dîner" />
+
+        <Button
+            android:id="@+id/btnAutre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="actionAutre"
+            android:text="Autre repas" />
+-->
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
