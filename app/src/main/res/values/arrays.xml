@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string-array name="animals">
+            <item>Chiens</item>
+            <item>Chats</item>
+            <item>Volailles</item>
+            <item>Chevaux</item>
+            <item>Hamsters</item>
+            <item>Vaches</item>
+            <item>Moutons</item>
+            <item>Autres</item>
+        </string-array>
+</resources>
