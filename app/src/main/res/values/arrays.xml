@@ -1,13 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <string-array name="animals">
-            <item>Chiens</item>
-            <item>Chats</item>
-            <item>Volailles</item>
-            <item>Chevaux</item>
-            <item>Hamsters</item>
-            <item>Vaches</item>
-            <item>Moutons</item>
-            <item>Autres</item>
+        <string-array name="animals" color="@color/black">
+            <item>Chien</item>
+            <item>Chat</item>
+            <item>Volaille</item>
+            <item>Cheval</item>
+            <item>Hamster</item>
+            <item>Vache</item>
+            <item>Mouton</item>
+            <item>Autre</item>
         </string-array>
+
+    <string-array name="legumes" color="@color/black">
+        <item>Carotte</item>
+        <item>Navet</item>
+        <item>Poireau</item>
+        <item>Betterave</item>
+        <item>Maïs</item>
+        <item>Courge</item>
+        <item>Topinambours</item>
+        <item>Potiron</item>
+        <item>Citrouille</item>
+        <item>Panais</item>
+        <item>Asperge</item>
+        <item>Artichaut</item>
+        <item>Fenouil</item>
+        <item>Radis</item>
+        <item>Chou</item>
+        <item>Céleris</item>
+        <item>Salade</item>
+        <item>Endive</item>
+        <item>Epinard</item>
+        <item>Champignon</item>
+        <item>Tomate</item>
+        <item>Haricots</item>
+        <item>Petits pois</item>
+    </string-array>
+
+    <string-array name="fruits" color="@color/black">
+        <item>Orange</item>
+        <item>Clémentine</item>
+        <item>Pamplemousse</item>
+        <item>Citron</item>
+        <item>Pomme</item>
+        <item>Poire</item>
+        <item>Raisin</item>
+        <item>Fraise</item>
+        <item>Framboise</item>
+        <item>Baies</item>
+        <item>Banane</item>
+        <item>Kiwi</item>
+        <item>Ananas</item>
+        <item>Mangue</item>
+        <item>Noix de coco</item>
+        <item>Melon</item>
+        <item>Pastèque</item>
+        <item>Pêche</item>
+        <item>Abricot</item>
+        <item>Nectarine</item>
+        <item>Prune</item>
+        <item>Fruit sec</item>
+    </string-array>
+
+    <string-array name="viandes" color="@color/black">
+        <item>Boeuf</item>
+        <item>Volaille</item>
+        <item>Porc</item>
+        <item>Mouton</item>
+        <item>Poisson</item>
+        <item>Œuf</item>
+    </string-array>
+
+    <string-array name="laitages" color="@color/black">
+        <item>Lait</item>
+        <item>Crème</item>
+        <item>Yaourt</item>
+        <item>Fromage</item>
+    </string-array>
+
+    <string-array name="feculents" color="@color/black">
+        <item>Pomme de terres</item>
+        <item>Pâte</item>
+        <item>Riz</item>
+        <item>Semoule</item>
+        <item>Lentilles</item>
+    </string-array>
+
+    <string-array name="patisseries" color="@color/black">
+        <item>Pain</item>
+        <item>Gâteau</item>
+    </string-array>
+
+    <string-array name="sauces" color="@color/black">
+        <item>Ketchup</item>
+        <item>Mayonnaise</item>
+        <item>Moutarde</item>
+        <item>Vinaigrette</item>
+        <item>Sauce tomate</item>
+    </string-array>
+
+    <string-array name="autres" color="@color/black">
+        <item>Pizza</item>
+        <item>Plat surgelé</item>
+        <item>Plat préparé</item>
+        <item>Thé</item>
+        <item>Café</item>
+    </string-array>
 </resources>

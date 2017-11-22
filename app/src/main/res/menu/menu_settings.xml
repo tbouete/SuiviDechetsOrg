@@ -5,6 +5,7 @@
 <item
     android:title="test"
     android:id="@+id/itemSettings"
+    android:icon="@drawable/icon_settings"
     app:showAsAction="always">
 
 </item>

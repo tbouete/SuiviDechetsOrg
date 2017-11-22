@@ -12,15 +12,35 @@
         <activity
             android:name=".SelectMealActivity"
             android:screenOrientation="landscape">
-        </activity>
-        <activity
-            android:name=".SettingsActivity"
-            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:screenOrientation="landscape">
+        </activity>
+
+        <activity
+            android:name=".MealCompositionActivity"
+            android:screenOrientation="landscape">
+        </activity>
+
+        <activity
+            android:name=".FoodChoiceActivity"
+            android:screenOrientation="landscape">
+        </activity>
+
+        <activity
+            android:name=".SelectItemActivity"
+            android:screenOrientation="landscape">
+        </activity>
+
+        <activity
+            android:name=".SortItemActivity"
+            android:screenOrientation="landscape">
         </activity>
     </application>
 
