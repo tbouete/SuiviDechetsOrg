@@ -6,36 +6,23 @@
     android:viewportHeight="100"
     android:viewportWidth="100">
 
-    <group
-        android:name="minutes"
-        android:pivotX="50"
-        android:pivotY="50"
-        android:rotation="0">
 
-        <path
-            android:layout_height="wrap_content"
-            android:pathData="M 50,50 L 50,12"
-            android:strokeColor="@android:color/black"
-            android:strokeLineCap="round"
-            android:strokeWidth="4" />
+        <shape android:shape="oval" >
 
-    </group>
-    <group
-        android:name="hours"
-        android:pivotX="50"
-        android:pivotY="50"
-        android:rotation="0">
 
-        <path
-            android:layout_width="match_parent"
-            android:pathData="M 50,50 L 40,72"
-            android:strokeColor="@android:color/black"
-            android:strokeLineCap="round"
-            android:strokeWidth="4" />
+            <stroke
+                android:width="5dp"
+                android:color="@android:color/transparent" />
 
-    </group>
+            <solid android:color="#f00" />
+
+            <size
+                android:height="10dp"
+                android:width="10dp" />
+        </shape>
+
     <path
-        android:strokeColor="@android:color/holo_red_light"
+        android:strokeColor="@android:color/black"
         android:strokeWidth="4"
         android:pathData="M 50,50 m -48,0 a 48,48 0 1,0 96,0 a 48,48 0 1,0 -96,0"/>
 </vector>

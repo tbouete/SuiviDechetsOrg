@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Decheto</string>
+    <string name="strPetitDej">Petit-Déjeuner</string>
+    <string name="strEncasMatinal">En-cas matinal</string>
+    <string name="strDej">Déjeuner</string>
+    <string name="strGouter">Goûter</string>
+    <string name="strDiner">Dîner</string>
+    <string name="strAutreRepas">Autre</string>
+
+    <string name="strChoixRepas">Choisir les repas que vous faites dans la journée : </string>
+    <string name="strChoixAnimal">À quel animal donner vous vos restes : </string>
+    <string name="strChoixNotif">Activer les notifications </string>
+    <string name="strChoixPotager">Avez-vous un potager ? </string>
+
+    <string name="strValider">Valider</string>
+    <string name="strCancel">Annuler</string>
 </resources>

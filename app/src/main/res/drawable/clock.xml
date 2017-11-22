@@ -17,7 +17,7 @@
             android:pathData="M 50,50 L 50,12"
             android:strokeColor="@android:color/black"
             android:strokeLineCap="round"
-            android:strokeWidth="4" />
+            android:strokeWidth="3" />
 
     </group>
     <group
@@ -31,11 +31,11 @@
             android:pathData="M 50,50 L 40,72"
             android:strokeColor="@android:color/black"
             android:strokeLineCap="round"
-            android:strokeWidth="4" />
+            android:strokeWidth="3" />
 
     </group>
     <path
-        android:strokeColor="@android:color/holo_red_dark"
+        android:strokeColor="@android:color/black"
         android:strokeWidth="4"
         android:pathData="M 50,50 m -48,0 a 48,48 0 1,0 96,0 a 48,48 0 1,0 -96,0"/>
 </vector>

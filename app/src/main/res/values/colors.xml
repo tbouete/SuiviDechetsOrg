@@ -3,4 +3,22 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="black">#000000</color>
+    <color name="greyTheme">#434343</color>
+    <color name="lightGreen">#6aa84f</color>
+    <color name="darkGreen">#38761d</color>
+    <color name="lightBlue">#6fa8dc</color>
+    <color name="darkBlue">#3d85c6</color>
+    <color name="lightRed">#e06666</color>
+    <color name="darkRed">#cc0000</color>
+    <color name="Legume">#38761d</color>
+    <color name="Fruit">#e69138</color>
+    <color name="Viande">#cc0000</color>
+    <color name="Laitage">#3d85c6</color>
+    <color name="Feculent">#f1c232</color>
+    <color name="Patisserie">#783f04</color>
+    <color name="Sauce">#c27ba0</color>
+    <color name="Autre">#674ea7</color>
+
+
 </resources>

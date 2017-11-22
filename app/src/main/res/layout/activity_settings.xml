@@ -15,46 +15,140 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:layout_height="wrap_content"
+            android:background="@color/greyTheme"
             android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            />
+            android:textAlignment="center"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="A quel animal donner vous vos restes :"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:text="@string/strChoixAnimal"
+                android:textColor="@color/black" />
 
             <Spinner
                 android:id="@+id/spinner"
-                android:layout_width="match_parent"
+                style="@style/AppTheme"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimaryDark"
-                android:entries="@array/animals" />
+                android:background="@color/greyTheme"
+                android:entries="@array/animals"
+                android:popupBackground="@color/greyTheme"
+                android:visibility="visible" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/buttonSwitchActivity"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Sélectionner heure du repas" />
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewChoixRepas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/strChoixRepas"
+                android:textColor="@color/black" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="28dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <CheckBox
+                    android:id="@+id/checkBoxPetitDej"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/black"
+                    android:text="@string/strPetitDej"
+                    android:textColor="@color/black" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxEncas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/black"
+                    android:text="@string/strEncasMatinal"
+                    android:textColor="@color/black" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxDej"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/black"
+                    android:text="@string/strDej"
+                    android:textColor="@color/black" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxGouter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/black"
+                    android:text="@string/strGouter"
+                    android:textColor="@color/black" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxDiner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/black"
+                    android:text="@string/strDiner"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+        </LinearLayout>
 
         <Switch
+            android:id="@+id/notif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Envoyer une notification à chaque repas"
-            android:textColor="@color/colorPrimary"
+            android:text="@string/strChoixNotif"
+            android:textColor="@color/black"
             android:visibility="visible" />
+
+
+        <Switch
+            android:id="@+id/potager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/strChoixPotager"
+            android:textColor="@color/black"
+            android:visibility="visible" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/buttonCancelSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/blue_button_border"
+                android:text="@string/strCancel" />
+
+            <Button
+                android:id="@+id/buttonSwitchActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/green_button_border"
+                android:text="@string/strValider" />
+
+        </RelativeLayout>
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
