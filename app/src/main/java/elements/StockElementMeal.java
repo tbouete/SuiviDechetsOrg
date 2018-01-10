@@ -45,7 +45,13 @@ public class StockElementMeal extends Observable implements Serializable{
 	@Override
 	public void notifyObservers() { for(Observer o : this.listObserver) o.update(this, 0);	}
 	
-	
+	/* Used in the final Excel file.
+	   Format : '(dateCreation.toString) (basicName)(id.toString)'
+	   Ex : '01/01/2017 Apple2'
+	*/
+	public String getIdNameElement(Element elem){
+		return this.dayMeal.toString() + this.mealType + " " + elem.getBasicName() + elem.getId();
+	}
 
 	public void addToComposted(Element e) { this.listElementComposted.add(e); 	notifyObservers(); }
 	
@@ -151,6 +157,6 @@ public class StockElementMeal extends Observable implements Serializable{
     public Element getElementOnHold(){ return this.elementOnHold; }
     
     public boolean isOnHold() { return this.isOnHold; }
-    
-    
+
+
 }

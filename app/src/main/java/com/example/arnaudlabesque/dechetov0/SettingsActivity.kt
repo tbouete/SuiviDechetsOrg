@@ -73,7 +73,6 @@ class SettingsActivity : AppCompatActivity() {
 
         btn.setOnClickListener {
 
-
             editor?.putString("animal", spinnerAnimal.selectedItem.toString())
             editor?.putBoolean("notif", switchNotif.isChecked)
             editor?.putBoolean("potager", switchPotager.isChecked)
@@ -88,6 +87,9 @@ class SettingsActivity : AppCompatActivity() {
             finish()
         }
 
+        findViewById<View>(R.id.buttonCancelSettings).setOnClickListener {
+            finish()
+        }
 
     }
 

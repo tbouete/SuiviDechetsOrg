@@ -1,6 +1,5 @@
 package elements;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,95 +15,52 @@ public class ComposedElement extends Element {
 	
 	private List<Element> composition;
 	
-	/**
-	 * Create a ComposedElement. Will determine most of the settings based on those of the ones composing it.
-	 * @param basicName basic name of this ComposedElement, should be specified by user
-	 * @param idName name used in the final Excel, please use getIdName() from {@link}}ComposedElementFactory
-	 * @param mealType type of the meal this ComposedElement came from
-	 * @param dateCreation date of the meal this ComposedElement came from
-	 * @param composition list of {@link}Element used to compose this one
-	 */
-	protected ComposedElement(String basicName,
-						      String idName,
-						      String mealType,
-						      Date dateCreation,
-						      List<Element> composition) {
-		super(basicName,
-			  idName,
-			  mealType,
-			  dateCreation,
-			  setToxicity(composition),
-			  setQuantity(),
-			  setQtIsQuotient(true),
-			  setIsBio(composition),
-			  setIsFromOwnGarden(composition),
-			  setIsCompostable(composition),
-			  setIsEdible(composition),
-			  setIsFedable(composition),
-			  setIsThrowable(composition),
-			  setIsUsableForOther(composition),
-			  false,
-			  false,
-			  false,
-			  false,
-			  false,
-			  false,
-			  false,
-			  false);
-		
+	public ComposedElement(String basicName,
+							  double quantity,
+							  boolean qtIsQuotient,
+							  boolean isBio,
+							  boolean isFromOwnGarden,
+							  List<Element> composition) {
+		super(quantity, qtIsQuotient, isBio, isFromOwnGarden);
 		this.composition = composition;
+		
+		this.setBasicName(basicName);
+		this.setDefaultToxicityValue(setDefaultToxicityValue(composition));
+		
+		this.setCompostable(setIsCompostable(composition));
+		this.setEdible(setIsEdible(composition));
+		this.setFedable(setIsFedable(composition));
+		this.setThrowable(setIsThrowable(composition));
+		this.setUsableForOther(setIsUsableForOther(composition));
+		
+		this.setGeneratingBone(false);
+		this.setGeneratingCore(false);
+		this.setGeneratingCrust(false);
+		this.setGeneratingFat(false);
+		this.setGeneratingFilter(false);
+		this.setGeneratingMeatSkin(false);
+		this.setGeneratingPeel(false);
+		this.setGeneratingTail(false);
 	}
+	
+
+	
+	
+	
 	
 	/**
 	 * 
 	 * @param composition of this ComposedElement
 	 * @return the toxicity of this Composed Element
 	 */
-	private static int setToxicity(List<Element> composition){
+	private static int setDefaultToxicityValue(List<Element> composition){
 		int toxicityRet = 0;
 		
-		for(Element e : composition) toxicityRet += e.getToxicity();
+		for(Element e : composition) toxicityRet += e.getToxicityValue();
 		
 		return toxicityRet;
 	}
 	
-	/**
-	 * 
-	 * @return the quantity of this Composed Element
-	 */
-	private static int setQuantity() { return 1; }
-	
-	private static boolean setQtIsQuotient(boolean isQtQuotient) { return isQtQuotient; }
-	
-	/**
-	 * 
-	 * @param composition of this ComposedElement
-	 * @return true if this ComposedElement is bio, false otherwise
-	 */
-	private static boolean setIsBio(List<Element> composition){
-		boolean isBioRet = true;
-		
-		for(Element e : composition){
-			isBioRet = Boolean.logicalAnd(isBioRet, e.isBio());
-		}
-		
-		return isBioRet;
-	}
-	
-	/**
-	 * 
-	 * @param composition of this Composed Element
-	 * @return true if this ComposedElement is from the user's garden, false otherwise
-	 */
-	private static boolean setIsFromOwnGarden(List<Element> composition){
-		boolean isFromOwnGarden = true;
-		
-		for(Element e : composition){
-			isFromOwnGarden = Boolean.logicalAnd(isFromOwnGarden, e.isFromOwnGarden());
-		}
-		
-		return isFromOwnGarden;
-	}
 	
 	/**
 	 * 
@@ -115,7 +71,7 @@ public class ComposedElement extends Element {
 		boolean isCompostable = true;
 		
 		for(Element e : composition){
-			isCompostable = Boolean.logicalAnd(isCompostable, e.isCompostable());
+			isCompostable = isCompostable && e.isCompostable();
 		}
 		
 		return isCompostable;
@@ -130,7 +86,7 @@ public class ComposedElement extends Element {
 		boolean isEdible = true;
 		
 		for(Element e : composition){
-			isEdible = Boolean.logicalAnd(isEdible, e.isEdible());
+			isEdible = isEdible && e.isEdible();
 		}
 		
 		return isEdible;
@@ -145,7 +101,7 @@ public class ComposedElement extends Element {
 		boolean isFedable = true;
 		
 		for(Element e : composition){
-			isFedable = Boolean.logicalAnd(isFedable, e.isFedable());
+			isFedable = isFedable && e.isFedable();
 		}
 		
 		return isFedable;
@@ -160,7 +116,7 @@ public class ComposedElement extends Element {
 		boolean isThrowable = true;
 		
 		for(Element e : composition){
-			isThrowable = Boolean.logicalAnd(isThrowable, e.isThrowable());
+			isThrowable = isThrowable && e.isThrowable();
 		}
 		
 		return isThrowable;
@@ -175,7 +131,7 @@ public class ComposedElement extends Element {
 		boolean isUsableForOther = true;
 		
 		for(Element e : composition){
-			isUsableForOther = Boolean.logicalAnd(isUsableForOther, e.isUsableForOther());
+			isUsableForOther = isUsableForOther && e.isUsableForOther();
 		}
 		
 		return isUsableForOther;
@@ -183,11 +139,17 @@ public class ComposedElement extends Element {
 
 	@Override
 	public String toString() {
-		String tmp = "Je suis composé de : \n";
+		String tmp = "Je suis composï¿½ de : \n";
 		for(Element e : this.composition) tmp += e.getQuantity() + " " + e.getBasicName() + "(s) \n";
 		
 		return super.toString() + tmp;
 	}
-	
-	
+
+	public List<Element> getComposition() {
+		return composition;
+	}
+
+	public void setComposition(List<Element> composition) {
+		this.composition = composition;
+	}
 }

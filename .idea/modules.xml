@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\Titouan\Documents\GitHub\SuiviDechetsOrg\Dechetov0.iml" filepath="C:\Users\Titouan\Documents\GitHub\SuiviDechetsOrg\Dechetov0.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SuiviDechetsOrg.iml" filepath="$PROJECT_DIR$/SuiviDechetsOrg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dechetov0.iml" filepath="$PROJECT_DIR$/Dechetov0.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

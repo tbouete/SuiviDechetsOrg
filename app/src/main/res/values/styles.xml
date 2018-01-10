@@ -4,6 +4,10 @@
     <style name="AppTheme" parent="Base.Widget.AppCompat.Spinner">
         <!-- Customize your theme here. -->
         <item name="android:textColor">@color/greyTheme</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
+
+
 
 </resources>

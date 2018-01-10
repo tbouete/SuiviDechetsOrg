@@ -15,5 +15,6 @@ public enum MealType {
 
     MealType(String name){ this.name = name; }
 
-    public String toString(){ return name; }
+    public String toString(){ return name; }    
+   
 }

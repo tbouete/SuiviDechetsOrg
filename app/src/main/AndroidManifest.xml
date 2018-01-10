@@ -42,6 +42,17 @@
             android:name=".SortItemActivity"
             android:screenOrientation="landscape">
         </activity>
+
+        <activity
+            android:name=".TreatItemActivity"
+            android:screenOrientation="landscape">
+        </activity>
+
+        <activity
+            android:name=".CreateRecipeActivity"
+            android:screenOrientation="landscape">
+        </activity>
+
     </application>
 
 </manifest>

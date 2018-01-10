@@ -12,54 +12,137 @@
         </string-array>
 
     <string-array name="legumes" color="@color/black">
-        <item>Carotte</item>
-        <item>Navet</item>
-        <item>Poireau</item>
-        <item>Betterave</item>
-        <item>Maïs</item>
-        <item>Courge</item>
-        <item>Topinambours</item>
-        <item>Potiron</item>
-        <item>Citrouille</item>
-        <item>Panais</item>
-        <item>Asperge</item>
-        <item>Artichaut</item>
-        <item>Fenouil</item>
-        <item>Radis</item>
-        <item>Chou</item>
-        <item>Céleris</item>
-        <item>Salade</item>
-        <item>Endive</item>
-        <item>Epinard</item>
-        <item>Champignon</item>
-        <item>Tomate</item>
-        <item>Haricots</item>
-        <item>Petits pois</item>
+        <item>Légumes Tiges</item>
+        <item>Légumes Racines</item>
+        <item>Légumes Graines</item>
+        <item>Légumes Fruitiers</item>
+        <item>Légumes Fleurs</item>
+        <item>Légumes Feuilles</item>
+        <item>Légumes Bulbes</item>
     </string-array>
 
+    <string-array name="LégumesTiges" color="@color/black">
+        <item>Asperge</item>
+        <item>Rhubarbe</item>
+    </string-array>
+
+    <string-array name="LégumesRacines" color="@color/black">
+        <item>Betterave rouge</item>
+        <item>Carotte</item>
+        <item>Champignon</item>
+        <item>Céleri rave</item>
+        <item>Navet</item>
+        <item>Panais et racines anciennes</item>
+        <item>Patate douce</item>
+        <item>Pomme de terre</item>
+        <item>Radis rouge</item>
+        <item>Radis long(radis noir,etc.)</item>
+        <item>Salsifis</item>
+    </string-array>
+
+    <string-array name="LégumesGraines" color="@color/black">
+        <item>Haricot</item>
+        <item>Petit pois</item>
+        <item>Pois à écosser</item>
+    </string-array>
+
+    <string-array name="LégumesFruits" color="@color/black">
+        <item>Aubergine</item>
+        <item>Avocat</item>
+        <item>Châtaigne</item>
+        <item>Citrouille,Courge,Potiron</item>
+        <item>Concombre</item>
+        <item>Cornichon</item>
+        <item>Courgette</item>
+        <item>Poivron</item>
+        <item>Tomate</item>
+    </string-array>
+
+    <string-array name="LégumesFleurs" color="@color/black">
+        <item>Artichaut</item>
+        <item>Brocoli</item>
+        <item>Chou-Fleur</item>
+    </string-array>
+
+    <string-array name="LégumesFeuilles" color="@color/black">
+        <item>Blette</item>
+        <item>Céleri branche</item>
+        <item>Chou vert</item>
+        <item>Chou de Bruxelles</item>
+        <item>Endive</item>
+        <item>Epinard</item>
+        <item>Salade entière</item>
+        <item>Salade en sachet</item>
+        <item>Poireau</item>
+    </string-array>
+
+    <string-array name="LégumesBulbes" color="@color/black">
+        <item>Ail</item>
+        <item>Fenouil</item>
+        <item>Oignon</item>
+        <item>Echalotte</item>
+    </string-array>
+
+
     <string-array name="fruits" color="@color/black">
-        <item>Orange</item>
-        <item>Clémentine</item>
-        <item>Pamplemousse</item>
-        <item>Citron</item>
-        <item>Pomme</item>
-        <item>Poire</item>
-        <item>Raisin</item>
-        <item>Fraise</item>
-        <item>Framboise</item>
-        <item>Baies</item>
-        <item>Banane</item>
-        <item>Kiwi</item>
-        <item>Ananas</item>
-        <item>Mangue</item>
-        <item>Noix de coco</item>
+        <item>Fruits à pépins</item>
+        <item>Fruits secs</item>
+        <item>Fruits rouges</item>
+        <item>Fruits exotiques</item>
+        <item>Fruits à noyau</item>
+        <item>Agrumes</item>
+    </string-array>
+
+    <string-array name="Fruitsàpépins" color="@color/black">
         <item>Melon</item>
         <item>Pastèque</item>
-        <item>Pêche</item>
+        <item>Coing</item>
+        <item>Figue</item>
+        <item>Kaki</item>
+        <item>Kiwi</item>
+        <item>Poire</item>
+        <item>Pomme</item>
+        <item>Raisin</item>
+    </string-array>
+
+    <string-array name="Fruitssecs" color="@color/black">
+        <item>Noix</item>
+        <item>Noisette</item>
+        <item>Amande</item>
+    </string-array>
+
+    <string-array name="Fruitsrouges" color="@color/black">
+        <item>Petits fruits (cassis, groseille, framboise, mure, myrtille...)</item>
+        <item>Fraise</item>
+    </string-array>
+
+    <string-array name="Fruitsexotiques" color="@color/black">
+        <item>Noix de coco</item>
+        <item>Ananas</item>
+        <item>Banane</item>
+        <item>Fruit de la passion</item>
+        <item>Grenade</item>
+        <item>Litchi</item>
+        <item>Mangue</item>
+        <item>Papaye</item>
+    </string-array>
+
+    <string-array name="Fruitsànoyau" color="@color/black">
         <item>Abricot</item>
+        <item>Cerise</item>
+        <item>Datte</item>
+        <item>Pêche</item>
         <item>Nectarine</item>
+        <item>Brugnon</item>
         <item>Prune</item>
-        <item>Fruit sec</item>
+    </string-array>
+
+    <string-array name="Agrumes" color="@color/black">
+        <item>Citron</item>
+        <item>Clémentine</item>
+        <item>Mandarine</item>
+        <item>Orange</item>
+        <item>Pamplemousse</item>
     </string-array>
 
     <string-array name="viandes" color="@color/black">

@@ -33,5 +33,9 @@ class MealCompositionActivity : AppCompatActivity() {
             myIntent.putExtra("meal",intent.getStringExtra("meal"))
             startActivity(myIntent)
         }
+
+        findViewById<View>(R.id.lCreateRecipe).setOnClickListener {
+            startActivity(Intent(this, CreateRecipeActivity::class.java))
+        }
     }
 }

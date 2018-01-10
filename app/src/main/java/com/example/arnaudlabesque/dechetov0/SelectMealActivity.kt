@@ -11,6 +11,13 @@ import android.support.v7.widget.Toolbar
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
+import elements.MealType
+import elements.StockElementMeal
+import elements.StockMeals
+import java.io.FileInputStream
+import java.io.FileNotFoundException
+import java.io.ObjectInputStream
+import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -119,12 +126,17 @@ class SelectMealActivity : AppCompatActivity() {
 
     }
 
+    var myStockMeal = StockMeals()
+
 
     fun actionPetitDej(v: View) {
         if (v.id == R.id.btnPetitDej) {
-            //Toast.makeText(this, "Je suis un petit-déjeuner", Toast.LENGTH_SHORT).show()
+            var myStockElementMeal = StockElementMeal(MealType.breakfast.toString(),Date())
+            myStockElementMeal.addObserver(myStockMeal)
+            myStockMeal.listSEM.add(myStockElementMeal)
             val intent = Intent(this, MealCompositionActivity::class.java)
             intent.putExtra("meal", "petit-déjeuner")
+            intent.putExtra("stockElementMeal",myStockElementMeal)
             startActivity(intent)
         }
     }
