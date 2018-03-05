@@ -205,15 +205,13 @@ class TreatItemActivity : AppCompatActivity() {
             when (aliment.basicName){
                 "Pomme" -> createElement("Trognon de " + aliment.basicName, idBG)
                 "Poire" -> createElement("Trognon de " + aliment.basicName, idBG)
-                "Ananas" -> createElement("Trognon de " + aliment.basicName, idBG)
-
-
+                "Ananas" -> createElement("Trognon d' " + aliment.basicName, idBG)
                 else ->createElement("Noyau de " + aliment.basicName, idBG)
             }
         }
 
         if (aliment.isGeneratingCrust) {
-            createElement("Croute de " + aliment.basicName, idBG)
+            createElement("Croûte de " + aliment.basicName, idBG)
         }
         if (aliment.isGeneratingFat) {
             createElement("Gras de " + aliment.basicName, idBG)
@@ -267,17 +265,7 @@ class TreatItemActivity : AppCompatActivity() {
         //linearLayout.setOnLongClickListener(MyOnLongClickListener())
     }
 }
-/*internal class MyOnLongClickListener : View.OnLongClickListener{
-    override fun onLongClick(v: View): Boolean {
-        Log.d("tag",v.tag as String)
-        val item = ClipData.Item(v.tag as CharSequence)
-        val dragData = ClipData(v.tag as CharSequence,MIMETYPE_TEXT_PLAIN,item)
-        val myShadow = View.DragShadowBuilder(v)
-        v.startDrag(dragData,myShadow,null,0)
-        return true
-    }
-}
-*/
+
 internal class ChoiceTouchListener : View.OnTouchListener {
     override fun onTouch(view: View, motionEvent: MotionEvent): Boolean {
         if (motionEvent.action == MotionEvent.ACTION_DOWN) {
