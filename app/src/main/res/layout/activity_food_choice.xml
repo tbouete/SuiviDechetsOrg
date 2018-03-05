@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Légumes"
+                    android:text="@string/l_gumes"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -88,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Fruits"
+                    android:text="@string/fruits"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -119,7 +119,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Viandes"
+                    android:text="@string/viandes"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -150,7 +150,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Produits laitiers"
+                    android:text="@string/produits_laitiers"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -194,7 +194,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Féculents"
+                    android:text="@string/f_culents"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -225,7 +225,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Pâtisseries"
+                    android:text="@string/p_tisseries"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -256,7 +256,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Sauces"
+                    android:text="@string/sauces"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -341,7 +341,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Frigo"
+                    android:text="@string/frigo"
                     android:textColor="@color/black" />
 
             </LinearLayout>

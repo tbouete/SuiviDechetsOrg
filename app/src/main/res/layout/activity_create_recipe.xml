@@ -29,7 +29,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nom du plat : "
+                android:text="@string/nom_du_plat"
                 android:textColor="@color/black" />
 
             <EditText
@@ -72,7 +72,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Annuler le plat"
+                        android:text="@string/annuler_le_plat"
                         android:textColor="@color/black" />
 
                 </LinearLayout>
@@ -96,7 +96,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Ajouter un aliment"
+                        android:text="@string/ajouter_un_aliment"
                         android:textColor="@color/black" />
                 </LinearLayout>
 
@@ -126,7 +126,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/green_button_border"
-                android:text="Terminer préparation !" />
+                android:text="@string/terminer_pr_paration" />
 
         </LinearLayout>
 

@@ -1,11 +1,10 @@
 <resources>
     <string name="app_name">Decheto</string>
-    <string name="strPetitDej">Petit-Déjeuner</string>
-    <string name="strEncasMatinal">En-cas matinal</string>
-    <string name="strDej">Déjeuner</string>
-    <string name="strGouter">Goûter</string>
-    <string name="strDiner">Dîner</string>
-    <string name="strAutreRepas">Autre</string>
+    <string name="en_cas_matinal">En-cas matinal</string>
+    <string name="d_jeuner">Déjeuner</string>
+    <string name="go_ter">Goûter</string>
+    <string name="d_ner">Dîner</string>
+    <string name="aepas">Autre</string>
 
     <string name="strChoixRepas">Choisir les repas que vous faites dans la journée : </string>
     <string name="strChoixAnimal">À quel animal donner vous vos restes : </string>
@@ -14,4 +13,32 @@
 
     <string name="strValider">Valider</string>
     <string name="strCancel">Annuler</string>
+    <string name="nom_du_plat">Nom du plat :</string>
+    <string name="annuler_le_plat">Annuler le plat</string>
+    <string name="ajouter_un_aliment">Ajouter un aliment</string>
+    <string name="terminer_pr_paration">Terminer préparation !</string>
+    <string name="l_gumes">Légumes</string>
+    <string name="fruits">Fruits</string>
+    <string name="viandes">Viandes</string>
+    <string name="produits_laitiers">Produits laitiers</string>
+    <string name="f_culents">Féculents</string>
+    <string name="p_tisseries">Pâtisseries</string>
+    <string name="sauces">Sauces</string>
+    <string name="frigo">Frigo</string>
+    <string name="annuler_le_repas">Annuler le repas</string>
+    <string name="consommer_un_aliment">Consommer un aliment</string>
+    <string name="pr_parer_un_plat">Préparer un plat</string>
+    <string name="consulter_les_d_chets">Consulter les déchets</string>
+    <string name="petit_d_jeuner">Petit-Déjeuner</string>
+    <string name="annuler_l_aliment">Annuler l\'aliment</string>
+    <string name="d_couper_l_aliment">Découper l\'aliment</string>
+    <string name="compost">Compost</string>
+    <string name="frigo">Frigo</string>
+    <string name="assiette">Assiette</string>
+    <string name="animal">Animal</string>
+    <string name="poubelle">Poubelle</string>
+    <string name="origine_du_produit">Origine du produit :</string>
+    <string name="non_biologique">Non-Biologique</string>
+    <string name="biologique">Biologique</string>
+    <string name="potager">Potager</string>
 </resources>

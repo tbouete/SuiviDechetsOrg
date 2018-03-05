@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="45dp"
-        android:background="#ffffff"
+        android:background="@color/white"
         android:orientation="vertical">
 
         <LinearLayout
@@ -44,7 +44,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Annuler l'aliment"
+                    android:text="@string/annuler_l_aliment"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -67,7 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Découper l'aliment"
+                    android:text="@string/d_couper_l_aliment"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -120,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Composte"
+                    android:text="@string/compost"
                     android:textSize="10dp"
                     android:textColor="@color/black" />
 
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Frigo"
+                    android:text="@string/frigo"
                     android:textColor="@color/black" />
             </LinearLayout>
 
@@ -182,7 +182,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Assiette"
+                    android:text="@string/assiette"
                     android:textColor="@color/black" />
             </LinearLayout>
 
@@ -212,7 +212,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Animal"
+                    android:text="@string/animal"
                     android:textColor="@color/black" />
             </LinearLayout>
 
@@ -242,7 +242,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Poubelle"
+                    android:text="@string/poubelle"
                     android:textColor="@color/black" />
             </LinearLayout>
 

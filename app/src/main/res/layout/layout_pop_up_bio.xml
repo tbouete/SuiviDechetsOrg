@@ -19,7 +19,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Origine du produit :"
+                android:text="@string/origine_du_produit"
                 android:textColor="@color/black"/>
 
         </LinearLayout>
@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Non-Biologique"
+                android:text="@string/non_biologique"
                 android:textColor="@color/black"/>
 
             <CheckBox
@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Biologique"
+                android:text="@string/biologique"
                 android:textColor="@color/black"/>
 
             <CheckBox
@@ -79,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Potager"
+                android:text="@string/potager"
                 android:textColor="@color/black"/>
 
             <CheckBox

@@ -73,7 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/black"
-                    android:text="@string/strPetitDej"
+                    android:text="@string/petit_d_jeuner"
                     android:textColor="@color/black" />
 
                 <CheckBox
@@ -81,7 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/black"
-                    android:text="@string/strEncasMatinal"
+                    android:text="@string/en_cas_matinal"
                     android:textColor="@color/black" />
 
                 <CheckBox
@@ -89,7 +89,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/black"
-                    android:text="@string/strDej"
+                    android:text="@string/d_jeuner"
                     android:textColor="@color/black" />
 
                 <CheckBox
@@ -97,7 +97,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/black"
-                    android:text="@string/strGouter"
+                    android:text="@string/go_ter"
                     android:textColor="@color/black" />
 
                 <CheckBox
@@ -105,7 +105,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/black"
-                    android:text="@string/strDiner"
+                    android:text="@string/d_ner"
                     android:textColor="@color/black" />
             </LinearLayout>
         </LinearLayout>

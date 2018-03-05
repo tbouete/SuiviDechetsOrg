@@ -46,7 +46,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Annuler le repas"
+                    android:text="@string/annuler_le_repas"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -70,7 +70,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Consommer un aliment"
+                    android:text="@string/consommer_un_aliment"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -94,7 +94,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Préparer un plat"
+                    android:text="@string/pr_parer_un_plat"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -117,7 +117,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Consulter les déchets"
+                    android:text="@string/consulter_les_d_chets"
                     android:textColor="@color/black" />
 
             </LinearLayout>
