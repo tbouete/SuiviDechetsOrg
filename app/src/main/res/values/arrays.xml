@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
         <string-array name="animals" color="@color/black">
-            <item>Chien</item>
-            <item>Chat</item>
-            <item>Volaille</item>
-            <item>Cheval</item>
-            <item>Hamster</item>
-            <item>Vache</item>
-            <item>Mouton</item>
-            <item>Autre</item>
+            <item>Animaux domestiques</item>
+            <item>Animaux de ferme</item>
         </string-array>
 
     <string-array name="legumes" color="@color/black">

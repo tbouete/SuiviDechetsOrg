@@ -44,7 +44,7 @@ class SettingsActivity : AppCompatActivity() {
         val cbDiner = findViewById<CheckBox>(R.id.checkBoxDiner)
 
         val btn = findViewById<View>(R.id.buttonSwitchActivity)
-        val strSP = sharedPref!!.getString("animal", "chiens")
+        val strSP = sharedPref!!.getString("animal", "Animaux domestiques")
         if (strSP != null && strSP.isNotEmpty()) {
             val myarray = resources.getStringArray(R.array.animals)
             for (i in myarray.indices) {
