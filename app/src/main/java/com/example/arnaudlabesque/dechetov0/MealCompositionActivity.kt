@@ -37,5 +37,9 @@ class MealCompositionActivity : AppCompatActivity() {
         findViewById<View>(R.id.lCreateRecipe).setOnClickListener {
             startActivity(Intent(this, CreateRecipeActivity::class.java))
         }
+
+        findViewById<View>(R.id.lCancelML).setOnClickListener {
+            finish()
+        }
     }
 }

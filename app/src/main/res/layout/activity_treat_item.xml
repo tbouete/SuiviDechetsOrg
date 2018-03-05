@@ -112,7 +112,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/ic_composte" />
+                    android:src="@drawable/ic_composte"
+                    android:id="@+id/imgComposte"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -211,7 +212,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Chien"
+                    android:text="Animal"
                     android:textColor="@color/black" />
             </LinearLayout>
 

@@ -144,12 +144,12 @@ class FoodChoiceActivity : AppCompatActivity() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 7) {
             if (resultCode == Activity.RESULT_OK) {
                 val previousActivity = Intent(applicationContext,CreateRecipeActivity::class.java)
-                previousActivity.putExtra("item",data.getSerializableExtra("item"))
+                previousActivity.putExtra("item",data?.getSerializableExtra("item"))
                 setResult(Activity.RESULT_OK,previousActivity)
                 finish()
             }

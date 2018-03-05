@@ -14,10 +14,7 @@ import android.widget.Toast
 import elements.MealType
 import elements.StockElementMeal
 import elements.StockMeals
-import java.io.FileInputStream
-import java.io.FileNotFoundException
-import java.io.ObjectInputStream
-import java.io.OutputStream
+import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -86,6 +83,20 @@ class SelectMealActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        try {
+            val fis = openFileInput("test.srz")
+            val ois = ObjectInputStream(fis)
+            var stockMeals = ois.readObject() as StockMeals
+            ois.close()
+            fis.close()
+        } catch (e: Exception){
+            var stockMeals = StockMeals()
+            val fos = openFileOutput("test.srz", Context.MODE_PRIVATE)
+            val os = ObjectOutputStream(fos)
+            os.writeObject(stockMeals)
+            os.close()
+            fos.close()
+        }
 
         val imageViewPetitDej: ImageView = findViewById<View>(R.id.btnPetitDej) as ImageView
         val imageViewEncas: ImageView = findViewById<View>(R.id.btnEncas) as ImageView
@@ -131,12 +142,12 @@ class SelectMealActivity : AppCompatActivity() {
 
     fun actionPetitDej(v: View) {
         if (v.id == R.id.btnPetitDej) {
-            var myStockElementMeal = StockElementMeal(MealType.breakfast.toString(),Date())
+            var myStockElementMeal = StockElementMeal(MealType.breakfast.toString(), Date())
             myStockElementMeal.addObserver(myStockMeal)
             myStockMeal.listSEM.add(myStockElementMeal)
             val intent = Intent(this, MealCompositionActivity::class.java)
             intent.putExtra("meal", "petit-déjeuner")
-            intent.putExtra("stockElementMeal",myStockElementMeal)
+            intent.putExtra("stockElementMeal", myStockElementMeal)
             startActivity(intent)
         }
     }

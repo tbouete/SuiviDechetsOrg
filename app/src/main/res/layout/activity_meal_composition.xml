@@ -19,7 +19,8 @@
         android:layout_height="match_parent"
         android:background="#ffffff"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="45dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -27,6 +28,7 @@
 
 
             <LinearLayout
+                android:id="@+id/lCancelML"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -68,7 +70,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Ajouter un aliment"
+                    android:text="Consommer un aliment"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -92,7 +94,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Créer un plat"
+                    android:text="Préparer un plat"
                     android:textColor="@color/black" />
 
             </LinearLayout>

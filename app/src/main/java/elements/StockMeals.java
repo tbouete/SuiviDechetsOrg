@@ -12,15 +12,18 @@ public class StockMeals implements Serializable, Observer{
 
 	private ArrayList<StockElementMeal> ListSEM = new ArrayList<>();
 	private String PATH_SERIALIZATION_FILE = "test.srz";
+	private ElementFactory elementFactory = new ElementFactory();
 	
 	@Override
 	public void update(Observable o, Object arg) {
 		//Serialization
     	try ( ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(this.PATH_SERIALIZATION_FILE)) ) {
     		os.writeObject(this);
-    		System.out.println("Sérialisation de StockMeals réussie");
+    		System.out.println("Sï¿½rialisation de StockMeals rï¿½ussie");
+
+
 		} catch (IOException e) {
-			System.err.println("Erreur pendant la sérialisation : " + e);
+			System.err.println("Erreur pendant la sï¿½rialisation : " + e);
 			System.exit(2);
 		}
 		
@@ -44,5 +47,17 @@ public class StockMeals implements Serializable, Observer{
 	}
 	
 	public ArrayList<StockElementMeal> getListSEM() { return this.ListSEM; }
+	
+	public ElementFactory getElementFactory(){ return this.elementFactory; }
 
+	@Override
+	public String toString() {
+		String str = "";
+		for(StockElementMeal s : this.ListSEM) {
+			for(Element e : s.getListElementComposted()) {
+				str += e.getBasicName();
+			}
+		}
+		return str;
+	}
 }

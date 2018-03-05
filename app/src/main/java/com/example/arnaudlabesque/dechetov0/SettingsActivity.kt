@@ -9,7 +9,11 @@ import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
+import elements.StockElementMeal
+import elements.StockMeals
 import kotlinx.android.synthetic.main.activity_select_meal.view.*
+import java.io.FileInputStream
+import java.io.ObjectInputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -49,6 +53,7 @@ class SettingsActivity : AppCompatActivity() {
                 }
             }
         }
+
         if (sharedPref!!.getBoolean("petitDej", false)) {
             cbPetitDej.isChecked = true
         }
@@ -81,6 +86,7 @@ class SettingsActivity : AppCompatActivity() {
             editor?.putBoolean("dej", cbDej.isChecked)
             editor?.putBoolean("gouter", cbGouter.isChecked)
             editor?.putBoolean("diner", cbDiner.isChecked)
+
 
             editor?.commit()
 

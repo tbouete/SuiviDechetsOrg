@@ -157,6 +157,6 @@ public class StockElementMeal extends Observable implements Serializable{
     public Element getElementOnHold(){ return this.elementOnHold; }
     
     public boolean isOnHold() { return this.isOnHold; }
-
-
+    
+    
 }

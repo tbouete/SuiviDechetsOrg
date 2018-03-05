@@ -50,15 +50,19 @@ class CreateRecipeActivity : AppCompatActivity() {
         findViewById<Button>(R.id.buttonValidateRecipe).setOnClickListener {
             recette.basicName = (findViewById<View>(R.id.etRecipeName) as EditText).text.toString()
         }
+
+        findViewById<View>(R.id.lCancel).setOnClickListener{
+            finish()
+        }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data : Intent ) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data : Intent? ) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 7) {
             if (resultCode == Activity.RESULT_OK) {
                 val lAlimentRecipe = findViewById<LinearLayout>(R.id.lAlimentRecipe)
-                val aliment = data.getSerializableExtra("item") as Element
-                val idBG = data.getIntExtra("idColorBG",0)
+                val aliment = data?.getSerializableExtra("item") as Element
+                val idBG = data?.getIntExtra("idColorBG",0)
 
                 var tv = TextView(this)
                 tv.text = aliment.basicName

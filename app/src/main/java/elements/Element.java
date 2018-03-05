@@ -40,7 +40,7 @@ public abstract class Element implements Serializable{
     private boolean isGeneratingMeatSkin;
     private boolean isGeneratingTail;
 
-    protected Element(double quantity, boolean qtIsQuotient, boolean isBio, boolean isFromOwnGarden){
+    public Element(double quantity, boolean qtIsQuotient, boolean isBio, boolean isFromOwnGarden){
         this.quantity = quantity;
         this.qtIsQuotient = qtIsQuotient;
         this.isBio = isBio;
@@ -161,63 +161,63 @@ public abstract class Element implements Serializable{
 		this.basicName = basicName;
 	}
 	
-	protected void setId(int id){
+	public void setId(int id){
 		this.id = id;
 	}
 
-	protected void setDefaultToxicityValue(int defaultToxicityValue) {
+	public void setDefaultToxicityValue(int defaultToxicityValue) {
 		this.defaultToxicityValue = defaultToxicityValue;
 	}
 
-	protected void setCompostable(boolean isCompostable) {
+	public void setCompostable(boolean isCompostable) {
 		this.isCompostable = isCompostable;
 	}
 
-	protected void setEdible(boolean isEdible) {
+	public void setEdible(boolean isEdible) {
 		this.isEdible = isEdible;
 	}
 
-	protected void setFedable(boolean isFedable) {
+	public void setFedable(boolean isFedable) {
 		this.isFedable = isFedable;
 	}
 
-	protected void setThrowable(boolean isThrowable) {
+	public void setThrowable(boolean isThrowable) {
 		this.isThrowable = isThrowable;
 	}
 
-	protected void setUsableForOther(boolean isUsableForOther) {
+	public void setUsableForOther(boolean isUsableForOther) {
 		this.isUsableForOther = isUsableForOther;
 	}
 
-	protected void setGeneratingBone(boolean isGeneratingBone) {
+	public void setGeneratingBone(boolean isGeneratingBone) {
 		this.isGeneratingBone = isGeneratingBone;
 	}
 
-	protected void setGeneratingCore(boolean isGeneratingCore) {
+	public void setGeneratingCore(boolean isGeneratingCore) {
 		this.isGeneratingCore = isGeneratingCore;
 	}
 
-	protected void setGeneratingCrust(boolean isGeneratingCrust) {
+	public void setGeneratingCrust(boolean isGeneratingCrust) {
 		this.isGeneratingCrust = isGeneratingCrust;
 	}
 
-	protected void setGeneratingFat(boolean isGeneratingFat) {
+	public void setGeneratingFat(boolean isGeneratingFat) {
 		this.isGeneratingFat = isGeneratingFat;
 	}
 
-	protected void setGeneratingFilter(boolean isGeneratingFilter) {
+	public void setGeneratingFilter(boolean isGeneratingFilter) {
 		this.isGeneratingFilter = isGeneratingFilter;
 	}
 
-	protected void setGeneratingPeel(boolean isGeneratingPeel) {
+	public void setGeneratingPeel(boolean isGeneratingPeel) {
 		this.isGeneratingPeel = isGeneratingPeel;
 	}
 
-	protected void setGeneratingMeatSkin(boolean isGeneratingMeatSkin) {
+	public void setGeneratingMeatSkin(boolean isGeneratingMeatSkin) {
 		this.isGeneratingMeatSkin = isGeneratingMeatSkin;
 	}
 
-	protected void setGeneratingTail(boolean isGeneratingTail) {
+	public void setGeneratingTail(boolean isGeneratingTail) {
 		this.isGeneratingTail = isGeneratingTail;
 	}
 	

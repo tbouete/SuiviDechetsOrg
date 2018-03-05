@@ -4,7 +4,7 @@ public class ElementClementine extends Element{
 
 	protected ElementClementine(double quantity, boolean qtIsQuotient, boolean isBio, boolean isFromOwnGarden) {
 		super(quantity, qtIsQuotient, isBio, isFromOwnGarden);
-		this.setBasicName("Clémentine");
+		this.setBasicName("ClÃ©mentine");
 		this.setDefaultToxicityValue(0);
 		
 		this.setCompostable(true);

@@ -4,7 +4,7 @@ public class ElementPeche extends Element {
 
 	protected ElementPeche(double quantity, boolean qtIsQuotient, boolean isBio, boolean isFromOwnGarden) {
 		super(quantity, qtIsQuotient, isBio, isFromOwnGarden);
-		this.setBasicName("Pêche");
+		this.setBasicName("PÃªche");
 		this.setDefaultToxicityValue(0);
 		
 		this.setCompostable(true);

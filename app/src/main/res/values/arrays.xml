@@ -27,7 +27,7 @@
     </string-array>
 
     <string-array name="LégumesRacines" color="@color/black">
-        <item>Betterave rouge</item>
+        <item>Betterave</item>
         <item>Carotte</item>
         <item>Champignon</item>
         <item>Céleri rave</item>
@@ -46,7 +46,7 @@
         <item>Pois à écosser</item>
     </string-array>
 
-    <string-array name="LégumesFruits" color="@color/black">
+    <string-array name="LégumesFruitiers" color="@color/black">
         <item>Aubergine</item>
         <item>Avocat</item>
         <item>Châtaigne</item>
@@ -80,7 +80,7 @@
         <item>Ail</item>
         <item>Fenouil</item>
         <item>Oignon</item>
-        <item>Echalotte</item>
+        <item>Echalote</item>
     </string-array>
 
 
@@ -162,7 +162,6 @@
     </string-array>
 
     <string-array name="feculents" color="@color/black">
-        <item>Pomme de terres</item>
         <item>Pâte</item>
         <item>Riz</item>
         <item>Semoule</item>
