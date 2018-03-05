@@ -40,4 +40,5 @@
     <string name="non_biologique">Non-Biologique</string>
     <string name="biologique">Biologique</string>
     <string name="potager">Potager</string>
+    <string name="retour">Retour</string>
 </resources>

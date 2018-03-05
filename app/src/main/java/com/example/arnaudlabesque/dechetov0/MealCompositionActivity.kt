@@ -41,5 +41,6 @@ class MealCompositionActivity : AppCompatActivity() {
         findViewById<View>(R.id.lCancelML).setOnClickListener {
             finish()
         }
+
     }
 }
