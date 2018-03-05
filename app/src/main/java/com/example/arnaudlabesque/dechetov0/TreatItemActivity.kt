@@ -7,23 +7,20 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.DisplayMetrics
 import elements.Element
-import elements.ElementFactory
 import java.text.SimpleDateFormat
 import java.util.*
-import android.support.v4.view.ViewCompat.startDragAndDrop
 import android.os.Build
 import android.content.ClipData
 import android.content.ClipDescription
-import android.content.ClipDescription.MIMETYPE_TEXT_PLAIN
 import android.content.Context
 import android.util.Log
 import android.view.*
 import android.widget.*
 import elements.StockElementMeal
 import elements.StockMeals
-import java.io.FileInputStream
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
+import java.io.OutputStream
 
 
 /**
@@ -34,8 +31,6 @@ class TreatItemActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_treat_item)
-
-        val lTreatableItem = findViewById<View>(R.id.treatableItem) as LinearLayout
 
         val aliment = intent.getSerializableExtra("item") as Element
         val idBG = intent.getIntExtra("idColorBG", 0)
@@ -48,6 +43,10 @@ class TreatItemActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.itemSettings).setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
+        }
+
+        findViewById<View>(R.id.btnCancelTreat).setOnClickListener {
+            finish()
         }
 
         var stockMeals = StockMeals()
@@ -74,7 +73,7 @@ class TreatItemActivity : AppCompatActivity() {
                     stockMeals.listSEM.add(sem)
                     try {
                         val fos = openFileOutput("test.srz", Context.MODE_PRIVATE)
-                        val os = ObjectOutputStream(fos)
+                        val os = ObjectOutputStream(fos as OutputStream)
                         os.writeObject(stockMeals)
                         os.close()
                         fos.close()

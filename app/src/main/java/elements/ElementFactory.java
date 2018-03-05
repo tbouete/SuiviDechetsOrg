@@ -41,7 +41,7 @@ public class ElementFactory implements Serializable{
 			case("Champignon")			: tmp = new ElementChampignon		(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
 			case("Châtaigne")			: tmp = new ElementChataigne		(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
 			case("Chou de Bruxelles")	: tmp = new ElementChouDeBruxelles 	(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
-			case("Chou fleur")			: tmp = new ElementChouFleur		(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
+			case("Chou-fleur")			: tmp = new ElementChouFleur		(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
 			case("Chou vert")			: tmp = new ElementChouVert			(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
 			case("Citron")				: tmp = new ElementCitron			(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
 			case("Citrouille")			: tmp = new ElementCitrouille		(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;

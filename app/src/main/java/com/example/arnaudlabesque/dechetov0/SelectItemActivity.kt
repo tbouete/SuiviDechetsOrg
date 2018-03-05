@@ -209,7 +209,7 @@ class SelectItemActivity : AppCompatActivity() {
                 "Tomate" -> R.drawable.tomate
                 "Artichaut" -> R.drawable.artichaux
                 "Brocoli" -> R.drawable.choufleurbrocoli
-                "Chou-Fleur" -> R.drawable.choufleurbrocoli
+                "Chou-fleur" -> R.drawable.choufleurbrocoli
                 "Blette" -> R.drawable.blette
                 "Céleri branche" -> R.drawable.celeribranche
                 "Chou vert" -> R.drawable.chouxdebruxellechouvert

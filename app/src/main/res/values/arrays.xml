@@ -55,7 +55,7 @@
     <string-array name="LégumesFleurs" color="@color/black">
         <item>Artichaut</item>
         <item>Brocoli</item>
-        <item>Chou-Fleur</item>
+        <item>Chou-fleur</item>
     </string-array>
 
     <string-array name="LégumesFeuilles" color="@color/black">
