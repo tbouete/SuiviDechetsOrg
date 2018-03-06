@@ -14,6 +14,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import elements.ComposedElement
 import elements.Element
+import kotlinx.android.synthetic.main.activity_create_recipe.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -43,6 +44,13 @@ class CreateRecipeActivity : AppCompatActivity() {
         val lButtonAddElement = findViewById<View>(R.id.lAjoutAlimentToRecipe)
         lButtonAddElement.setOnClickListener {
             val intentRecipe = Intent(this, FoodChoiceActivity::class.java)
+            val etRecipeName = findViewById<EditText>(R.id.etRecipeName)
+            val recipeName =  etRecipeName.text.toString()
+            if (recipeName == "") {
+                intentRecipe.putExtra("recipeName", "plat")
+            } else {
+                intentRecipe.putExtra("recipeName", recipeName)
+            }
             intentRecipe.putExtra("recipe", true)
             startActivityForResult(intentRecipe, 7)
         }

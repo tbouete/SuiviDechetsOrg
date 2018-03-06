@@ -24,8 +24,13 @@ class FoodChoiceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_food_choice)
 
+        var selectedMeal = ""
 
-        val selectedMeal = intent.getStringExtra("meal")
+        if (intent.getBooleanExtra("recipe", false)) {
+            selectedMeal = intent.getStringExtra("recipeName")
+        } else {
+            selectedMeal = intent.getStringExtra("meal")
+        }
         val isRecipe = intent.getBooleanExtra("recipe",false)
 
         val tl = findViewById<Toolbar>(R.id.my_toolbar)
