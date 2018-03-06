@@ -17,7 +17,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff"
+        android:background="@color/white"
         android:gravity="center"
         android:orientation="vertical"
         android:layout_marginTop="45dp">
@@ -47,7 +47,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@string/annuler_le_repas"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:gravity="center"/>
 
             </LinearLayout>
 
@@ -71,7 +72,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@string/consommer_un_aliment"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:gravity="center"/>
 
             </LinearLayout>
 
@@ -85,7 +87,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:src="@drawable/ic_recipe"
                     android:minHeight="60dp"/>
