@@ -112,8 +112,11 @@ class SelectItemActivity : AppCompatActivity() {
                     var popup = PopupWindow(popUpView, 1000, ViewGroup.LayoutParams.WRAP_CONTENT)
                     popup.showAtLocation(findViewById<LinearLayout>(R.id.globalLayout), Gravity.CENTER, 0, 0)
 
-                    var btnBio = popUpView.findViewById<Button>(R.id.buttonValidateBio)
-                    btnBio.setOnClickListener {
+                    popUpView.findViewById<Button>(R.id.buttonAnnulerBio).setOnClickListener {
+                        finish()
+                    }
+
+                    popUpView.findViewById<Button>(R.id.buttonValidateBio).setOnClickListener {
                         var myfactory = ElementFactory()
                         var cbBio = popUpView.findViewById<CheckBox>(R.id.checkBoxBio)
                         var cbNonBio = popUpView.findViewById<CheckBox>(R.id.checkBoxNonBio)
