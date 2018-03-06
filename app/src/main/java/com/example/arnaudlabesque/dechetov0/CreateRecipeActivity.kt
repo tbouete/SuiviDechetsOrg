@@ -49,7 +49,7 @@ class CreateRecipeActivity : AppCompatActivity() {
             val etRecipeName = findViewById<EditText>(R.id.etRecipeName)
             val recipeName =  etRecipeName.text.toString()
             if (recipeName == "") {
-                intentRecipe.putExtra("recipeName", "plat")
+                intentRecipe.putExtra("recipeName", "Votre plat")
             } else {
                 intentRecipe.putExtra("recipeName", recipeName)
             }
