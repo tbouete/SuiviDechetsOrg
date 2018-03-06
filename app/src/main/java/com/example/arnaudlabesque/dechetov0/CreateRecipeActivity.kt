@@ -6,12 +6,12 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.util.DisplayMetrics
+import android.util.TypedValue
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import elements.ComposedElement
 import elements.Element
 import kotlinx.android.synthetic.main.activity_create_recipe.*
@@ -24,6 +24,8 @@ import kotlin.collections.ArrayList
  */
 
 class CreateRecipeActivity : AppCompatActivity() {
+
+    var id = 0
 
     private var recette = ComposedElement(null,1.0,true,false,false,ArrayList<Element>())
 
@@ -68,18 +70,159 @@ class CreateRecipeActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 7) {
             if (resultCode == Activity.RESULT_OK) {
+                var currentLine = LinearLayout(this)
                 val lAlimentRecipe = findViewById<LinearLayout>(R.id.lAlimentRecipe)
                 val aliment = data?.getSerializableExtra("item") as Element
-                val idBG = data?.getIntExtra("idColorBG",0)
+
+                var linearLayout = LinearLayout(this)
+                linearLayout.background = getDrawable(R.drawable.rounded_square)
+                val v = Math.round(70 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
+                linearLayout.layoutParams = ViewGroup.LayoutParams(v, v)
+                linearLayout.orientation = LinearLayout.VERTICAL
+                linearLayout.gravity = Gravity.CENTER
+
+                var imageView = ImageView(this)
+                imageView.setImageResource(getIdPicture(aliment.basicName))
+                imageView.layoutParams = ViewGroup.LayoutParams(100, 100)
+                linearLayout.addView(imageView)
 
                 var tv = TextView(this)
+                tv.id = id++
                 tv.text = aliment.basicName
                 tv.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+                tv.gravity = Gravity.CENTER
+                tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10f)
                 tv.setTextColor(Color.BLACK)
-                lAlimentRecipe.addView(tv)
+                linearLayout.addView(tv)
+
+                currentLine.addView(linearLayout)
+                var space = Space(this)
+                space.layoutParams = TableLayout.LayoutParams(0, Math.round(1 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)), 1f)
+                currentLine.addView(space)
+
+                lAlimentRecipe.addView(currentLine)
 
                 recette.composition.add(aliment)
             }
         }
     }
+
+    private fun getIdPicture(element: String?): Int =
+            when (element) {
+                "Légumes Bulbes" -> R.drawable.legumebulbe
+                "Légumes Tiges" -> R.drawable.legumetige
+                "Légumes Racines" -> R.drawable.legumesracine
+                "Légumes Graines" -> R.drawable.legumegraine
+                "Légumes Fruitiers" -> R.drawable.legumefruit
+                "Légumes Fleurs" -> R.drawable.legumefleur
+                "Légumes Feuilles" -> R.drawable.legumefeuille
+                "Fruits à pépins" -> R.drawable.fruitpepins
+                "Fruits secs" -> R.drawable.fruitsec
+                "Fruits rouges" -> R.drawable.fruitrouge
+                "Fruits exotiques" -> R.drawable.fruitexotique
+                "Fruits à noyau" -> R.drawable.fruitnoyau
+                "Agrumes" -> R.drawable.agrume
+                "Asperge" -> R.drawable.asperge
+                "Rhubarbe" -> R.drawable.rhubarbe
+                "Betterave" -> R.drawable.betterave
+                "Carotte" -> R.drawable.carotte
+                "Champignon" -> R.drawable.champignon
+                "Céleri rave" -> R.drawable.celerirave
+                "Navet" -> R.drawable.navet
+                "Panais et racines anciennes" -> R.drawable.panais
+                "Patate douce" -> R.drawable.patatedouce
+                "Pomme de terre" -> R.drawable.patate
+                "Radis rouge" -> R.drawable.radisrouge
+                "Radis long(radis noir,etc.)" -> R.drawable.radisnoir
+                "Salsifis" -> R.drawable.salsifis
+                "Haricot" -> R.drawable.haricot
+                "Petit pois" -> R.drawable.petitspois
+                "Pois à écosser" -> R.drawable.poisaecosser
+                "Aubergine" -> R.drawable.aubergine
+                "Avocat" -> R.drawable.avocat
+                "Châtaigne" -> R.drawable.chataigne
+                "Citrouille,Courge,Potiron" -> R.drawable.courges
+                "Concombre" -> R.drawable.concombre
+                "Cornichon" -> R.drawable.cornichon
+                "Courgette" -> R.drawable.courgette
+                "Poivron" -> R.drawable.poivrons
+                "Tomate" -> R.drawable.tomate
+                "Artichaut" -> R.drawable.artichaux
+                "Brocoli" -> R.drawable.choufleurbrocoli
+                "Chou-fleur" -> R.drawable.choufleurbrocoli
+                "Blette" -> R.drawable.blette
+                "Céleri branche" -> R.drawable.celeribranche
+                "Chou vert" -> R.drawable.chouxdebruxellechouvert
+                "Chou de Bruxelles" -> R.drawable.chouxdebruxellechouvert
+                "Endive" -> R.drawable.endives
+                "Epinard" -> R.drawable.epinard
+                "Salade entière" -> R.drawable.salade
+                "Salade en sachet" -> R.drawable.saladesachet
+                "Poireau" -> R.drawable.poireau
+                "Ail" -> R.drawable.ail
+                "Fenouil" -> R.drawable.fenouil
+                "Oignon" -> R.drawable.oignon
+                "Echalote" -> R.drawable.echalotte
+                "Melon" -> R.drawable.melon
+                "Pastèque" -> R.drawable.pasteque
+                "Coing" -> R.drawable.coing
+                "Figue" -> R.drawable.figue
+                "Kaki" -> R.drawable.kaki
+                "Kiwi" -> R.drawable.kiwi
+                "Poire" -> R.drawable.poire
+                "Pomme" -> R.drawable.pomme
+                "Raisin" -> R.drawable.raisin
+                "Noix" -> R.drawable.noix
+                "Noisette" -> R.drawable.noisette
+                "Amande" -> R.drawable.amande
+                "Petits fruits (cassis, groseille, framboise, mure, myrtille...)" -> R.drawable.petitsfruitsrouges
+                "Fraise" -> R.drawable.fraise
+                "Noix de coco" -> R.drawable.noixdecoco
+                "Ananas" -> R.drawable.ananas
+                "Banane" -> R.drawable.banane
+                "Fruit de la passion" -> R.drawable.fruitdelapassion
+                "Grenade" -> R.drawable.grenade
+                "Litchi" -> R.drawable.litchi
+                "Mangue" -> R.drawable.mangue
+                "Papaye" -> R.drawable.papaye
+                "Abricot" -> R.drawable.abricot
+                "Cerise" -> R.drawable.cerise
+                "Datte" -> R.drawable.dattes
+                "Pêche" -> R.drawable.peche
+                "Nectarine" -> R.drawable.nectarine
+                "Brugnon" -> R.drawable.brugnon
+                "Prune" -> R.drawable.prune
+                "Citron" -> R.drawable.citron
+                "Clémentine" -> R.drawable.clementine
+                "Mandarine" -> R.drawable.mandarine
+                "Orange" -> R.drawable.orange
+                "Pamplemousse" -> R.drawable.pamplemousse
+                "Boeuf" -> R.drawable.boeuf
+                "Volaille" -> R.drawable.poulet
+                "Porc" -> R.drawable.porc
+                "Mouton" -> R.drawable.agneau
+                "Poisson" -> R.drawable.poisson
+                "Œuf" -> R.drawable.oeuf
+                "Lait" -> R.drawable.lait
+                "Crème" -> R.drawable.creme_fraiche
+                "Yaourt" -> R.drawable.yaourt
+                "Fromage" -> R.drawable.fromage
+                "Pâte" -> R.drawable.pates
+                "Riz" -> R.drawable.riz
+                "Semoule" -> R.drawable.semoule
+                "Lentilles" -> R.drawable.lentilles
+                "Pain" -> R.drawable.pain
+                "Gâteau" -> R.drawable.gateau
+                "Ketchup" -> R.drawable.ketchup
+                "Mayonnaise" -> R.drawable.mayonnaise
+                "Moutarde" -> R.drawable.moutarde
+                "Vinaigrette" -> R.drawable.vinaigrette
+                "Sauce tomate" -> R.drawable.sauce_tomate
+                "Pizza" -> R.drawable.pizza
+                "Plat surgelé" -> R.drawable.plats_surgeles
+                "Plat préparé" -> R.drawable.plats_prepares
+                "Thé" -> R.drawable.the
+                "Café" -> R.drawable.cafe
+                else -> -1
+            }
 }

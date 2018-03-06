@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/lightGrey"
-        android:layout_marginTop="45dp">
+        android:layout_marginTop="10dp">
 
         <LinearLayout
             android:id="@+id/lRecipeName"
@@ -109,7 +109,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:layout_gravity="center">
 
             </LinearLayout>
         </LinearLayout>
