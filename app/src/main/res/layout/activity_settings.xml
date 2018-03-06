@@ -159,7 +159,7 @@
                 android:id="@+id/buttonCancelSettings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/blue_button_border"
+                android:background="@drawable/red_button_border"
                 android:text="@string/strCancel" />
 
             <Space
