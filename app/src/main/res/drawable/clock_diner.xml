@@ -28,7 +28,7 @@
 
         <path
             android:layout_width="match_parent"
-            android:pathData="M 50,50 L 20,60"
+            android:pathData="M 50,50 L 20,65"
             android:strokeColor="@android:color/black"
             android:strokeLineCap="round"
             android:strokeWidth="3" />

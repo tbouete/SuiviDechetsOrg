@@ -64,6 +64,13 @@ class CreateRecipeActivity : AppCompatActivity() {
         findViewById<View>(R.id.lCancel).setOnClickListener{
             finish()
         }
+
+        findViewById<Button>(R.id.buttonValidateRecipe).setOnClickListener {
+            // Treat recipe with components of recipe
+            // TODO
+            val intentTreatRecipe = Intent(this, TreatItemActivity::class.java)
+            startActivity(intentTreatRecipe)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data : Intent? ) {
