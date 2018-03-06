@@ -188,11 +188,11 @@ class SelectItemActivity : AppCompatActivity() {
                 "Champignon" -> R.drawable.champignon
                 "Céleri rave" -> R.drawable.celerirave
                 "Navet" -> R.drawable.navet
-                "Panais et racines anciennes" -> R.drawable.panais
+                "Panais" -> R.drawable.panais
                 "Patate douce" -> R.drawable.patatedouce
                 "Pomme de terre" -> R.drawable.patate
                 "Radis rouge" -> R.drawable.radisrouge
-                "Radis long(radis noir,etc.)" -> R.drawable.radisnoir
+                "Radis noir" -> R.drawable.radisnoir
                 "Salsifis" -> R.drawable.salsifis
                 "Haricot" -> R.drawable.haricot
                 "Petit pois" -> R.drawable.petitspois
@@ -234,7 +234,7 @@ class SelectItemActivity : AppCompatActivity() {
                 "Noix" -> R.drawable.noix
                 "Noisette" -> R.drawable.noisette
                 "Amande" -> R.drawable.amande
-                "Petits fruits (cassis, groseille, framboise, mure, myrtille...)" -> R.drawable.petitsfruitsrouges
+                "Petits fruits" -> R.drawable.petitsfruitsrouges
                 "Fraise" -> R.drawable.fraise
                 "Noix de coco" -> R.drawable.noixdecoco
                 "Ananas" -> R.drawable.ananas

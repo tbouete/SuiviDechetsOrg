@@ -22,11 +22,11 @@
         <item>Champignon</item>
         <item>Céleri rave</item>
         <item>Navet</item>
-        <item>Panais et racines anciennes</item>
+        <item>Panais</item>
         <item>Patate douce</item>
         <item>Pomme de terre</item>
         <item>Radis rouge</item>
-        <item>Radis long(radis noir,etc.)</item>
+        <item>Radis noir</item>
         <item>Salsifis</item>
     </string-array>
 
@@ -102,7 +102,7 @@
     </string-array>
 
     <string-array name="Fruitsrouges" color="@color/black">
-        <item>Petits fruits (cassis, groseille, framboise, mure, myrtille...)</item>
+        <item>Petits fruits</item>
         <item>Fraise</item>
     </string-array>
 
