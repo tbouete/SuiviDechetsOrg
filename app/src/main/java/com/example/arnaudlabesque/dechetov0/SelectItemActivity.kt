@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.DisplayMetrics
-import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -208,8 +207,8 @@ class SelectItemActivity : AppCompatActivity() {
                 "Poivron" -> R.drawable.poivrons
                 "Tomate" -> R.drawable.tomate
                 "Artichaut" -> R.drawable.artichaux
-                "Brocoli" -> R.drawable.choufleurbrocoli
-                "Chou-fleur" -> R.drawable.choufleurbrocoli
+                "Brocoli" -> R.drawable.brocoli
+                "Chou-fleur" -> R.drawable.choufleur
                 "Blette" -> R.drawable.blette
                 "Céleri branche" -> R.drawable.celeribranche
                 "Chou vert" -> R.drawable.chouxdebruxellechouvert

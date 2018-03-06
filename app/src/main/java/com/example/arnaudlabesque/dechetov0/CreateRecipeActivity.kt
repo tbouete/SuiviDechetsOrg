@@ -148,8 +148,8 @@ class CreateRecipeActivity : AppCompatActivity() {
                 "Poivron" -> R.drawable.poivrons
                 "Tomate" -> R.drawable.tomate
                 "Artichaut" -> R.drawable.artichaux
-                "Brocoli" -> R.drawable.choufleurbrocoli
-                "Chou-fleur" -> R.drawable.choufleurbrocoli
+                "Brocoli" -> R.drawable.brocoli
+                "Chou-fleur" -> R.drawable.choufleur
                 "Blette" -> R.drawable.blette
                 "Céleri branche" -> R.drawable.celeribranche
                 "Chou vert" -> R.drawable.chouxdebruxellechouvert
