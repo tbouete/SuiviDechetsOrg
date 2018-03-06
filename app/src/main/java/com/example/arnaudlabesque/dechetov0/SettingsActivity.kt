@@ -34,7 +34,6 @@ class SettingsActivity : AppCompatActivity() {
 
         sharedPref = applicationContext.getSharedPreferences("com.example.arnaudlabesque.dechetov0.prefs", Context.MODE_PRIVATE)
         val editor = sharedPref?.edit()
-        val spinnerAnimal = findViewById<Spinner>(R.id.spinner)
         val switchNotif = findViewById<Switch>(R.id.notif)
         val switchPotager = findViewById<Switch>(R.id.potager)
         val cbPetitDej = findViewById<CheckBox>(R.id.checkBoxPetitDej)
@@ -42,18 +41,17 @@ class SettingsActivity : AppCompatActivity() {
         val cbDej = findViewById<CheckBox>(R.id.checkBoxDej)
         val cbGouter = findViewById<CheckBox>(R.id.checkBoxGouter)
         val cbDiner = findViewById<CheckBox>(R.id.checkBoxDiner)
+        val cbAnimauxFerme = findViewById<CheckBox>(R.id.checkBoxAnimauxFerme)
+        val cbAnimauxDomestiques = findViewById<CheckBox>(R.id.checkBoxAnimauxDomestiques)
 
         val btn = findViewById<View>(R.id.buttonSwitchActivity)
-        val strSP = sharedPref!!.getString("animal", "Animaux domestiques")
-        if (strSP != null && strSP.isNotEmpty()) {
-            val myarray = resources.getStringArray(R.array.animals)
-            for (i in myarray.indices) {
-                if (myarray[i] == strSP) {
-                    spinnerAnimal.setSelection(i)
-                }
-            }
-        }
 
+        if (sharedPref!!.getBoolean("animaux domestiques", false)) {
+            cbAnimauxDomestiques.isChecked = true
+        }
+        if (sharedPref!!.getBoolean("animaux de ferme", false)) {
+            cbAnimauxFerme.isChecked = true
+        }
         if (sharedPref!!.getBoolean("petitDej", false)) {
             cbPetitDej.isChecked = true
         }
@@ -78,7 +76,8 @@ class SettingsActivity : AppCompatActivity() {
 
         btn.setOnClickListener {
 
-            editor?.putString("animal", spinnerAnimal.selectedItem.toString())
+            editor?.putBoolean("animaux domestiques", cbAnimauxDomestiques.isChecked)
+            editor?.putBoolean("animaux de ferme", cbAnimauxFerme.isChecked)
             editor?.putBoolean("notif", switchNotif.isChecked)
             editor?.putBoolean("potager", switchPotager.isChecked)
             editor?.putBoolean("petitDej", cbPetitDej.isChecked)
