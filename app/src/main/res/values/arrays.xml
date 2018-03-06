@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <string-array name="animals" color="@color/black">
-            <item>Animaux domestiques</item>
-            <item>Animaux de ferme</item>
-        </string-array>
 
     <string-array name="legumes" color="@color/black">
         <item>Légumes Tiges</item>

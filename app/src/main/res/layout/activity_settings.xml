@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff"
+        android:background="@color/white"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -33,16 +33,32 @@
                 android:text="@string/strChoixAnimal"
                 android:textColor="@color/black" />
 
-            <Spinner
-                android:id="@+id/spinner"
-                style="@style/AppTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/greyTheme"
-                android:entries="@array/animals"
-                android:popupBackground="@color/greyTheme"
-                android:visibility="visible" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/checkBoxAnimauxFerme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/black"
+                android:text="@string/animaux_de_ferme"
+                android:textColor="@color/black" />
+
+            <CheckBox
+                android:id="@+id/checkBoxAnimauxDomestiques"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/black"
+                android:text="Animaux domestiques"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="28dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,10 +74,6 @@
                 android:text="@string/strChoixRepas"
                 android:textColor="@color/black" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="28dp" />
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -74,7 +86,8 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/black"
                     android:text="@string/petit_d_jeuner"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:checked="true"/>
 
                 <CheckBox
                     android:id="@+id/checkBoxEncas"
@@ -82,7 +95,8 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/black"
                     android:text="@string/en_cas_matinal"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:checked="true" />
 
                 <CheckBox
                     android:id="@+id/checkBoxDej"
@@ -90,7 +104,8 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/black"
                     android:text="@string/d_jeuner"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:checked="true" />
 
                 <CheckBox
                     android:id="@+id/checkBoxGouter"
@@ -98,7 +113,8 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/black"
                     android:text="@string/go_ter"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:checked="true" />
 
                 <CheckBox
                     android:id="@+id/checkBoxDiner"
@@ -106,9 +122,14 @@
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/black"
                     android:text="@string/d_ner"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:checked="true" />
             </LinearLayout>
         </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="28dp" />
 
         <Switch
             android:id="@+id/notif"
