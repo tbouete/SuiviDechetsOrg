@@ -27,14 +27,14 @@ class FoodChoiceActivity : AppCompatActivity() {
         var selectedMeal = ""
 
         if (intent.getBooleanExtra("recipe", false)) {
-            selectedMeal = intent.getStringExtra("recipeName")
+            selectedMeal = " : " + intent.getStringExtra("recipeName")
         } else {
-            selectedMeal = intent.getStringExtra("meal")
+            selectedMeal = " le " + intent.getStringExtra("meal")
         }
         val isRecipe = intent.getBooleanExtra("recipe",false)
 
         val tl = findViewById<Toolbar>(R.id.my_toolbar)
-        tl.title = "Ajout d'un aliment pour le " + selectedMeal + " - " + SimpleDateFormat("dd-MMMM-yy", Locale.FRENCH).format(Date()).replace("-", " ")
+        tl.title = "Ajout d'un aliment pour" + selectedMeal + " - " + SimpleDateFormat("dd-MMMM-yy", Locale.FRENCH).format(Date()).replace("-", " ")
         tl.inflateMenu(R.menu.menu_settings)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
