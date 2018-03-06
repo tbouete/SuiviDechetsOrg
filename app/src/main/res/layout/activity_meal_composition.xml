@@ -95,7 +95,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@string/pr_parer_un_plat"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:gravity="center"/>
 
             </LinearLayout>
 
