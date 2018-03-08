@@ -182,50 +182,6 @@
                     android:layout_height="1dp"
                     android:layout_weight="0.2" />
 
-                <LinearLayout
-                    android:id="@+id/btnDecouper"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/ic_knife" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:gravity="center">
-
-                        <EditText
-                            android:id="@+id/etCouperAliment"
-                            android:layout_width="30dp"
-                            android:layout_height="20dp"
-                            android:drawableTint="@color/black"
-                            android:textColor="@color/black"
-                            android:inputType="text"/>
-
-                        <Button
-                            android:id="@+id/buttonSwitchActivity"
-                            android:layout_width="30dp"
-                            android:layout_height="20dp"
-                            android:background="@drawable/blue_button_border"
-                            android:text="Couper"
-                            android:textSize="7dp"/>
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="0.2" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
