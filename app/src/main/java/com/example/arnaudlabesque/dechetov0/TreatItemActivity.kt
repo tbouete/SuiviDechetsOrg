@@ -126,8 +126,8 @@ class TreatItemActivity : AppCompatActivity() {
             var inflater = this.getSystemService(android.content.Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             var popUpView = inflater.inflate(R.layout.layout_pop_up_treat_item, null)
 
-            var popup = PopupWindow(popUpView, 1000, ViewGroup.LayoutParams.WRAP_CONTENT)
-            popup.showAtLocation(findViewById<LinearLayout>(R.id.globalLayout), Gravity.CENTER, 0, 0)
+            var popup = PopupWindow(popUpView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            popup.showAtLocation(findViewById<LinearLayout>(R.id.globalLayout), Gravity.BOTTOM, 0, 0)
         }
 
         currentLine.addView(linearLayout)
