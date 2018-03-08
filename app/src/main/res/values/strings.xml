@@ -24,7 +24,7 @@
     <string name="f_culents">Féculents</string>
     <string name="p_tisseries">Pâtisseries</string>
     <string name="sauces">Sauces</string>
-    <string name="frigo">Frigo</string>
+    <string name="frigo">Conserver au réfrigérateur</string>
     <string name="annuler_le_repas">Annuler le repas</string>
     <string name="consommer_un_aliment">Consommer un aliment</string>
     <string name="pr_parer_un_plat">Préparer un plat</string>
@@ -32,14 +32,15 @@
     <string name="petit_d_jeuner">Petit-Déjeuner</string>
     <string name="annuler_l_aliment">Annuler l\'aliment</string>
     <string name="d_couper_l_aliment">Découper l\'aliment</string>
-    <string name="compost">Compost</string>
-    <string name="assiette">Assiette</string>
-    <string name="animal">Animal</string>
-    <string name="poubelle">Poubelle</string>
+    <string name="compost">Mettre au compost</string>
+    <string name="assiette">Consommer</string>
+    <string name="animal">Donner aux animaux</string>
+    <string name="poubelle">Jeter à la poubelle</string>
     <string name="origine_du_produit">Origine du produit :</string>
     <string name="non_biologique">Non-Biologique</string>
     <string name="biologique">Biologique</string>
     <string name="potager">Potager</string>
     <string name="retour">Retour</string>
     <string name="animaux_de_ferme">Animaux de ferme</string>
+    <string name="animaux_domestiques">Animaux domestiques</string>
 </resources>
