@@ -4,7 +4,7 @@ public class ElementBetteraveRouge extends Element {
 
 	protected ElementBetteraveRouge(double quantity, boolean qtIsQuotient, boolean isBio, boolean isFromOwnGarden) {
 		super(quantity, qtIsQuotient, isBio, isFromOwnGarden);
-		this.setBasicName("Betterave rouge");
+		this.setBasicName("Betterave");
 		this.setDefaultToxicityValue(0);
 		
 		this.setCompostable(true);

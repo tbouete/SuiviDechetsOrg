@@ -28,7 +28,7 @@ public class ElementFactory implements Serializable{
 			case("Aubergine")			: tmp = new ElementAubergine		(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
 			case("Avocat")				: tmp = new ElementAvocat			(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
 			case("Banane")				: tmp = new ElementBanane			(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
-			case("Betterave rouge")		: tmp = new ElementBetteraveRouge	(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
+			case("Betterave")			: tmp = new ElementBetteraveRouge	(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
 			case("Blette")				: tmp = new ElementBlette			(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
 			case("Boeuf")				: tmp = new ElementBoeuf			(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
 			case("Brocoli")				: tmp = new ElementBrocoli			(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
@@ -93,7 +93,7 @@ public class ElementFactory implements Serializable{
 			case("Patate douce")		: tmp = new ElementPatateDouce		(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
 			case("Pâte")				: tmp = new ElementPate				(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
 			case("Pêche")				: tmp = new ElementPeche			(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
-			case("Petits fruits (cassis, groseille, framboise, mure, myrtille...)")			: tmp = new ElementPetitFruit		(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
+			case("Petits fruits")		: tmp = new ElementPetitFruit		(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
 			case("Petit pois")			: tmp = new ElementPetitPois		(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
 			case("Pizza")				: tmp = new ElementPizza			(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
 			case("Plat préparé")		: tmp = new ElementPlatPrepare		(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
