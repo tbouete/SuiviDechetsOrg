@@ -63,140 +63,6 @@ class TreatItemActivity : AppCompatActivity() {
             System.exit(2)
         }
 
-        findViewById<LinearLayout>(R.id.btnComposte).setOnDragListener  { view, dragEvent ->
-            true
-            val draggedImageView = dragEvent.localState as View
-            val sem = StockElementMeal("repas", Date())
-            when (dragEvent.action) {
-                DragEvent.ACTION_DROP -> {
-                    sem.addToComposted(aliment)
-                    stockMeals.listSEM.add(sem)
-                    try {
-                        val fos = openFileOutput("test.srz", Context.MODE_PRIVATE)
-                        val os = ObjectOutputStream(fos as OutputStream)
-                        os.writeObject(stockMeals)
-                        os.close()
-                        fos.close()
-                        draggedImageView.visibility = View.INVISIBLE
-                    } catch (e: Exception) {
-                        Log.d("deuxieme", "Erreur pendant la serialisation : " + e)
-                        System.exit(2)
-                    }
-
-                }
-
-                else -> true
-            }
-
-            true
-        }
-
-
-        findViewById<LinearLayout>(R.id.btnFrigo).setOnDragListener { view, dragEvent ->
-            true
-            val draggedImageView = dragEvent.localState as View
-            val sem = StockElementMeal("repas", Date())
-            when (dragEvent.action) {
-                DragEvent.ACTION_DROP -> {
-                    sem.addToStocked(aliment)
-                    try {
-                        val fos = openFileOutput("test.srz", Context.MODE_PRIVATE)
-                        val os = ObjectOutputStream(fos)
-                        os.writeObject(stockMeals)
-                        os.close()
-                        fos.close()
-                        draggedImageView.visibility = View.INVISIBLE
-                    } catch (e: Exception) {
-                        Log.d("deuxieme", "Erreur pendant la serialisation : " + e)
-                        System.exit(2)
-                    }
-                    stockMeals.listSEM.add(sem)
-                }
-
-                else -> false
-            }
-
-            true
-        }
-
-        findViewById<LinearLayout>(R.id.btnAssiette).setOnDragListener { view, dragEvent ->
-            true
-            val draggedImageView = dragEvent.localState as View
-            val sem = StockElementMeal("repas", Date())
-            when (dragEvent.action) {
-                DragEvent.ACTION_DROP -> {
-                    sem.addToEaten(aliment)
-                    try {
-                        val fos = openFileOutput("test.srz", Context.MODE_PRIVATE)
-                        val os = ObjectOutputStream(fos)
-                        os.writeObject(stockMeals)
-                        os.close()
-                        fos.close()
-                        draggedImageView.visibility = View.INVISIBLE
-                    } catch (e: Exception) {
-                        Log.d("deuxieme", "Erreur pendant la serialisation : " + e)
-                        System.exit(2)
-                    }
-                    stockMeals.listSEM.add(sem)
-                }
-                else -> false
-            }
-
-            true
-        }
-
-        findViewById<LinearLayout>(R.id.btnChien).setOnDragListener { view, dragEvent ->
-            true
-            val draggedImageView = dragEvent.localState as View
-            val sem = StockElementMeal("repas", Date())
-            when (dragEvent.action) {
-                DragEvent.ACTION_DROP -> {
-                    sem.addToFed(aliment)
-                    try {
-                        val fos = openFileOutput("test.srz", Context.MODE_PRIVATE)
-                        val os = ObjectOutputStream(fos)
-                        os.writeObject(stockMeals)
-                        os.close()
-                        fos.close()
-                        draggedImageView.visibility = View.INVISIBLE
-                    } catch (e: Exception) {
-                        Log.d("deuxieme", "Erreur pendant la serialisation : " + e)
-                        System.exit(2)
-                    }
-                    stockMeals.listSEM.add(sem)
-                }
-                else -> false
-            }
-
-            true
-        }
-
-        findViewById<LinearLayout>(R.id.btnPoubelle).setOnDragListener { view, dragEvent ->
-            true
-            val draggedImageView = dragEvent.localState as View
-            val sem = StockElementMeal("repas", Date())
-            when (dragEvent.action) {
-                DragEvent.ACTION_DROP -> {
-                    sem.addToThrowed(aliment)
-                    try {
-                        val fos = openFileOutput("test.srz", Context.MODE_PRIVATE)
-                        val os = ObjectOutputStream(fos)
-                        os.writeObject(stockMeals)
-                        os.close()
-                        fos.close()
-                        draggedImageView.visibility = View.INVISIBLE
-                    } catch (e: Exception) {
-                        Log.d("deuxieme", "Erreur pendant la serialisation : " + e)
-                        System.exit(2)
-                    }
-                    stockMeals.listSEM.add(sem)
-                }
-                else -> false
-            }
-
-            true
-        }
-
         if (aliment.isGeneratingBone) {
             createElement("Os de " + aliment.basicName, idBG)
         }
@@ -251,90 +117,22 @@ class TreatItemActivity : AppCompatActivity() {
         var tv = TextView(this)
         tv.id = id++
         tv.text = elementName
+        tv.gravity = Gravity.CENTER
         tv.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         tv.setTextColor(Color.BLACK)
         linearLayout.addView(tv)
 
+        linearLayout.setOnClickListener {
+            var inflater = this.getSystemService(android.content.Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            var popUpView = inflater.inflate(R.layout.layout_pop_up_treat_item, null)
+
+            var popup = PopupWindow(popUpView, 1000, ViewGroup.LayoutParams.WRAP_CONTENT)
+            popup.showAtLocation(findViewById<LinearLayout>(R.id.globalLayout), Gravity.CENTER, 0, 0)
+        }
 
         currentLine.addView(linearLayout)
         var space = Space(this)
         space.layoutParams = TableLayout.LayoutParams(0, Math.round(1 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)), 1f)
         currentLine.addView(space)
-        linearLayout.setOnTouchListener(ChoiceTouchListener())
-        //linearLayout.setOnLongClickListener(MyOnLongClickListener())
     }
 }
-
-internal class ChoiceTouchListener : View.OnTouchListener {
-    override fun onTouch(view: View, motionEvent: MotionEvent): Boolean {
-        if (motionEvent.action == MotionEvent.ACTION_DOWN) {
-            //setup drag
-            val data = ClipData.newPlainText("", "")
-            val shadowBuilder = View.DragShadowBuilder(view)
-            //start dragging the item touched
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                view.startDragAndDrop(data, shadowBuilder, view, 0)
-            }else{
-                view.startDrag(data, shadowBuilder, view, 0)
-            }
-
-            return true
-        } else {
-            return false
-        }
-
-    }
-}
-
-internal class MyDragEventListener : View.OnDragListener {
-    override fun onDrag(view : View, event : DragEvent) : Boolean{
-        var action = event.action
-        when(action){
-            DragEvent.ACTION_DROP -> {
-                Log.d("test","drop")
-                val item = event.clipData.getItemAt(0)
-                //val dragData = item.text
-                Log.d("test",item.text as String)
-                view.setBackgroundColor(Color.TRANSPARENT)
-                return true
-            }
-
-            DragEvent.ACTION_DRAG_STARTED -> {
-                Log.d("test","started")
-                if(event.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
-                    view.setBackgroundColor(Color.BLUE)
-                    view.invalidate()
-                    return true
-                }
-                return false
-            }
-
-            DragEvent.ACTION_DRAG_ENTERED -> {
-                Log.d("test","entered")
-                view.setBackgroundColor(Color.GREEN)
-                view.invalidate()
-                return true
-            }
-            DragEvent.ACTION_DRAG_LOCATION -> return true
-
-            DragEvent.ACTION_DRAG_EXITED -> {
-                Log.d("test","exited")
-                view.setBackgroundColor(Color.BLUE)
-                view.invalidate()
-                return true
-            }
-            DragEvent.ACTION_DRAG_ENDED -> {
-                Log.d("test","ended")
-                view.setBackgroundColor(Color.TRANSPARENT)
-                view.invalidate()
-                if(event.result) {
-                    Log.d("test","drop was handled")
-                }else {
-                    Log.d("test","drop was not handled")
-                }
-            }
-
-        }
-        return false
-        }
-    }

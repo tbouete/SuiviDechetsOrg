@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center">
+        android:gravity="center"
+        android:paddingHorizontal="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_square_pop_up"
-            android:orientation="vertical"
             android:gravity="center"
+            android:orientation="vertical"
             android:padding="20dp">
 
             <LinearLayout
                 android:id="@+id/bottom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_alignParentBottom="true">
+                android:orientation="horizontal">
 
                 <Space
                     android:layout_width="0dp"
@@ -34,17 +35,16 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/rounded_square"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="10dp">
 
                     <ImageView
+                        android:id="@+id/imgComposte"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/ic_composte"
-                        android:id="@+id/imgComposte"/>
+                        android:src="@drawable/ic_composte" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -52,8 +52,8 @@
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:text="@string/compost"
-                        android:textSize="10dp"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="10dp" />
 
                 </LinearLayout>
 
@@ -67,7 +67,6 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/rounded_square"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="10dp">
@@ -84,8 +83,8 @@
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:text="@string/frigo"
-                        android:textSize="10dp"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="10dp" />
                 </LinearLayout>
 
                 <Space
@@ -98,7 +97,6 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/rounded_square"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="10dp">
@@ -113,10 +111,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:textSize="10dp"
                         android:gravity="center"
                         android:text="@string/assiette"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="10dp" />
                 </LinearLayout>
 
                 <Space
@@ -129,7 +127,6 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/rounded_square"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="10dp">
@@ -144,10 +141,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:textSize="10dp"
                         android:gravity="center"
                         android:text="@string/animal"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="10dp" />
                 </LinearLayout>
 
                 <Space
@@ -160,7 +157,6 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/rounded_square"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="10dp">
@@ -175,11 +171,61 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:textSize="10dp"
                         android:gravity="center"
                         android:text="@string/poubelle"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="10dp" />
                 </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="0.2" />
+
+                <LinearLayout
+                    android:id="@+id/btnDecouper"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_knife" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <EditText
+                            android:id="@+id/etCouperAliment"
+                            android:layout_width="30dp"
+                            android:layout_height="20dp"
+                            android:drawableTint="@color/black"
+                            android:textColor="@color/black"
+                            android:inputType="numberDecimal"/>
+
+                        <Button
+                            android:id="@+id/buttonSwitchActivity"
+                            android:layout_width="30dp"
+                            android:layout_height="20dp"
+                            android:background="@drawable/blue_button_border"
+                            android:text="Couper"
+                            android:textSize="7dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="0.2" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
