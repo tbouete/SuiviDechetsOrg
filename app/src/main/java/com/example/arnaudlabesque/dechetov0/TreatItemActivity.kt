@@ -13,11 +13,14 @@ import android.os.Build
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Context
+import android.text.Editable
 import android.util.Log
 import android.view.*
 import android.widget.*
+import elements.ElementFactory
 import elements.StockElementMeal
 import elements.StockMeals
+import org.w3c.dom.Text
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
 import java.io.OutputStream
@@ -28,75 +31,8 @@ import java.io.OutputStream
  */
 
 class TreatItemActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_treat_item)
-
-        val aliment = intent.getSerializableExtra("item") as Element
-        val idBG = intent.getIntExtra("idColorBG", 0)
-        createElement(aliment.basicName, idBG)
-
-        val tl = findViewById<Toolbar>(R.id.my_toolbar)
-        tl.title = "Traitement de l'aliment " + aliment.basicName + " - " + SimpleDateFormat("dd-MMMM-yy", Locale.FRENCH).format(Date()).replace("-", " ")
-        tl.inflateMenu(R.menu.menu_settings)
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-
-        findViewById<View>(R.id.itemSettings).setOnClickListener {
-            startActivity(Intent(this, SettingsActivity::class.java))
-        }
-
-        findViewById<View>(R.id.btnCancelTreat).setOnClickListener {
-            finish()
-        }
-
-        var stockMeals = StockMeals()
-
-        try {
-            val fis = openFileInput("test.srz")
-            val ois = ObjectInputStream(fis)
-            stockMeals = ois.readObject() as StockMeals
-            ois.close()
-            fis.close()
-            Log.d("first", stockMeals.toString())
-        } catch (e: Exception) {
-            Log.d("first", "Erreur pendant la deserialisation : " + e)
-            System.exit(2)
-        }
-
-        if (aliment.isGeneratingBone) {
-            createElement("Os de " + aliment.basicName, idBG)
-        }
-        if (aliment.isGeneratingCore) {
-            when (aliment.basicName){
-                "Pomme" -> createElement("Trognon de " + aliment.basicName, idBG)
-                "Poire" -> createElement("Trognon de " + aliment.basicName, idBG)
-                "Ananas" -> createElement("Trognon d' " + aliment.basicName, idBG)
-                else ->createElement("Noyau de " + aliment.basicName, idBG)
-            }
-        }
-
-        if (aliment.isGeneratingCrust) {
-            createElement("Croûte de " + aliment.basicName, idBG)
-        }
-        if (aliment.isGeneratingFat) {
-            createElement("Gras de " + aliment.basicName, idBG)
-        }
-        if (aliment.isGeneratingFilter) {
-            createElement("Filtre de " + aliment.basicName, idBG)
-        }
-        if (aliment.isGeneratingPeel) {
-            createElement("Peau de " + aliment.basicName, idBG)
-        }
-        if (aliment.isGeneratingMeatSkin) {
-            createElement("Peau de " + aliment.basicName, idBG)
-        }
-        if (aliment.isGeneratingTail) {
-            createElement("Queue de " + aliment.basicName, idBG)
-        }
-
-    }
-
-    fun createElement(elementName: String, idBg: Int) {
+    var stockMeals = StockMeals()
+    fun createElement(aliment: Element, elementName: String, idBg: Int) {
         var id = 0
         var currentLine = LinearLayout(this)
         currentLine.gravity = Gravity.CENTER
@@ -122,17 +58,112 @@ class TreatItemActivity : AppCompatActivity() {
         tv.setTextColor(Color.BLACK)
         linearLayout.addView(tv)
 
+
         linearLayout.setOnClickListener {
             var inflater = this.getSystemService(android.content.Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             var popUpView = inflater.inflate(R.layout.layout_pop_up_treat_item, null)
 
+            var tvTitrePopup = popUpView.findViewById<TextView>(R.id.tvTitrePopupTreatItem)
+            tvTitrePopup.text = "Gestion de l'aliment " + elementName
+
+            popUpView.findViewById<LinearLayout>(R.id.btnComposte).setOnClickListener{handleCompostedWaste(aliment)}
+            popUpView.findViewById<LinearLayout>(R.id.btnFrigo).setOnClickListener{handleStockedWaste(aliment)}
+            popUpView.findViewById<LinearLayout>(R.id.btnAssiette).setOnClickListener{handleEatenWaste(aliment)}
+            popUpView.findViewById<LinearLayout>(R.id.btnChien).setOnClickListener{handleFedWaste(aliment)}
+            popUpView.findViewById<LinearLayout>(R.id.btnPoubelle).setOnClickListener{handleThrowedWaste(aliment)}
+
             var popup = PopupWindow(popUpView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
             popup.showAtLocation(findViewById<LinearLayout>(R.id.globalLayout), Gravity.BOTTOM, 0, 0)
+
         }
 
         currentLine.addView(linearLayout)
         var space = Space(this)
         space.layoutParams = TableLayout.LayoutParams(0, Math.round(1 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)), 1f)
         currentLine.addView(space)
+    }
+
+    fun handleCompostedWaste(aliment: Element){
+        stockMeals.listSEM.get( stockMeals.listSEM.lastIndex ).addToComposted(aliment)
+    }
+    fun handleStockedWaste(aliment: Element){
+        stockMeals.listSEM.get( stockMeals.listSEM.lastIndex ).addToStocked(aliment)
+    }
+    fun handleFedWaste(aliment: Element){
+        stockMeals.listSEM.get( stockMeals.listSEM.lastIndex ).addToFed(aliment)
+    }
+    fun handleEatenWaste(aliment: Element){
+        stockMeals.listSEM.get( stockMeals.listSEM.lastIndex ).addToEaten(aliment)
+    }
+    fun handleThrowedWaste(aliment: Element){
+        stockMeals.listSEM.get( stockMeals.listSEM.lastIndex ).addToThrowed(aliment)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_treat_item)
+
+        val aliment = intent.getSerializableExtra("item") as Element
+        val idBG = intent.getIntExtra("idColorBG", 0)
+        createElement(aliment, aliment.basicName, idBG)
+
+        val tl = findViewById<Toolbar>(R.id.my_toolbar)
+        tl.title = "Traitement de l'aliment " + aliment.basicName + " - " + SimpleDateFormat("dd-MMMM-yy", Locale.FRENCH).format(Date()).replace("-", " ")
+        tl.inflateMenu(R.menu.menu_settings)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+
+        findViewById<View>(R.id.itemSettings).setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
+        }
+
+        findViewById<View>(R.id.btnCancelTreat).setOnClickListener {
+            finish()
+        }
+
+
+
+        try {
+            val fis = openFileInput("test.srz")
+            val ois = ObjectInputStream(fis)
+            stockMeals = ois.readObject() as StockMeals
+            ois.close()
+            fis.close()
+            Log.d("first", stockMeals.toString())
+        } catch (e: Exception) {
+            Log.d("first", "Erreur pendant la deserialisation : " + e)
+            System.exit(2)
+        }
+
+        if (aliment.isGeneratingBone) {
+            createElement(aliment, "Os de " + aliment.basicName, idBG)
+        }
+        if (aliment.isGeneratingCore) {
+            when (aliment.basicName){
+                "Pomme" -> createElement(aliment, "Trognon de " + aliment.basicName, idBG)
+                "Poire" -> createElement(aliment, "Trognon de " + aliment.basicName, idBG)
+                "Ananas" -> createElement(aliment, "Trognon d' " + aliment.basicName, idBG)
+                else ->createElement(aliment, "Noyau de " + aliment.basicName, idBG)
+            }
+        }
+
+        if (aliment.isGeneratingCrust) {
+            createElement(aliment, "Croûte de " + aliment.basicName, idBG)
+        }
+        if (aliment.isGeneratingFat) {
+            createElement(aliment, "Gras de " + aliment.basicName, idBG)
+        }
+        if (aliment.isGeneratingFilter) {
+            createElement(aliment, "Filtre de " + aliment.basicName, idBG)
+        }
+        if (aliment.isGeneratingPeel) {
+            createElement(aliment, "Peau de " + aliment.basicName, idBG)
+        }
+        if (aliment.isGeneratingMeatSkin) {
+            createElement(aliment, "Peau de " + aliment.basicName, idBG)
+        }
+        if (aliment.isGeneratingTail) {
+            createElement(aliment, "Queue de " + aliment.basicName, idBG)
+        }
+
     }
 }
