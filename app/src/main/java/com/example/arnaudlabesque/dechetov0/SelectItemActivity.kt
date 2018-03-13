@@ -147,7 +147,7 @@ class SelectItemActivity : AppCompatActivity() {
                                 myIntent.putExtra("idColorBG", idBg)
                                 myIntent.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
                                 popup.dismiss()
-                                startActivity(intent)
+                                startActivity(myIntent)
 
                             }
                         }

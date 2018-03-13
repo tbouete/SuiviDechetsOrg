@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.DisplayMetrics
-import elements.Element
 import java.text.SimpleDateFormat
 import java.util.*
 import android.os.Build
@@ -17,9 +16,7 @@ import android.text.Editable
 import android.util.Log
 import android.view.*
 import android.widget.*
-import elements.ElementFactory
-import elements.StockElementMeal
-import elements.StockMeals
+import elements.*
 import org.w3c.dom.Text
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
@@ -31,14 +28,14 @@ import java.io.OutputStream
  */
 
 class TreatItemActivity : AppCompatActivity() {
-    var stockMeals = StockMeals()
+    var stockMeal = StockMeals()
+
     fun createElement(aliment: Element, elementName: String, idBg: Int) {
         var id = 0
         var currentLine = LinearLayout(this)
         currentLine.gravity = Gravity.CENTER
         findViewById<LinearLayout>(R.id.treatableItem).addView(currentLine)
 
-        //Log.d("test",element)
         var linearLayout = LinearLayout(this)
         if (idBg == 0) {
             linearLayout.background = getDrawable(R.drawable.rounded_square)
@@ -84,25 +81,22 @@ class TreatItemActivity : AppCompatActivity() {
     }
 
     fun handleCompostedWaste(aliment: Element){
-        stockMeals.listSEM.get( stockMeals.listSEM.lastIndex ).addToComposted(aliment)
+        stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).addToComposted(aliment)
     }
     fun handleStockedWaste(aliment: Element){
-        stockMeals.listSEM.get( stockMeals.listSEM.lastIndex ).addToStocked(aliment)
+        stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).addToStocked(aliment)
     }
     fun handleFedWaste(aliment: Element){
-        stockMeals.listSEM.get( stockMeals.listSEM.lastIndex ).addToFed(aliment)
+        stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).addToFed(aliment)
     }
     fun handleEatenWaste(aliment: Element){
-        stockMeals.listSEM.get( stockMeals.listSEM.lastIndex ).addToEaten(aliment)
+        stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).addToEaten(aliment)
     }
     fun handleThrowedWaste(aliment: Element){
-        stockMeals.listSEM.get( stockMeals.listSEM.lastIndex ).addToThrowed(aliment)
+        stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).addToThrowed(aliment)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_treat_item)
-
+    fun treatItem() {
         val aliment = intent.getSerializableExtra("item") as Element
         val idBG = intent.getIntExtra("idColorBG", 0)
         createElement(aliment, aliment.basicName, idBG)
@@ -120,9 +114,34 @@ class TreatItemActivity : AppCompatActivity() {
             finish()
         }
 
+        checkWaste(aliment, idBG)
+    }
 
+    fun treatRecipe() {
+        val recipe = intent.getSerializableExtra("recipe") as ComposedElement
+        stockMeal = intent.getSerializableExtra("stockMeal") as StockMeals
 
+        createElement(recipe, recipe.basicName,0)
 
+        val tl = findViewById<Toolbar>(R.id.my_toolbar)
+        tl.title = "Traitement de la recette " + recipe.basicName + " - " + SimpleDateFormat("dd-MMMM-yy", Locale.FRENCH).format(Date()).replace("-", " ")
+        tl.inflateMenu(R.menu.menu_settings)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        findViewById<View>(R.id.itemSettings).setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
+        }
+
+        findViewById<View>(R.id.btnCancelTreat).setOnClickListener {
+            finish()
+        }
+
+        for(e in recipe.composition) {
+            checkWaste(e,0)
+        }
+
+    }
+
+    fun checkWaste(aliment : Element, idBG : Int) {
 
         if (aliment.isGeneratingBone) {
             createElement(aliment, "Os de " + aliment.basicName, idBG)
@@ -153,6 +172,17 @@ class TreatItemActivity : AppCompatActivity() {
         }
         if (aliment.isGeneratingTail) {
             createElement(aliment, "Queue de " + aliment.basicName, idBG)
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_treat_item)
+
+        if(intent.getBooleanExtra("isRecipe", false)) {
+            treatRecipe()
+        } else {
+            treatItem()
         }
 
     }

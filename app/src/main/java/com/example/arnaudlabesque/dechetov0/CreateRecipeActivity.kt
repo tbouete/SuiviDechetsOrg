@@ -57,18 +57,21 @@ class CreateRecipeActivity : AppCompatActivity() {
             startActivityForResult(intentRecipe, 7)
         }
 
-        findViewById<Button>(R.id.buttonValidateRecipe).setOnClickListener {
-            recette.basicName = (findViewById<View>(R.id.etRecipeName) as EditText).text.toString()
-        }
-
         findViewById<View>(R.id.lCancel).setOnClickListener{
             finish()
         }
 
         findViewById<Button>(R.id.buttonValidateRecipe).setOnClickListener {
-            // Treat recipe with components of recipe
-            // TODO
+
             val intentTreatRecipe = Intent(this, TreatItemActivity::class.java)
+
+            intentTreatRecipe.putExtra("isRecipe", true)
+            val etRecipeName = findViewById<EditText>(R.id.etRecipeName)
+            val recipeName =  etRecipeName.text.toString()
+            recette.basicName = recipeName
+            intentTreatRecipe.putExtra("recipe", recette)
+            intentTreatRecipe.putExtra("stockMeal", intent.getSerializableExtra("stockMeal"))
+
             startActivity(intentTreatRecipe)
         }
     }
