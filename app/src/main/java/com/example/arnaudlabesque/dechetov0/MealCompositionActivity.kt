@@ -31,11 +31,14 @@ class MealCompositionActivity : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.lAjoutAliment).setOnClickListener {
             val myIntent = Intent(this, FoodChoiceActivity::class.java)
             myIntent.putExtra("meal",intent.getStringExtra("meal"))
+            myIntent.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
             startActivity(myIntent)
         }
 
         findViewById<View>(R.id.lCreateRecipe).setOnClickListener {
-            startActivity(Intent(this, CreateRecipeActivity::class.java))
+            val myIntent = Intent(this, CreateRecipeActivity::class.java)
+            myIntent.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
+            startActivity(myIntent)
         }
 
         findViewById<View>(R.id.lCancelML).setOnClickListener {

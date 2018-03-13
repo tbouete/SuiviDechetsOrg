@@ -5,10 +5,11 @@ package elements;
  */
 
 public enum MealType {
-    breakfast("petit-déjeuner"),
-    lunch("déjeuner"),
-    afternoonMeal("goûter"),
-    dinner("dîner"),
+    breakfast("petit-dÃ©jeuner"),
+    morningMeal("encas"),
+    lunch("dÃ©jeuner"),
+    afternoonMeal("goÃ»ter"),
+    dinner("dÃ®ner"),
     other("autre");
 
     private String name = "";

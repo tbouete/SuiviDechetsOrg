@@ -142,9 +142,10 @@ class SelectItemActivity : AppCompatActivity() {
                             } else {
 
                                 inflater.inflate(R.layout.activity_treat_item, null)
-                                val intent = Intent(this, TreatItemActivity::class.java)
-                                intent.putExtra("item", aliment)
-                                intent.putExtra("idColorBG", idBg)
+                                val myIntent = Intent(this, TreatItemActivity::class.java)
+                                myIntent.putExtra("item", aliment)
+                                myIntent.putExtra("idColorBG", idBg)
+                                myIntent.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
                                 popup.dismiss()
                                 startActivity(intent)
 

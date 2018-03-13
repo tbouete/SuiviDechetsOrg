@@ -51,6 +51,7 @@ class FoodChoiceActivity : AppCompatActivity() {
             intentSIA.putExtra("titre", "Ajout d'un fruit")
             intentSIA.putExtra("meal",intent.getStringExtra("meal"))
             intentSIA.putExtra("recipe",isRecipe)
+            intentSIA.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
             if(isRecipe){
                 startActivityForResult(intentSIA,7)
             }else{
@@ -64,6 +65,7 @@ class FoodChoiceActivity : AppCompatActivity() {
             intentSIA.putExtra("titre", "Ajout d'un légume")
             intentSIA.putExtra("meal",intent.getStringExtra("meal"))
             intentSIA.putExtra("recipe",isRecipe)
+            intentSIA.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
             if(isRecipe){
                 startActivityForResult(intentSIA,7)
             }else{
@@ -77,6 +79,7 @@ class FoodChoiceActivity : AppCompatActivity() {
             intentSIA.putExtra("titre", "Ajout d'un féculent")
             intentSIA.putExtra("meal",intent.getStringExtra("meal"))
             intentSIA.putExtra("recipe",isRecipe)
+            intentSIA.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
             if(isRecipe){
                 startActivityForResult(intentSIA,7)
             }else{
@@ -89,6 +92,7 @@ class FoodChoiceActivity : AppCompatActivity() {
             intentSIA.putExtra("titre", "Ajout d'un produit laitier")
             intentSIA.putExtra("meal",intent.getStringExtra("meal"))
             intentSIA.putExtra("recipe",isRecipe)
+            intentSIA.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
             if(isRecipe){
                 startActivityForResult(intentSIA,7)
             }else{
@@ -101,6 +105,7 @@ class FoodChoiceActivity : AppCompatActivity() {
             intentSIA.putExtra("titre", "Ajout d'une pâtisserie")
             intentSIA.putExtra("meal",intent.getStringExtra("meal"))
             intentSIA.putExtra("recipe",isRecipe)
+            intentSIA.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
             if(isRecipe){
                 startActivityForResult(intentSIA,7)
             }else{
@@ -113,6 +118,7 @@ class FoodChoiceActivity : AppCompatActivity() {
             intentSIA.putExtra("titre", "Ajout d'une sauce")
             intentSIA.putExtra("meal",intent.getStringExtra("meal"))
             intentSIA.putExtra("recipe",isRecipe)
+            intentSIA.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
             if(isRecipe){
                 startActivityForResult(intentSIA,7)
             }else{
@@ -125,6 +131,7 @@ class FoodChoiceActivity : AppCompatActivity() {
             intentSIA.putExtra("titre", "Ajout d'une viande")
             intentSIA.putExtra("meal",intent.getStringExtra("meal"))
             intentSIA.putExtra("recipe",isRecipe)
+            intentSIA.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
             if(isRecipe){
                 startActivityForResult(intentSIA,7)
             }else{
@@ -137,6 +144,7 @@ class FoodChoiceActivity : AppCompatActivity() {
             intentSIA.putExtra("titre", "Ajout d'un autre aliment")
             intentSIA.putExtra("meal",intent.getStringExtra("meal"))
             intentSIA.putExtra("recipe",isRecipe)
+            intentSIA.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
             if(isRecipe){
                 startActivityForResult(intentSIA,7)
             }else{

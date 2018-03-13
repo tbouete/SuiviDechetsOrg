@@ -122,17 +122,7 @@ class TreatItemActivity : AppCompatActivity() {
 
 
 
-        try {
-            val fis = openFileInput("test.srz")
-            val ois = ObjectInputStream(fis)
-            stockMeals = ois.readObject() as StockMeals
-            ois.close()
-            fis.close()
-            Log.d("first", stockMeals.toString())
-        } catch (e: Exception) {
-            Log.d("first", "Erreur pendant la deserialisation : " + e)
-            System.exit(2)
-        }
+
 
         if (aliment.isGeneratingBone) {
             createElement(aliment, "Os de " + aliment.basicName, idBG)

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.graphics.drawable.Animatable
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -22,6 +23,7 @@ import java.util.*
 class SelectMealActivity : AppCompatActivity() {
     val date = Date()
     var sharedPref: SharedPreferences? = null
+    var myStockMeal = StockMeals()
 
     override fun onResume() {
         super.onResume()
@@ -34,31 +36,31 @@ class SelectMealActivity : AppCompatActivity() {
 
         var nbClocks = 0
 
-        if (!sharedPref!!.getBoolean("petitDej", false)) {
+        if (!sharedPref!!.getBoolean("petitDej", true)) {
             lPetitDej.visibility = LinearLayout.GONE
         } else {
             lPetitDej.visibility = LinearLayout.VISIBLE
             nbClocks++
         }
-        if (!sharedPref!!.getBoolean("encas", false)) {
+        if (!sharedPref!!.getBoolean("encas", true)) {
             lEncas.visibility = LinearLayout.GONE
         } else {
             lEncas.visibility = LinearLayout.VISIBLE
             nbClocks++
         }
-        if (!sharedPref!!.getBoolean("dej", false)) {
+        if (!sharedPref!!.getBoolean("dej", true)) {
             lDej.visibility = LinearLayout.GONE
         } else {
             lDej.visibility = LinearLayout.VISIBLE
             nbClocks++
         }
-        if (!sharedPref!!.getBoolean("gouter", false)) {
+        if (!sharedPref!!.getBoolean("gouter", true)) {
             lGouter.visibility = LinearLayout.GONE
         } else {
             lGouter.visibility = LinearLayout.VISIBLE
             nbClocks++
         }
-        if (!sharedPref!!.getBoolean("diner", false)) {
+        if (!sharedPref!!.getBoolean("diner", true)) {
             lDiner.visibility = LinearLayout.GONE
         } else {
             lDiner.visibility = LinearLayout.VISIBLE
@@ -86,17 +88,18 @@ class SelectMealActivity : AppCompatActivity() {
         try {
             val fis = openFileInput("test.srz")
             val ois = ObjectInputStream(fis)
-            var stockMeals = ois.readObject() as StockMeals
+            myStockMeal = ois.readObject() as StockMeals
             ois.close()
             fis.close()
         } catch (e: Exception){
-            var stockMeals = StockMeals()
+            myStockMeal = StockMeals()
             val fos = openFileOutput("test.srz", Context.MODE_PRIVATE)
             val os = ObjectOutputStream(fos)
-            os.writeObject(stockMeals)
+            os.writeObject(myStockMeal)
             os.close()
             fos.close()
         }
+
 
         val imageViewPetitDej: ImageView = findViewById<View>(R.id.btnPetitDej) as ImageView
         val imageViewEncas: ImageView = findViewById<View>(R.id.btnEncas) as ImageView
@@ -137,7 +140,7 @@ class SelectMealActivity : AppCompatActivity() {
 
     }
 
-    var myStockMeal = StockMeals()
+
 
 
     fun actionPetitDej(v: View) {
@@ -147,54 +150,67 @@ class SelectMealActivity : AppCompatActivity() {
             myStockMeal.listSEM.add(myStockElementMeal)
             val intent = Intent(this, MealCompositionActivity::class.java)
             intent.putExtra("meal", "petit-déjeuner")
-            intent.putExtra("stockElementMeal", myStockElementMeal)
+            intent.putExtra("stockMeal", myStockMeal)
             startActivity(intent)
         }
     }
 
     fun actionEncas(v: View) {
         if (v.id == R.id.btnEncas) {
-            //Toast.makeText(this, "Je suis un encas", Toast.LENGTH_SHORT).show()
+            var myStockElementMeal = StockElementMeal(MealType.morningMeal.toString(), Date())
+            myStockElementMeal.addObserver(myStockMeal)
+            myStockMeal.listSEM.add(myStockElementMeal)
             val intent = Intent(this, MealCompositionActivity::class.java)
             intent.putExtra("meal", "en-cas")
+            intent.putExtra("stockMeal", myStockMeal)
             startActivity(intent)
         }
     }
 
     fun actionDej(v: View) {
         if (v.id == R.id.btnDej) {
-
-            //val sdf = SimpleDateFormat("dd-MMMM-yy",Locale.FRENCH)
-            //Toast.makeText(this, "Je suis un déjeuner", Toast.LENGTH_SHORT).show()
+            var myStockElementMeal = StockElementMeal(MealType.lunch.toString(), Date())
+            myStockElementMeal.addObserver(myStockMeal)
+            myStockMeal.listSEM.add(myStockElementMeal)
             val intent = Intent(this, MealCompositionActivity::class.java)
             intent.putExtra("meal", "déjeuner")
+            intent.putExtra("stockMeal", myStockMeal)
             startActivity(intent)
         }
     }
 
     fun actionGouter(v: View) {
         if (v.id == R.id.btnGouter) {
-            //Toast.makeText(this, "Je suis un goûter", Toast.LENGTH_SHORT).show()
+            var myStockElementMeal = StockElementMeal(MealType.afternoonMeal.toString(), Date())
+            myStockElementMeal.addObserver(myStockMeal)
+            myStockMeal.listSEM.add(myStockElementMeal)
             val intent = Intent(this, MealCompositionActivity::class.java)
             intent.putExtra("meal", "goûter")
+            intent.putExtra("stockMeal", myStockMeal)
             startActivity(intent)
         }
     }
 
     fun actionDiner(v: View) {
         if (v.id == R.id.btnDiner) {
-            //Toast.makeText(this, "Je suis un diner", Toast.LENGTH_SHORT).show()
+            var myStockElementMeal = StockElementMeal(MealType.dinner.toString(), Date())
+            myStockElementMeal.addObserver(myStockMeal)
+            myStockMeal.listSEM.add(myStockElementMeal)
             val intent = Intent(this, MealCompositionActivity::class.java)
             intent.putExtra("meal", "dîner")
+            intent.putExtra("stockMeal", myStockMeal)
             startActivity(intent)
         }
     }
 
     fun actionAutre(v: View) {
         if (v.id == R.id.btnAutre) {
-            //Toast.makeText(this, "Je suis un autre repas", Toast.LENGTH_SHORT).show()
+            var myStockElementMeal = StockElementMeal(MealType.other.toString(), Date())
+            myStockElementMeal.addObserver(myStockMeal)
+            myStockMeal.listSEM.add(myStockElementMeal)
             val intent = Intent(this, MealCompositionActivity::class.java)
             intent.putExtra("meal", "autre")
+            intent.putExtra("stockMeal", myStockMeal)
             startActivity(intent)
         }
     }
