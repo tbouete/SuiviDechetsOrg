@@ -12,107 +12,110 @@
         android:textAlignment="center"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
-    <LinearLayout
-        android:id="@+id/globalLayout"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="45dp"
-        android:background="@color/white"
-        android:orientation="vertical">
+        android:fillViewport="true">
 
         <LinearLayout
+            android:id="@+id/globalLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:gravity="center">
+            android:layout_height="match_parent"
+            android:layout_marginTop="45dp"
+            android:background="@color/white"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/btnCancelTreat"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <ImageView
-                    android:layout_width="67dp"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:minHeight="60dp"
-                    android:src="@drawable/ic_undo" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/annuler_l_aliment"
-                    android:textColor="@color/black" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/btnDecouper"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:minHeight="60dp"
-                    android:src="@drawable/ic_knife" />
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:gravity="center">
 
                 <LinearLayout
+                    android:id="@+id/btnCancelTreat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
-                    <EditText
-                        android:id="@+id/etDecouper"
-                        android:layout_width="30dp"
+                    <ImageView
+                        android:layout_width="67dp"
                         android:layout_height="wrap_content"
-                        android:drawableTint="@color/black"
-                        android:textColor="@color/black"
-                        android:textSize="10dp"
-                        android:inputType="numberDecimal"/>
+                        android:layout_centerInParent="true"
+                        android:minHeight="60dp"
+                        android:src="@drawable/ic_undo" />
 
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_weight="0.2" />
-
-                    <Button
-                        android:id="@+id/buttonSwitchActivity"
-                        android:layout_width="50dp"
-                        android:layout_height="20dp"
-                        android:background="@drawable/blue_button_border"
-                        android:text="Couper"
-                        android:textSize="7dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/annuler_l_aliment"
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/btnDecouper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:minHeight="60dp"
+                        android:src="@drawable/ic_knife" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/etDecouper"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:drawableTint="@color/black"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/black"
+                            android:textSize="10dp" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="0.2" />
+
+                        <Button
+                            android:id="@+id/buttonSwitchActivity"
+                            android:layout_width="50dp"
+                            android:layout_height="20dp"
+                            android:background="@drawable/blue_button_border"
+                            android:text="@string/couper"
+                            android:textSize="7dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/treatableItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:orientation="vertical" />
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/treatableItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-        </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

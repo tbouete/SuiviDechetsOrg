@@ -71,17 +71,17 @@ class SelectItemActivity : AppCompatActivity() {
 
         for (element in myarray) {
             //Log.d("test",element)
-            var linearLayout = LinearLayout(this)
-            linearLayout.background = getDrawable(idBg)
+            var roundedSquareLayout = LinearLayout(this)
+            roundedSquareLayout.background = getDrawable(idBg)
             val v = Math.round(100 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
-            linearLayout.layoutParams = ViewGroup.LayoutParams(v, v)
-            linearLayout.orientation = LinearLayout.VERTICAL
-            linearLayout.gravity = Gravity.CENTER
+            roundedSquareLayout.layoutParams = ViewGroup.LayoutParams(v, v)
+            roundedSquareLayout.orientation = LinearLayout.VERTICAL
+            roundedSquareLayout.gravity = Gravity.CENTER
 
             var imageView = ImageView(this)
             imageView.setImageResource(getIdPicture(element))
             imageView.layoutParams = ViewGroup.LayoutParams(100, 100)
-            linearLayout.addView(imageView)
+            roundedSquareLayout.addView(imageView)
 
             var tv = TextView(this)
             tv.id = id++
@@ -89,7 +89,7 @@ class SelectItemActivity : AppCompatActivity() {
             tv.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
             tv.gravity = Gravity.CENTER
             tv.setTextColor(Color.BLACK)
-            linearLayout.addView(tv)
+            roundedSquareLayout.addView(tv)
             if (nbLeg % 5 == 0) {
                 var myspace = Space(this)
                 myspace.layoutParams = TableLayout.LayoutParams(0, Math.round(1 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)), 1f)
@@ -99,7 +99,7 @@ class SelectItemActivity : AppCompatActivity() {
                 currentLine.gravity = Gravity.CENTER
             }
 
-            linearLayout.setOnClickListener {
+            roundedSquareLayout.setOnClickListener {
                 if (idArray == R.array.fruits || idArray == R.array.legumes) {
                     findViewById<LinearLayout>(R.id.globalLayout).removeAllViews()
                     val newName = element.replace(" ", "")
@@ -159,7 +159,7 @@ class SelectItemActivity : AppCompatActivity() {
 
             }
 
-            currentLine.addView(linearLayout)
+            currentLine.addView(roundedSquareLayout)
             var space = Space(this)
             space.layoutParams = TableLayout.LayoutParams(0, Math.round(1 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)), 1f)
             currentLine.addView(space)
