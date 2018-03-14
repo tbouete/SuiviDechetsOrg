@@ -144,7 +144,6 @@ class FoodChoiceActivity : AppCompatActivity() {
             intentSIA.putExtra("titre", "Ajout d'un autre aliment")
             intentSIA.putExtra("meal",intent.getStringExtra("meal"))
             intentSIA.putExtra("recipe",isRecipe)
-            intentSIA.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
             if(isRecipe){
                 startActivityForResult(intentSIA,7)
             }else{

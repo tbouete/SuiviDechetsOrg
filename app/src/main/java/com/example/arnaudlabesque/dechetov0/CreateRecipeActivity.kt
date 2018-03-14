@@ -62,17 +62,23 @@ class CreateRecipeActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.buttonValidateRecipe).setOnClickListener {
+            var etRecipe = findViewById<EditText>(R.id.etRecipeName) as EditText
+            if (etRecipe.text.toString() == "" ){
+                var tvErrorRecipe = findViewById<TextView>(R.id.textErrorRecipe)
+                tvErrorRecipe.text = "Veuillez entrer un nom pour votre plat !"
+            }else{
+                val intentTreatRecipe = Intent(this, TreatItemActivity::class.java)
 
-            val intentTreatRecipe = Intent(this, TreatItemActivity::class.java)
+                intentTreatRecipe.putExtra("isRecipe", true)
+                val etRecipeName = findViewById<EditText>(R.id.etRecipeName)
+                val recipeName =  etRecipeName.text.toString()
+                recette.basicName = recipeName
+                intentTreatRecipe.putExtra("recipe", recette)
+                intentTreatRecipe.putExtra("stockMeal", intent.getSerializableExtra("stockMeal"))
 
-            intentTreatRecipe.putExtra("isRecipe", true)
-            val etRecipeName = findViewById<EditText>(R.id.etRecipeName)
-            val recipeName =  etRecipeName.text.toString()
-            recette.basicName = recipeName
-            intentTreatRecipe.putExtra("recipe", recette)
-            intentTreatRecipe.putExtra("stockMeal", intent.getSerializableExtra("stockMeal"))
+                startActivity(intentTreatRecipe)
+            }
 
-            startActivity(intentTreatRecipe)
         }
     }
 

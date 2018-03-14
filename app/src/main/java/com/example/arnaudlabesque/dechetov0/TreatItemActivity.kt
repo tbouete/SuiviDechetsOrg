@@ -13,6 +13,7 @@ import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Context
 import android.text.Editable
+import android.text.Layout
 import android.util.Log
 import android.view.*
 import android.widget.*
@@ -63,11 +64,11 @@ class TreatItemActivity : AppCompatActivity() {
             var tvTitrePopup = popUpView.findViewById<TextView>(R.id.tvTitrePopupTreatItem)
             tvTitrePopup.text = "Gestion de l'aliment " + elementName
 
-            popUpView.findViewById<LinearLayout>(R.id.btnComposte).setOnClickListener{handleCompostedWaste(aliment)}
-            popUpView.findViewById<LinearLayout>(R.id.btnFrigo).setOnClickListener{handleStockedWaste(aliment)}
-            popUpView.findViewById<LinearLayout>(R.id.btnAssiette).setOnClickListener{handleEatenWaste(aliment)}
-            popUpView.findViewById<LinearLayout>(R.id.btnChien).setOnClickListener{handleFedWaste(aliment)}
-            popUpView.findViewById<LinearLayout>(R.id.btnPoubelle).setOnClickListener{handleThrowedWaste(aliment)}
+            popUpView.findViewById<LinearLayout>(R.id.btnComposte).setOnClickListener{handleCompostedWaste(aliment,linearLayout)}
+            popUpView.findViewById<LinearLayout>(R.id.btnFrigo).setOnClickListener{handleStockedWaste(aliment,linearLayout)}
+            popUpView.findViewById<LinearLayout>(R.id.btnAssiette).setOnClickListener{handleEatenWaste(aliment,linearLayout)}
+            popUpView.findViewById<LinearLayout>(R.id.btnChien).setOnClickListener{handleFedWaste(aliment,linearLayout)}
+            popUpView.findViewById<LinearLayout>(R.id.btnPoubelle).setOnClickListener{handleThrowedWaste(aliment,linearLayout)}
 
             var popup = PopupWindow(popUpView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
             popup.showAtLocation(findViewById<LinearLayout>(R.id.globalLayout), Gravity.BOTTOM, 0, 0)
@@ -80,25 +81,31 @@ class TreatItemActivity : AppCompatActivity() {
         currentLine.addView(space)
     }
 
-    fun handleCompostedWaste(aliment: Element){
+    fun handleCompostedWaste(aliment: Element, layout: LinearLayout){
         stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).addToComposted(aliment)
+        layout.visibility = View.INVISIBLE
     }
-    fun handleStockedWaste(aliment: Element){
+    fun handleStockedWaste(aliment: Element, layout: LinearLayout){
         stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).addToStocked(aliment)
+        layout.visibility = View.INVISIBLE
     }
-    fun handleFedWaste(aliment: Element){
+    fun handleFedWaste(aliment: Element, layout: LinearLayout){
         stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).addToFed(aliment)
+        layout.visibility = View.INVISIBLE
     }
-    fun handleEatenWaste(aliment: Element){
+    fun handleEatenWaste(aliment: Element, layout: LinearLayout){
         stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).addToEaten(aliment)
+        layout.visibility = View.INVISIBLE
     }
-    fun handleThrowedWaste(aliment: Element){
+    fun handleThrowedWaste(aliment: Element, layout: LinearLayout){
         stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).addToThrowed(aliment)
+        layout.visibility = View.INVISIBLE
     }
 
     fun treatItem() {
         val aliment = intent.getSerializableExtra("item") as Element
         val idBG = intent.getIntExtra("idColorBG", 0)
+        stockMeal = intent.getSerializableExtra("stockMeal") as StockMeals
         createElement(aliment, aliment.basicName, idBG)
 
         val tl = findViewById<Toolbar>(R.id.my_toolbar)
