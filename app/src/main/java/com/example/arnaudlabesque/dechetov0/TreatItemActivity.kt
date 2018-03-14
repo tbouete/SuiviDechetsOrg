@@ -12,6 +12,9 @@ import android.os.Build
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.ColorDrawable
 import android.text.Editable
 import android.text.Layout
 import android.util.Log
@@ -30,9 +33,11 @@ import java.io.OutputStream
 
 class TreatItemActivity : AppCompatActivity() {
     var stockMeal = StockMeals()
+    var nbElements = 0
 
     fun createElement(aliment: Element, elementName: String, idBg: Int) {
         var id = 0
+        nbElements++
         var currentLine = LinearLayout(this)
         currentLine.gravity = Gravity.CENTER
         findViewById<LinearLayout>(R.id.treatableItem).addView(currentLine)
@@ -64,15 +69,15 @@ class TreatItemActivity : AppCompatActivity() {
             var tvTitrePopup = popUpView.findViewById<TextView>(R.id.tvTitrePopupTreatItem)
             tvTitrePopup.text = "Gestion de l'aliment " + elementName
 
-            popUpView.findViewById<LinearLayout>(R.id.btnComposte).setOnClickListener{handleCompostedWaste(aliment,linearLayout)}
-            popUpView.findViewById<LinearLayout>(R.id.btnFrigo).setOnClickListener{handleStockedWaste(aliment,linearLayout)}
-            popUpView.findViewById<LinearLayout>(R.id.btnAssiette).setOnClickListener{handleEatenWaste(aliment,linearLayout)}
-            popUpView.findViewById<LinearLayout>(R.id.btnChien).setOnClickListener{handleFedWaste(aliment,linearLayout)}
-            popUpView.findViewById<LinearLayout>(R.id.btnPoubelle).setOnClickListener{handleThrowedWaste(aliment,linearLayout)}
 
             var popup = PopupWindow(popUpView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
             popup.showAtLocation(findViewById<LinearLayout>(R.id.globalLayout), Gravity.BOTTOM, 0, 0)
 
+            popUpView.findViewById<LinearLayout>(R.id.btnComposte).setOnClickListener{handleCompostedWaste(aliment,linearLayout,popup)}
+            popUpView.findViewById<LinearLayout>(R.id.btnFrigo).setOnClickListener{handleStockedWaste(aliment,linearLayout,popup)}
+            popUpView.findViewById<LinearLayout>(R.id.btnAssiette).setOnClickListener{handleEatenWaste(aliment,linearLayout,popup)}
+            popUpView.findViewById<LinearLayout>(R.id.btnChien).setOnClickListener{handleFedWaste(aliment,linearLayout,popup)}
+            popUpView.findViewById<LinearLayout>(R.id.btnPoubelle).setOnClickListener{handleThrowedWaste(aliment,linearLayout,popup)}
         }
 
         currentLine.addView(linearLayout)
@@ -81,25 +86,95 @@ class TreatItemActivity : AppCompatActivity() {
         currentLine.addView(space)
     }
 
-    fun handleCompostedWaste(aliment: Element, layout: LinearLayout){
+    fun handleCompostedWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow){
         stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).addToComposted(aliment)
         layout.visibility = View.INVISIBLE
+        popup.dismiss()
+        nbElements--
+        if(nbElements==0){
+            var btnValidate = Button(this)
+            btnValidate.text = "Valider"
+            btnValidate.background = getDrawable(R.drawable.green_button_border)
+            btnValidate.setOnClickListener{
+                var myIntent = Intent(this, MealCompositionActivity::class.java)
+                myIntent.putExtra("stockMeal", stockMeal)
+                myIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                startActivityIfNeeded(myIntent,0)
+            }
+            findViewById<LinearLayout>(R.id.treatableItem).addView(btnValidate)
+        }
     }
-    fun handleStockedWaste(aliment: Element, layout: LinearLayout){
+    fun handleStockedWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow){
         stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).addToStocked(aliment)
         layout.visibility = View.INVISIBLE
+        popup.dismiss()
+        nbElements--
+        if(nbElements==0){
+            var btnValidate = Button(this)
+            btnValidate.text = "Valider"
+            btnValidate.background = getDrawable(R.drawable.green_button_border)
+            btnValidate.setOnClickListener{
+                var myIntent = Intent(this, MealCompositionActivity::class.java)
+                myIntent.putExtra("stockMeal", stockMeal)
+                myIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                startActivityIfNeeded(myIntent,0)
+            }
+            findViewById<LinearLayout>(R.id.treatableItem).addView(btnValidate)
+        }
     }
-    fun handleFedWaste(aliment: Element, layout: LinearLayout){
+    fun handleFedWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow){
         stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).addToFed(aliment)
         layout.visibility = View.INVISIBLE
+        popup.dismiss()
+        nbElements--
+        if(nbElements==0){
+            var btnValidate = Button(this)
+            btnValidate.text = "Valider"
+            btnValidate.background = getDrawable(R.drawable.green_button_border)
+            btnValidate.setOnClickListener{
+                var myIntent = Intent(this, MealCompositionActivity::class.java)
+                myIntent.putExtra("stockMeal", stockMeal)
+                myIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                startActivityIfNeeded(myIntent,0)
+            }
+            findViewById<LinearLayout>(R.id.treatableItem).addView(btnValidate)
+        }
     }
-    fun handleEatenWaste(aliment: Element, layout: LinearLayout){
+    fun handleEatenWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow){
         stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).addToEaten(aliment)
         layout.visibility = View.INVISIBLE
+        popup.dismiss()
+        nbElements--
+        if(nbElements==0){
+            var btnValidate = Button(this)
+            btnValidate.text = "Valider"
+            btnValidate.background = getDrawable(R.drawable.green_button_border)
+            btnValidate.setOnClickListener{
+                var myIntent = Intent(this, MealCompositionActivity::class.java)
+                myIntent.putExtra("stockMeal", stockMeal)
+                myIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                startActivityIfNeeded(myIntent,0)
+            }
+            findViewById<LinearLayout>(R.id.treatableItem).addView(btnValidate)
+        }
     }
-    fun handleThrowedWaste(aliment: Element, layout: LinearLayout){
+    fun handleThrowedWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow){
         stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).addToThrowed(aliment)
         layout.visibility = View.INVISIBLE
+        popup.dismiss()
+        nbElements--
+        if(nbElements==0){
+            var btnValidate = Button(this)
+            btnValidate.text = "Valider"
+            btnValidate.background = getDrawable(R.drawable.green_button_border)
+            btnValidate.setOnClickListener{
+                var myIntent = Intent(this, MealCompositionActivity::class.java)
+                myIntent.putExtra("stockMeal", stockMeal)
+                myIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                startActivityIfNeeded(myIntent,0)
+            }
+            findViewById<LinearLayout>(R.id.treatableItem).addView(btnValidate)
+        }
     }
 
     fun treatItem() {
@@ -193,4 +268,5 @@ class TreatItemActivity : AppCompatActivity() {
         }
 
     }
+
 }

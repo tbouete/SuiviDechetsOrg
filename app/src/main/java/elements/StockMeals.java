@@ -17,15 +17,15 @@ public class StockMeals implements Serializable, Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		//Serialization
-    	try ( ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(this.PATH_SERIALIZATION_FILE)) ) {
-    		os.writeObject(this);
-    		System.out.println("S�rialisation de StockMeals r�ussie");
-
-
-		} catch (IOException e) {
-			System.err.println("Erreur pendant la s�rialisation : " + e);
-			System.exit(2);
-		}
+//    	try ( ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(this.PATH_SERIALIZATION_FILE)) ) {
+//    		os.writeObject(this);
+//    		System.out.println("S�rialisation de StockMeals r�ussie");
+//
+//
+//		} catch (IOException e) {
+//			System.err.println("Erreur pendant la s�rialisation : " + e);
+//			System.exit(2);
+//		}
 		
 	}
 	
