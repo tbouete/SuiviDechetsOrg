@@ -41,6 +41,12 @@ class MealCompositionActivity : AppCompatActivity() {
             startActivity(myIntent)
         }
 
+        findViewById<View>(R.id.lShowWaste).setOnClickListener {
+            val myIntent = Intent(this, ShowWasteActivity::class.java)
+            myIntent.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
+            startActivity(myIntent)
+        }
+
         findViewById<View>(R.id.lCancelML).setOnClickListener {
             finish()
         }

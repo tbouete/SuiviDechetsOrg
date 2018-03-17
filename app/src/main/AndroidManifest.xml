@@ -58,6 +58,11 @@
             android:screenOrientation="landscape">
         </activity>
 
+        <activity
+            android:name=".ShowWasteActivity"
+            android:screenOrientation="landscape">
+        </activity>
+
     </application>
 
 </manifest>

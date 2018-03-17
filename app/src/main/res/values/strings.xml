@@ -11,6 +11,8 @@
     <string name="strChoixNotif">Activer les notifications </string>
     <string name="strChoixPotager">Avez-vous un potager ? </string>
 
+    <string name="strRetour">Retour</string>
+    <string name="animaux">Animaux</string>
     <string name="strValider">Valider</string>
     <string name="strCancel">Annuler</string>
     <string name="nom_du_plat">Nom du plat :</string>
