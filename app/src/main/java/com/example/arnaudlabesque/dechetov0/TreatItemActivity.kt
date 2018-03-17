@@ -23,7 +23,7 @@ import java.util.*
  */
 
 class TreatItemActivity : AppCompatActivity() {
-    private var stockMeal = StockMeals()
+    private var stockMeal :StockMeals? = StockMeals()
     private var nbElements = 0
     private var compteur = 0
     private lateinit var currentLine : LinearLayout
@@ -85,7 +85,10 @@ class TreatItemActivity : AppCompatActivity() {
     }
 
     private fun handleCompostedWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow){
-        stockMeal.listSEM[stockMeal.listSEM.lastIndex].addToComposted(aliment)
+        stockMeal!!.listSEM!![stockMeal!!.listSEM.lastIndex]!!.addToComposted(aliment)
+
+        //stockMeal.listSEM[stockMeal.listSEM.lastIndex].addToComposted(aliment)
+
         layout.visibility = View.INVISIBLE
         popup.dismiss()
         nbElements--
@@ -97,13 +100,16 @@ class TreatItemActivity : AppCompatActivity() {
                 var myIntent = Intent(this, MealCompositionActivity::class.java)
                 myIntent.putExtra("stockMeal", stockMeal)
                 myIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                finish()
                 startActivityIfNeeded(myIntent,0)
             }
             findViewById<LinearLayout>(R.id.treatableItem).addView(btnValidate)
         }
     }
     private fun handleStockedWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow){
-        stockMeal.listSEM[stockMeal.listSEM.lastIndex].addToStocked(aliment)
+        stockMeal!!.listSEM!![stockMeal!!.listSEM.lastIndex]!!.addToStocked(aliment)
+
+        //stockMeal.listSEM[stockMeal.listSEM.lastIndex].addToStocked(aliment)
         layout.visibility = View.INVISIBLE
         popup.dismiss()
         nbElements--
@@ -115,13 +121,16 @@ class TreatItemActivity : AppCompatActivity() {
                 val myIntent = Intent(this, MealCompositionActivity::class.java)
                 myIntent.putExtra("stockMeal", stockMeal)
                 myIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                finish()
                 startActivityIfNeeded(myIntent,0)
             }
             findViewById<LinearLayout>(R.id.treatableItem).addView(btnValidate)
         }
     }
     private fun handleFedWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow){
-        stockMeal.listSEM[stockMeal.listSEM.lastIndex].addToFed(aliment)
+        stockMeal!!.listSEM!![stockMeal!!.listSEM.lastIndex]!!.addToFed(aliment)
+
+        //stockMeal.listSEM[stockMeal.listSEM.lastIndex].addToFed(aliment)
         layout.visibility = View.INVISIBLE
         popup.dismiss()
         nbElements--
@@ -133,13 +142,17 @@ class TreatItemActivity : AppCompatActivity() {
                 val myIntent = Intent(this, MealCompositionActivity::class.java)
                 myIntent.putExtra("stockMeal", stockMeal)
                 myIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                finish()
                 startActivityIfNeeded(myIntent,0)
             }
             findViewById<LinearLayout>(R.id.treatableItem).addView(btnValidate)
         }
     }
     private fun handleEatenWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow){
-        stockMeal.listSEM[stockMeal.listSEM.lastIndex].addToEaten(aliment)
+        stockMeal!!.listSEM!![stockMeal!!.listSEM.lastIndex]!!.addToEaten(aliment)
+
+
+        //stockMeal.listSEM[stockMeal.listSEM.lastIndex].addToEaten(aliment)
         layout.visibility = View.INVISIBLE
         popup.dismiss()
         nbElements--
@@ -149,15 +162,18 @@ class TreatItemActivity : AppCompatActivity() {
             btnValidate.background = getDrawable(R.drawable.green_button_border)
             btnValidate.setOnClickListener{
                 val myIntent = Intent(this, MealCompositionActivity::class.java)
-                myIntent.putExtra("stockMeal", stockMeal)
+                myIntent.putExtra("eatenMeal", stockMeal)
                 myIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                finish()
                 startActivityIfNeeded(myIntent,0)
             }
             findViewById<LinearLayout>(R.id.treatableItem).addView(btnValidate)
         }
     }
     private fun handleThrowedWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow){
-        stockMeal.listSEM[stockMeal.listSEM.lastIndex].addToThrowed(aliment)
+        stockMeal!!.listSEM!![stockMeal!!.listSEM.lastIndex]!!.addToThrowed(aliment)
+
+        //stockMeal.listSEM[stockMeal.listSEM.lastIndex].addToThrowed(aliment)
         layout.visibility = View.INVISIBLE
         popup.dismiss()
         nbElements--
@@ -169,6 +185,7 @@ class TreatItemActivity : AppCompatActivity() {
                 val myIntent = Intent(this, MealCompositionActivity::class.java)
                 myIntent.putExtra("stockMeal", stockMeal)
                 myIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+                finish()
                 startActivityIfNeeded(myIntent,0)
             }
             findViewById<LinearLayout>(R.id.treatableItem).addView(btnValidate)
@@ -178,7 +195,7 @@ class TreatItemActivity : AppCompatActivity() {
     private fun treatItem() {
         val aliment = intent.getSerializableExtra("item") as Element
         val idBG = intent.getIntExtra("idColorBG", 0)
-        stockMeal = intent.getSerializableExtra("stockMeal") as StockMeals
+        stockMeal = intent.getSerializableExtra("stockMeal") as StockMeals?
         createElement(aliment, aliment.basicName, idBG)
 
         val tl = findViewById<Toolbar>(R.id.my_toolbar)
