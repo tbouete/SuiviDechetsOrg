@@ -24,7 +24,7 @@ import java.util.*
  */
 
 
-class ShowWasteActivity() : AppCompatActivity() {
+class ShowWasteActivity : AppCompatActivity() {
     var id = 0
     var stockMeal :StockMeals? = StockMeals()
     private lateinit var currentLine : LinearLayout
@@ -50,75 +50,36 @@ class ShowWasteActivity() : AppCompatActivity() {
         stockMeal = intent.getSerializableExtra("stockMeal") as StockMeals?
 
         var listComposted = stockMeal!!.listSEM[stockMeal!!.listSEM.lastIndex].listElementComposted
-//        var listEaten = stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).listElementEaten
-//        var listFed = stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).listElementFed
-//        var listThrowed = stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).listElementThrowed
-//        var listStocked = stockMeal.listSEM.get( stockMeal.listSEM.lastIndex ).listElementStocked
-
-        var currentLine = LinearLayout(this)
-
-        val lCompost = findViewById<LinearLayout>(R.id.lCompost)
-        //val lAssiette = findViewById<LinearLayout>(R.id.lAssiette)
-        //val lChien = findViewById<LinearLayout>(R.id.lChien)
-        //val lPoubelle = findViewById<LinearLayout>(R.id.lPoubelle)
-        //val lFrigo = findViewById<LinearLayout>(R.id.lFrigo)
-
-        Log.d("test1",listComposted.toString())
-//        Log.d("test2",listEatenbasicName)
-//        Log.d("test3",listFed.basicName)
-//        Log.d("test4",listThrowed.basicName)
-//        Log.d("test5",listStocked.basicName)
-
-        // test
-        /// test
-        /// ez
-        /*
-
-        /// marche pas
-        ///
-        ///
-        /*
-        Log.d("test2",listComposted.toString())
-        for (elementCompost in listComposted) {
-
-
-            Log.d("test2",elementCompost.toString())
-            var linearLayout = LinearLayout(this)
-            linearLayout.background = getDrawable(R.drawable.rounded_square)
-            val v = Math.round(70 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
-            linearLayout.layoutParams = ViewGroup.LayoutParams(v, v)
-            linearLayout.orientation = LinearLayout.VERTICAL
-            linearLayout.gravity = Gravity.CENTER
-
-            var tv = TextView(this)
-            tv.id = id++
-            tv.text = elementCompost.basicName
-            tv.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-            tv.gravity = Gravity.CENTER
-            tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10f)
-            tv.setTextColor(Color.BLACK)
-            linearLayout.addView(tv)
-
-            currentLine.addView(linearLayout)
-
-            var space = Space(this)
-            space.layoutParams = TableLayout.LayoutParams(0, Math.round(1 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)), 1f)
-            currentLine.addView(space)
-
-            lCompost.addView(currentLine)
+        for (elementComposted in listComposted) {
+            createElement(elementComposted,elementComposted.basicName,R.drawable.rounded_square,R.id.lCompost)
+        }
+        var listEaten = stockMeal!!.listSEM[stockMeal!!.listSEM.lastIndex].listElementEaten
+        for (elementEaten in listEaten) {
+            createElement(elementEaten,elementEaten.basicName,R.drawable.rounded_square,R.id.lAssiette)
+        }
+        var listFed = stockMeal!!.listSEM[stockMeal!!.listSEM.lastIndex].listElementFed
+        for (elementFed in listFed) {
+            createElement(elementFed,elementFed.basicName,R.drawable.rounded_square,R.id.lChien)
+        }
+        var listThrowed = stockMeal!!.listSEM[stockMeal!!.listSEM.lastIndex].listElementThrowed
+        for (elementThrowed in listThrowed) {
+            createElement(elementThrowed,elementThrowed.basicName,R.drawable.rounded_square,R.id.lPoubelle)
+        }
+        var listStocked = stockMeal!!.listSEM[stockMeal!!.listSEM.lastIndex].listElementStocked
+        for (elementStocked in listStocked) {
+            createElement(elementStocked,elementStocked.basicName,R.drawable.rounded_square,R.id.lFrigo)
         }
 
-*/
+
     }
 
-    ///
-    private fun createElement(aliment: Element, elementName: String, idBg: Int) {
+    private fun createElement(aliment: Element, elementName: String, idBg: Int, idLayout: Int) {
         var id = 0
 
         currentLine = LinearLayout(this)
         currentLine.gravity = Gravity.CENTER
         currentLine.orientation =  LinearLayout.HORIZONTAL
-        findViewById<LinearLayout>(R.id.lCompost).addView(currentLine)
+        findViewById<LinearLayout>(idLayout).addView(currentLine)
 
         var roundedSquareLayout = LinearLayout(this)
         if (idBg == 0) {
@@ -127,7 +88,7 @@ class ShowWasteActivity() : AppCompatActivity() {
             roundedSquareLayout.background = getDrawable(idBg)
         }
 
-        val v = Math.round(100 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
+        val v = Math.round(70 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
         roundedSquareLayout.layoutParams = ViewGroup.LayoutParams(v, v)
         roundedSquareLayout.gravity = Gravity.CENTER
         roundedSquareLayout.tag = elementName
@@ -147,37 +108,37 @@ class ShowWasteActivity() : AppCompatActivity() {
 
 
 
-    private fun checkWaste(aliment : Element, idBG : Int) {
+    private fun checkWaste(aliment : Element, idBG : Int, idLayout: Int) {
 
         if (aliment.isGeneratingBone) {
-            createElement(aliment, "Os de " + aliment.basicName, idBG)
+            createElement(aliment, "Os de " + aliment.basicName, idBG, idLayout)
         }
         if (aliment.isGeneratingCore) {
             when (aliment.basicName){
-                "Pomme" -> createElement(aliment, "Trognon de " + aliment.basicName, idBG)
-                "Poire" -> createElement(aliment, "Trognon de " + aliment.basicName, idBG)
-                "Ananas" -> createElement(aliment, "Trognon d' " + aliment.basicName, idBG)
-                else ->createElement(aliment, "Noyau de " + aliment.basicName, idBG)
+                "Pomme" -> createElement(aliment, "Trognon de " + aliment.basicName, idBG, idLayout)
+                "Poire" -> createElement(aliment, "Trognon de " + aliment.basicName, idBG, idLayout)
+                "Ananas" -> createElement(aliment, "Trognon d' " + aliment.basicName, idBG, idLayout)
+                else ->createElement(aliment, "Noyau de " + aliment.basicName, idBG, idLayout)
             }
         }
 
         if (aliment.isGeneratingCrust) {
-            createElement(aliment, "Croûte de " + aliment.basicName, idBG)
+            createElement(aliment, "Croûte de " + aliment.basicName, idBG, idLayout)
         }
         if (aliment.isGeneratingFat) {
-            createElement(aliment, "Gras de " + aliment.basicName, idBG)
+            createElement(aliment, "Gras de " + aliment.basicName, idBG, idLayout)
         }
         if (aliment.isGeneratingFilter) {
-            createElement(aliment, "Filtre de " + aliment.basicName, idBG)
+            createElement(aliment, "Filtre de " + aliment.basicName, idBG, idLayout)
         }
         if (aliment.isGeneratingPeel) {
-            createElement(aliment, "Peau de " + aliment.basicName, idBG)
+            createElement(aliment, "Peau de " + aliment.basicName, idBG, idLayout)
         }
         if (aliment.isGeneratingMeatSkin) {
-            createElement(aliment, "Peau de " + aliment.basicName, idBG)
+            createElement(aliment, "Peau de " + aliment.basicName, idBG, idLayout)
         }
         if (aliment.isGeneratingTail) {
-            createElement(aliment, "Queue de " + aliment.basicName, idBG)
+            createElement(aliment, "Queue de " + aliment.basicName, idBG, idLayout)
         }
     }
 }

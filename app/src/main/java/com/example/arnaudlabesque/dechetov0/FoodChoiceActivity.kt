@@ -55,6 +55,7 @@ class FoodChoiceActivity : AppCompatActivity() {
             if(isRecipe){
                 startActivityForResult(intentSIA,7)
             }else{
+                finish()
                 startActivity(intentSIA)
             }
         }
@@ -69,6 +70,7 @@ class FoodChoiceActivity : AppCompatActivity() {
             if(isRecipe){
                 startActivityForResult(intentSIA,7)
             }else{
+                finish()
                 startActivity(intentSIA)
             }
         }
@@ -83,8 +85,10 @@ class FoodChoiceActivity : AppCompatActivity() {
             if(isRecipe){
                 startActivityForResult(intentSIA,7)
             }else{
+                finish()
                 startActivity(intentSIA)
-            }        }
+            }
+        }
 
         findViewById<LinearLayout>(R.id.btnProduitLaitier).setOnClickListener{
             val intentSIA = Intent(this, SelectItemActivity::class.java)
@@ -96,8 +100,10 @@ class FoodChoiceActivity : AppCompatActivity() {
             if(isRecipe){
                 startActivityForResult(intentSIA,7)
             }else{
+                finish()
                 startActivity(intentSIA)
-            }        }
+            }
+        }
 
         findViewById<LinearLayout>(R.id.btnPatisserie).setOnClickListener{
             val intentSIA = Intent(this, SelectItemActivity::class.java)
@@ -109,8 +115,10 @@ class FoodChoiceActivity : AppCompatActivity() {
             if(isRecipe){
                 startActivityForResult(intentSIA,7)
             }else{
+                finish()
                 startActivity(intentSIA)
-            }        }
+            }
+        }
 
         findViewById<LinearLayout>(R.id.btnSauce).setOnClickListener{
             val intentSIA = Intent(this, SelectItemActivity::class.java)
@@ -122,8 +130,10 @@ class FoodChoiceActivity : AppCompatActivity() {
             if(isRecipe){
                 startActivityForResult(intentSIA,7)
             }else{
+                finish()
                 startActivity(intentSIA)
-            }        }
+            }
+        }
 
         findViewById<LinearLayout>(R.id.btnViande).setOnClickListener{
             val intentSIA = Intent(this, SelectItemActivity::class.java)
@@ -135,8 +145,10 @@ class FoodChoiceActivity : AppCompatActivity() {
             if(isRecipe){
                 startActivityForResult(intentSIA,7)
             }else{
+                finish()
                 startActivity(intentSIA)
-            }        }
+            }
+        }
 
         findViewById<LinearLayout>(R.id.btnAutre).setOnClickListener{
             val intentSIA = Intent(this, SelectItemActivity::class.java)
@@ -147,6 +159,7 @@ class FoodChoiceActivity : AppCompatActivity() {
             if(isRecipe){
                 startActivityForResult(intentSIA,7)
             }else{
+                finish()
                 startActivity(intentSIA)
             }
         }

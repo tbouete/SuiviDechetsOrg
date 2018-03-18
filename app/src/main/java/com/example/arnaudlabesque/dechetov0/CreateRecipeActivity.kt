@@ -76,6 +76,7 @@ class CreateRecipeActivity : AppCompatActivity() {
                 intentTreatRecipe.putExtra("recipe", recette)
                 intentTreatRecipe.putExtra("stockMeal", intent.getSerializableExtra("stockMeal"))
 
+                finish()
                 startActivity(intentTreatRecipe)
             }
 

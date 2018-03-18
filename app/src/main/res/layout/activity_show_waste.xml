@@ -31,7 +31,7 @@
 
         <LinearLayout
             android:id="@+id/lCompost"
-            android:layout_width="70dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@color/darkRed"
             android:orientation="vertical"
