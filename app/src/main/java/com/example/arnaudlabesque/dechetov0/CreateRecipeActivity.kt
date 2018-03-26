@@ -26,6 +26,7 @@ import kotlin.collections.ArrayList
 class CreateRecipeActivity : AppCompatActivity() {
 
     var id = 0
+    var aliments = ArrayList<Element>()
 
     private var recette = ComposedElement(null,1.0,true,false,false,ArrayList<Element>())
 
@@ -74,6 +75,7 @@ class CreateRecipeActivity : AppCompatActivity() {
                 val recipeName =  etRecipeName.text.toString()
                 recette.basicName = recipeName
                 intentTreatRecipe.putExtra("recipe", recette)
+                intentTreatRecipe.putExtra("items",aliments)
                 intentTreatRecipe.putExtra("stockMeal", intent.getSerializableExtra("stockMeal"))
 
                 finish()
@@ -91,22 +93,27 @@ class CreateRecipeActivity : AppCompatActivity() {
                 val lAlimentRecipe = findViewById<LinearLayout>(R.id.lAlimentRecipe)
                 val aliment = data?.getSerializableExtra("item") as Element
 
+                val previousAliments = data?.getSerializableExtra("items") as ArrayList<Element>
+                for (previousAliment in previousAliments){
+                    aliments.add(previousAliment)
+                }
+
                 var linearLayout = LinearLayout(this)
                 linearLayout.background = getDrawable(R.drawable.rounded_square)
-                val v = Math.round(70 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
+                val v = Math.round(90 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
                 linearLayout.layoutParams = ViewGroup.LayoutParams(v, v)
                 linearLayout.orientation = LinearLayout.VERTICAL
                 linearLayout.gravity = Gravity.CENTER
 
                 var imageView = ImageView(this)
                 imageView.setImageResource(getIdPicture(aliment.basicName))
-                imageView.layoutParams = ViewGroup.LayoutParams(100, 100)
+                imageView.layoutParams = TableRow.LayoutParams(60, 60,0.5f)
                 linearLayout.addView(imageView)
 
                 var tv = TextView(this)
                 tv.id = id++
                 tv.text = aliment.basicName
-                tv.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+                tv.layoutParams = TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,1f)
                 tv.gravity = Gravity.CENTER
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10f)
                 tv.setTextColor(Color.BLACK)

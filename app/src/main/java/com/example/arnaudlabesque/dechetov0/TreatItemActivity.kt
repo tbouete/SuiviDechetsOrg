@@ -193,13 +193,16 @@ class TreatItemActivity : AppCompatActivity() {
     }
 
     private fun treatItem() {
-        val aliment = intent.getSerializableExtra("item") as Element
+        val aliments = intent.getSerializableExtra("items") as ArrayList<Element>
         val idBG = intent.getIntExtra("idColorBG", 0)
         stockMeal = intent.getSerializableExtra("stockMeal") as StockMeals?
-        createElement(aliment, aliment.basicName, idBG)
+        for(aliment in aliments){
+            createElement(aliment, aliment.basicName, idBG)
+        }
+
 
         val tl = findViewById<Toolbar>(R.id.my_toolbar)
-        tl.title = "Traitement de l'aliment " + aliment.basicName + " - " + SimpleDateFormat("dd-MMMM-yy", Locale.FRENCH).format(Date()).replace("-", " ")
+        tl.title = "Traitement de l'aliment " + aliments[aliments.lastIndex].basicName + " - " + SimpleDateFormat("dd-MMMM-yy", Locale.FRENCH).format(Date()).replace("-", " ")
         tl.inflateMenu(R.menu.menu_settings)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
@@ -211,7 +214,6 @@ class TreatItemActivity : AppCompatActivity() {
             finish()
         }
 
-        checkWaste(aliment, idBG)
     }
 
     private fun treatRecipe() {
@@ -219,6 +221,11 @@ class TreatItemActivity : AppCompatActivity() {
         stockMeal = intent.getSerializableExtra("stockMeal") as StockMeals
 
         createElement(recipe, recipe.basicName,0)
+
+        val aliments = intent.getSerializableExtra("items") as ArrayList<Element>
+        for(aliment in aliments){
+            createElement(aliment, aliment.basicName, 0)
+        }
 
         val tl = findViewById<Toolbar>(R.id.my_toolbar)
         tl.title = "Traitement de la recette " + recipe.basicName + " - " + SimpleDateFormat("dd-MMMM-yy", Locale.FRENCH).format(Date()).replace("-", " ")
@@ -232,9 +239,7 @@ class TreatItemActivity : AppCompatActivity() {
             finish()
         }
 
-        for(e in recipe.composition) {
-            checkWaste(e,0)
-        }
+
 
     }
 

@@ -12,9 +12,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import elements.Element
 import elements.ElementFactory
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * Created by arnaud.labesque on 20/11/2017.
@@ -73,20 +75,20 @@ class SelectItemActivity : AppCompatActivity() {
             //Log.d("test",element)
             var roundedSquareLayout = LinearLayout(this)
             roundedSquareLayout.background = getDrawable(idBg)
-            val v = Math.round(100 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
+            val v = Math.round(120 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
             roundedSquareLayout.layoutParams = ViewGroup.LayoutParams(v, v)
             roundedSquareLayout.orientation = LinearLayout.VERTICAL
             roundedSquareLayout.gravity = Gravity.CENTER
 
             var imageView = ImageView(this)
             imageView.setImageResource(getIdPicture(element))
-            imageView.layoutParams = ViewGroup.LayoutParams(100, 100)
+            imageView.layoutParams = TableRow.LayoutParams(70, 70,0.5f)
             roundedSquareLayout.addView(imageView)
 
             var tv = TextView(this)
             tv.id = id++
             tv.text = element
-            tv.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            tv.layoutParams = TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,1f)
             tv.gravity = Gravity.CENTER
             tv.setTextColor(Color.BLACK)
             roundedSquareLayout.addView(tv)
@@ -110,7 +112,7 @@ class SelectItemActivity : AppCompatActivity() {
                     var popUpView = inflater.inflate(R.layout.layout_pop_up_bio, null)
 
                     var popup = PopupWindow(popUpView, 1000, ViewGroup.LayoutParams.WRAP_CONTENT)
-                    popup.showAtLocation(findViewById<LinearLayout>(R.id.globalLayout), Gravity.CENTER, 0, 0)
+                    popup.showAtLocation(findViewById<LinearLayout>(R.id.globalLayout), Gravity.LEFT, 0, 0)
 
                     popUpView.findViewById<Button>(R.id.buttonAnnulerBio).setOnClickListener {
                         finish()
@@ -129,10 +131,18 @@ class SelectItemActivity : AppCompatActivity() {
                                 isBio = true
                             }
                             var aliment = myfactory.getCustomElement(element, 1.0, true, isBio, popUpView.findViewById<CheckBox>(R.id.checkBoxPotager).isChecked)
+                            var aliments = checkWaste(aliment,0,1.0,true,isBio,popUpView.findViewById<CheckBox>(R.id.checkBoxPotager).isChecked)
+                            if(intent.hasExtra("items")){
+                                val previousAliments = intent?.getSerializableExtra("items") as ArrayList<Element>
+                                for (previousAliment in previousAliments){
+                                    aliments.add(previousAliment)
+                                }
+                            }
 
                             if (isRecipe) {
 
                                 val previousIntent = Intent(this, FoodChoiceActivity::class.java)
+                                previousIntent.putExtra("items", aliments)
                                 previousIntent.putExtra("item", aliment)
                                 previousIntent.putExtra("idColorBG", idBg)
                                 setResult(Activity.RESULT_OK, previousIntent)
@@ -141,9 +151,10 @@ class SelectItemActivity : AppCompatActivity() {
 
                             } else {
 
+                                aliments.add(aliment)
                                 inflater.inflate(R.layout.activity_treat_item, null)
                                 val myIntent = Intent(this, TreatItemActivity::class.java)
-                                myIntent.putExtra("item", aliment)
+                                myIntent.putExtra("items", aliments)
                                 myIntent.putExtra("idColorBG", idBg)
                                 myIntent.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
                                 popup.dismiss()
@@ -169,6 +180,73 @@ class SelectItemActivity : AppCompatActivity() {
         var myfinalspace = Space(this)
         myfinalspace.layoutParams = TableLayout.LayoutParams(0, Math.round(1 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)), 1f)
         currentLine.addView(myfinalspace, 0)
+    }
+
+    private fun checkWaste(aliment : Element, idBG : Int, quantity : Double, isQuotient : Boolean, isBio : Boolean, isFromOwnGarden : Boolean): ArrayList<Element> {
+        var listeAliments = ArrayList<Element>()
+        var myfactory = ElementFactory()
+        if (aliment.isGeneratingBone) {
+            var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
+            aliment.basicName = "Os de " + aliment.basicName
+            listeAliments.add(aliment)
+        }
+        if (aliment.isGeneratingCore) {
+            when (aliment.basicName){
+                "Pomme" -> {
+                    var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
+                    aliment.basicName = "Trognon de " + aliment.basicName
+                    listeAliments.add(aliment)
+                }
+                "Poire" -> {
+                    var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
+                    aliment.basicName = "Trognon de " + aliment.basicName
+                    listeAliments.add(aliment)
+                }
+                "Ananas" -> {
+                    var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
+                    aliment.basicName = "Trognon d' " + aliment.basicName
+                    listeAliments.add(aliment)
+                }
+                else ->{
+                    var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
+                    aliment.basicName = "Noyau de " + aliment.basicName
+                    listeAliments.add(aliment)
+                }
+            }
+        }
+
+        if (aliment.isGeneratingCrust) {
+                var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
+                aliment.basicName = "Croûte de " + aliment.basicName
+                listeAliments.add(aliment)
+        }
+        if (aliment.isGeneratingFat) {
+            var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
+            aliment.basicName = "Gras de " + aliment.basicName
+            listeAliments.add(aliment)
+        }
+        if (aliment.isGeneratingFilter) {
+            var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
+            aliment.basicName = "Filtre de " + aliment.basicName
+            listeAliments.add(aliment)
+        }
+        if (aliment.isGeneratingPeel) {
+            var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
+            aliment.basicName = "Peau de " + aliment.basicName
+            listeAliments.add(aliment)
+        }
+        if (aliment.isGeneratingMeatSkin) {
+            var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
+            aliment.basicName = "Peau de " + aliment.basicName
+            listeAliments.add(aliment)
+        }
+        if (aliment.isGeneratingTail) {
+            var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
+            aliment.basicName = "Queue de " + aliment.basicName
+            listeAliments.add(aliment)
+        }
+
+        return listeAliments
     }
 
     private fun getIdPicture(element: String?): Int =

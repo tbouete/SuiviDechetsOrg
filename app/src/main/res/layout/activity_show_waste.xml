@@ -18,11 +18,17 @@
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="50dp"
         android:fillViewport="true">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="513dp"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:gravity="center"
         android:orientation="horizontal"
@@ -33,9 +39,9 @@
             android:id="@+id/lCompost"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@color/darkRed"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="visible"
+            android:layout_weight="1">
 
             <ImageView
                 android:id="@+id/imgComposte"
@@ -47,11 +53,16 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/black"/>
+
+        <LinearLayout
             android:id="@+id/lFrigo"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@color/darkGreen"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="1">
 
             <ImageView
                 android:id="@+id/imgFrigo"
@@ -63,11 +74,16 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/black"/>
+
+        <LinearLayout
             android:id="@+id/lAssiette"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@color/darkBlue"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="1">
 
             <ImageView
                 android:id="@+id/imgAssiette"
@@ -79,11 +95,16 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/black"/>
+
+        <LinearLayout
             android:id="@+id/lChien"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@color/lightRed"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="1">
 
             <ImageView
                 android:id="@+id/imgChien"
@@ -95,11 +116,16 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/black"/>
+
+        <LinearLayout
             android:id="@+id/lPoubelle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@color/Legume"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="1">
 
             <ImageView
                 android:id="@+id/imgPoubelle"
@@ -110,12 +136,19 @@
 
 
         </LinearLayout>
-        <Button
-            android:id="@+id/btnCancelTreat"
-            android:layout_width="wrap_content"
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/red_button_border"
-            android:text="@string/strRetour"/>
+            android:orientation="horizontal"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btnCancelTreat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/red_button_border"
+                android:text="@string/strRetour"/>
+        </LinearLayout>
     </LinearLayout>
 
     </ScrollView>

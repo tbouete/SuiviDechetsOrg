@@ -174,6 +174,7 @@ class FoodChoiceActivity : AppCompatActivity() {
         if (requestCode == 7) {
             if (resultCode == Activity.RESULT_OK) {
                 val previousActivity = Intent(applicationContext,CreateRecipeActivity::class.java)
+                previousActivity.putExtra("items",data?.getSerializableExtra("items"))
                 previousActivity.putExtra("item",data?.getSerializableExtra("item"))
                 setResult(Activity.RESULT_OK,previousActivity)
                 finish()
