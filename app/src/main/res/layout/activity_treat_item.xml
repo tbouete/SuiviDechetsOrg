@@ -58,52 +58,52 @@
                 </LinearLayout>
 
 
-                <LinearLayout
-                    android:id="@+id/btnDecouper"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/btnDecouper"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:padding="10dp">-->
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:minHeight="60dp"
-                        android:src="@drawable/ic_knife" />
+                    <!--<ImageView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_centerInParent="true"-->
+                        <!--android:minHeight="60dp"-->
+                        <!--android:src="@drawable/ic_knife" />-->
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal">
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:gravity="center"-->
+                        <!--android:orientation="horizontal">-->
 
-                        <EditText
-                            android:id="@+id/etDecouper"
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:drawableTint="@color/black"
-                            android:inputType="numberDecimal"
-                            android:textColor="@color/black"
-                            android:textSize="10dp" />
+                        <!--<EditText-->
+                            <!--android:id="@+id/etDecouper"-->
+                            <!--android:layout_width="30dp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:drawableTint="@color/black"-->
+                            <!--android:inputType="numberDecimal"-->
+                            <!--android:textColor="@color/black"-->
+                            <!--android:textSize="10dp" />-->
 
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"
-                            android:layout_weight="0.2" />
+                        <!--<Space-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="1dp"-->
+                            <!--android:layout_weight="0.2" />-->
 
-                        <Button
-                            android:id="@+id/buttonSwitchActivity"
-                            android:layout_width="50dp"
-                            android:layout_height="20dp"
-                            android:background="@drawable/blue_button_border"
-                            android:text="@string/couper"
-                            android:textSize="7dp" />
+                        <!--<Button-->
+                            <!--android:id="@+id/buttonSwitchActivity"-->
+                            <!--android:layout_width="50dp"-->
+                            <!--android:layout_height="20dp"-->
+                            <!--android:background="@drawable/blue_button_border"-->
+                            <!--android:text="@string/couper"-->
+                            <!--android:textSize="7dp" />-->
 
-                    </LinearLayout>
-                </LinearLayout>
+                    <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
 
             </LinearLayout>
 

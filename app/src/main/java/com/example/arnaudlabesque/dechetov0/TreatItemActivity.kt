@@ -162,7 +162,7 @@ class TreatItemActivity : AppCompatActivity() {
             btnValidate.background = getDrawable(R.drawable.green_button_border)
             btnValidate.setOnClickListener{
                 val myIntent = Intent(this, MealCompositionActivity::class.java)
-                myIntent.putExtra("eatenMeal", stockMeal)
+                myIntent.putExtra("stockMeal", stockMeal)
                 myIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
                 finish()
                 startActivityIfNeeded(myIntent,0)
