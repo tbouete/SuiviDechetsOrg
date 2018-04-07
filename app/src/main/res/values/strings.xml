@@ -48,4 +48,5 @@
     <string name="r_frig_rateur">Réfrigérateur</string>
     <string name="autres">Autres</string>
     <string name="couper">Couper</string>
+    <string name="quantit">Quantité :</string>
 </resources>

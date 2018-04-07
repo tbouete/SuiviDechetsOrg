@@ -17,6 +17,9 @@ import elements.ElementFactory
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import android.widget.ArrayAdapter
+
+
 
 /**
  * Created by arnaud.labesque on 20/11/2017.
@@ -166,6 +169,21 @@ class SelectItemActivity : AppCompatActivity() {
 
                     }
 
+                    var spinnerQuantite = popUpView.findViewById<Spinner>(R.id.spinnerQuantite) as Spinner
+                    var arrayQuantite = ArrayList<String>();
+
+                    arrayQuantite.add("1 unité")
+                    arrayQuantite.add("2 unités")
+                    arrayQuantite.add("4 unités")
+                    arrayQuantite.add("8 unités")
+                    arrayQuantite.add("10 unités")
+                    arrayQuantite.add("En 2 demis")
+                    arrayQuantite.add("En 3 tiers")
+                    arrayQuantite.add("En 4 quarts")
+
+                    val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayQuantite)
+                    adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
+                    spinnerQuantite.adapter = adapter
                 }
 
 
