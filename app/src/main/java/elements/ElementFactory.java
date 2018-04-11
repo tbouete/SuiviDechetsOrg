@@ -127,4 +127,13 @@ public class ElementFactory implements Serializable{
 		tmp.setId(this.id);
 		return tmp;
 	}
+	
+	public Element copyElement(Element elem, double quantity){
+		String basicNameElement = elem.getBasicName();
+		boolean qtIsQuotient = elem.isQtIsQuotient();
+		boolean isBio = elem.isBio();
+		boolean isFromOwnGarden = elem.isFromOwnGarden();
+		
+		return this.getCustomElement(basicNameElement, quantity, qtIsQuotient, isBio, isFromOwnGarden);
+	}
 }
