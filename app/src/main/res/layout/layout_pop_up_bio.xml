@@ -110,26 +110,22 @@
                 android:id="@+id/quantite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp">
+                android:orientation="horizontal"
+                android:gravity="center">
+
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/quantit"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"/>
-            </LinearLayout>
+                    android:textColor="@color/black"/>
 
-            <Spinner
-                android:id="@+id/spinnerQuantite"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/black">
-            </Spinner>
+                <NumberPicker
+                    android:id="@+id/nbPickerQuantite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/AppTheme.Picker"/>
+
 
             </LinearLayout>
 

@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.arnaudlabesque.dechetov0">
 
-    <supports-screens android:compatibleWidthLimitDp="320" />
-    <supports-screens android:largestWidthLimitDp="320" />
+    <!--<supports-screens android:compatibleWidthLimitDp="320" />
+    <supports-screens android:largestWidthLimitDp="320" />-->
 
     <application
         android:allowBackup="true"

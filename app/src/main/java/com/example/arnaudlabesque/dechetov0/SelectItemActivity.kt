@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -111,8 +112,17 @@ class SelectItemActivity : AppCompatActivity() {
                     //Log.d("test",newName)resources.getIdentifier(newName,"id",packageName)
                     createElements(getIdArray(newName), idBg, isRecipe)
                 } else {
+
                     var inflater = this.getSystemService(android.content.Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                     var popUpView = inflater.inflate(R.layout.layout_pop_up_bio, null)
+
+                    var values = arrayOf("1/4","1/3","1/2","1","2","3","4","5","8","10")
+                    var numberpicker = popUpView.findViewById<NumberPicker>(R.id.nbPickerQuantite)
+                    numberpicker.minValue = 0
+                    numberpicker.maxValue = (values.size - 1)
+                    numberpicker.wrapSelectorWheel = false
+                    numberpicker.displayedValues = values
+
 
                     var popup = PopupWindow(popUpView, 1000, ViewGroup.LayoutParams.WRAP_CONTENT)
                     popup.showAtLocation(findViewById<LinearLayout>(R.id.globalLayout), Gravity.LEFT, 0, 0)
@@ -125,6 +135,8 @@ class SelectItemActivity : AppCompatActivity() {
                         var myfactory = ElementFactory()
                         var cbBio = popUpView.findViewById<CheckBox>(R.id.checkBoxBio)
                         var cbNonBio = popUpView.findViewById<CheckBox>(R.id.checkBoxNonBio)
+                        var valQuantite = numberpicker.value
+
                         var isBio = false
                         if (cbBio.isChecked && cbNonBio.isChecked) {
                             var tvErrorBio = popUpView.findViewById<TextView>(R.id.textErrorBio)
@@ -133,8 +145,8 @@ class SelectItemActivity : AppCompatActivity() {
                             if (cbBio.isChecked) {
                                 isBio = true
                             }
-                            var aliment = myfactory.getCustomElement(element, 1.0, true, isBio, popUpView.findViewById<CheckBox>(R.id.checkBoxPotager).isChecked)
-                            var aliments = checkWaste(aliment,0,1.0,true,isBio,popUpView.findViewById<CheckBox>(R.id.checkBoxPotager).isChecked)
+                            var aliment = myfactory.getCustomElement(element, convertString2Double(values[valQuantite]), true, isBio, popUpView.findViewById<CheckBox>(R.id.checkBoxPotager).isChecked)
+                            var aliments = checkWaste(aliment,0,convertString2Double(values[valQuantite]),true,isBio,popUpView.findViewById<CheckBox>(R.id.checkBoxPotager).isChecked)
                             if(intent.hasExtra("items")){
                                 val previousAliments = intent?.getSerializableExtra("items") as ArrayList<Element>
                                 for (previousAliment in previousAliments){
@@ -169,21 +181,8 @@ class SelectItemActivity : AppCompatActivity() {
 
                     }
 
-                    var spinnerQuantite = popUpView.findViewById<Spinner>(R.id.spinnerQuantite) as Spinner
-                    var arrayQuantite = ArrayList<String>();
 
-                    arrayQuantite.add("1 unité")
-                    arrayQuantite.add("2 unités")
-                    arrayQuantite.add("4 unités")
-                    arrayQuantite.add("8 unités")
-                    arrayQuantite.add("10 unités")
-                    arrayQuantite.add("En 2 demis")
-                    arrayQuantite.add("En 3 tiers")
-                    arrayQuantite.add("En 4 quarts")
 
-                    val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayQuantite)
-                    adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
-                    spinnerQuantite.adapter = adapter
                 }
 
 
@@ -265,6 +264,21 @@ class SelectItemActivity : AppCompatActivity() {
         }
 
         return listeAliments
+    }
+
+    private fun convertString2Double (str : String): Double =
+            when (str){
+                "1/4" -> 0.25
+                "1/3" -> 0.33
+                "1/2" -> 0.5
+                "1" -> 1.0
+                "2" -> 2.0
+                "3" -> 3.0
+                "4" -> 4.0
+                "5" -> 5.0
+                "8" -> 8.0
+                "10" -> 10.0
+                else -> 1.0
     }
 
     private fun getIdPicture(element: String?): Int =

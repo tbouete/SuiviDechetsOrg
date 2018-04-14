@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -41,6 +42,8 @@ class TreatItemActivity : AppCompatActivity() {
 
         compteur++
 
+
+
         var roundedSquareLayout = LinearLayout(this)
         if (idBg == 0) {
             roundedSquareLayout.background = getDrawable(R.drawable.rounded_square)
@@ -51,7 +54,7 @@ class TreatItemActivity : AppCompatActivity() {
         val v = Math.round(100 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
         roundedSquareLayout.layoutParams = ViewGroup.LayoutParams(v, v)
         roundedSquareLayout.gravity = Gravity.CENTER
-        roundedSquareLayout.tag = elementName
+        roundedSquareLayout.tag = 1
         var tv = TextView(this)
         tv.id = id++
         tv.text = elementName
@@ -67,15 +70,23 @@ class TreatItemActivity : AppCompatActivity() {
             val tvTitrePopup = popUpView.findViewById<TextView>(R.id.tvTitrePopupTreatItem)
             tvTitrePopup.text = "Gestion de l'aliment $elementName"
 
+            var values = arrayOf("1/4","1/3","1/2","1")
+            var numberpicker = popUpView.findViewById<NumberPicker>(R.id.treatPicker)
+            numberpicker.minValue = 0
+            numberpicker.maxValue = (values.size - 1)
+            numberpicker.wrapSelectorWheel = false
+
+            numberpicker.displayedValues = values
+            var valQuantite = numberpicker.value
 
             val popup = PopupWindow(popUpView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
             popup.showAtLocation(findViewById<LinearLayout>(R.id.globalLayout), Gravity.BOTTOM, 0, 0)
 
-            popUpView.findViewById<LinearLayout>(R.id.btnComposte).setOnClickListener{handleCompostedWaste(aliment,roundedSquareLayout,popup)}
-            popUpView.findViewById<LinearLayout>(R.id.btnFrigo).setOnClickListener{handleStockedWaste(aliment,roundedSquareLayout,popup)}
-            popUpView.findViewById<LinearLayout>(R.id.btnAssiette).setOnClickListener{handleEatenWaste(aliment,roundedSquareLayout,popup)}
-            popUpView.findViewById<LinearLayout>(R.id.btnChien).setOnClickListener{handleFedWaste(aliment,roundedSquareLayout,popup)}
-            popUpView.findViewById<LinearLayout>(R.id.btnPoubelle).setOnClickListener{handleThrowedWaste(aliment,roundedSquareLayout,popup)}
+            popUpView.findViewById<LinearLayout>(R.id.btnComposte).setOnClickListener{handleCompostedWaste(aliment,roundedSquareLayout,popup,convertString2Double(values[valQuantite]))}
+            popUpView.findViewById<LinearLayout>(R.id.btnFrigo).setOnClickListener{handleStockedWaste(aliment,roundedSquareLayout,popup,convertString2Double(values[valQuantite]))}
+            popUpView.findViewById<LinearLayout>(R.id.btnAssiette).setOnClickListener{handleEatenWaste(aliment,roundedSquareLayout,popup,convertString2Double(values[valQuantite]))}
+            popUpView.findViewById<LinearLayout>(R.id.btnChien).setOnClickListener{handleFedWaste(aliment,roundedSquareLayout,popup,convertString2Double(values[valQuantite]))}
+            popUpView.findViewById<LinearLayout>(R.id.btnPoubelle).setOnClickListener{handleThrowedWaste(aliment,roundedSquareLayout,popup,convertString2Double(values[valQuantite]))}
         }
 
         currentLine.addView(roundedSquareLayout)
@@ -84,7 +95,8 @@ class TreatItemActivity : AppCompatActivity() {
         currentLine.addView(space)
     }
 
-    private fun handleCompostedWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow){
+    private fun handleCompostedWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow, quantite : Double){
+
         stockMeal!!.listSEM!![stockMeal!!.listSEM.lastIndex]!!.addToComposted(aliment)
 
         //stockMeal.listSEM[stockMeal.listSEM.lastIndex].addToComposted(aliment)
@@ -106,7 +118,7 @@ class TreatItemActivity : AppCompatActivity() {
             findViewById<LinearLayout>(R.id.treatableItem).addView(btnValidate)
         }
     }
-    private fun handleStockedWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow){
+    private fun handleStockedWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow, quantite : Double){
         stockMeal!!.listSEM!![stockMeal!!.listSEM.lastIndex]!!.addToStocked(aliment)
 
         //stockMeal.listSEM[stockMeal.listSEM.lastIndex].addToStocked(aliment)
@@ -127,7 +139,7 @@ class TreatItemActivity : AppCompatActivity() {
             findViewById<LinearLayout>(R.id.treatableItem).addView(btnValidate)
         }
     }
-    private fun handleFedWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow){
+    private fun handleFedWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow, quantite : Double){
         stockMeal!!.listSEM!![stockMeal!!.listSEM.lastIndex]!!.addToFed(aliment)
 
         //stockMeal.listSEM[stockMeal.listSEM.lastIndex].addToFed(aliment)
@@ -148,12 +160,22 @@ class TreatItemActivity : AppCompatActivity() {
             findViewById<LinearLayout>(R.id.treatableItem).addView(btnValidate)
         }
     }
-    private fun handleEatenWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow){
+    private fun handleEatenWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow, quantite : Double){
+        var diff =(layout.tag as Int)-quantite
+        if (diff == 0.0){
+            for (i in 0..layout.childCount){
+                if(layout.getChildAt(i) is TextView){
+                    (layout.getChildAt(i)as TextView).text = "" + (1-quantite) + " " +(layout.getChildAt(i)as TextView).text
+                    (layout.getChildAt(i)as TextView).tag = (1-quantite)
+                }
+            }
+        }
+
         stockMeal!!.listSEM!![stockMeal!!.listSEM.lastIndex]!!.addToEaten(aliment)
 
 
         //stockMeal.listSEM[stockMeal.listSEM.lastIndex].addToEaten(aliment)
-        layout.visibility = View.INVISIBLE
+        //alayout.visibility = View.INVISIBLE
         popup.dismiss()
         nbElements--
         if(nbElements==0){
@@ -170,7 +192,7 @@ class TreatItemActivity : AppCompatActivity() {
             findViewById<LinearLayout>(R.id.treatableItem).addView(btnValidate)
         }
     }
-    private fun handleThrowedWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow){
+    private fun handleThrowedWaste(aliment: Element, layout: LinearLayout, popup : PopupWindow, quantite : Double){
         stockMeal!!.listSEM!![stockMeal!!.listSEM.lastIndex]!!.addToThrowed(aliment)
 
         //stockMeal.listSEM[stockMeal.listSEM.lastIndex].addToThrowed(aliment)
@@ -288,5 +310,14 @@ class TreatItemActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun convertString2Double (str : String): Double =
+            when (str){
+                "1/4" -> 0.25
+                "1/3" -> 0.33
+                "1/2" -> 0.5
+                "1" -> 1.0
+                else -> 1.0
+            }
 
 }
