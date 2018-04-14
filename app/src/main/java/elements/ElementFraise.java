@@ -19,7 +19,7 @@ public class ElementFraise extends Element {
 		this.setGeneratingFat(false);
 		this.setGeneratingFilter(false);
 		this.setGeneratingMeatSkin(false);
-		this.setGeneratingPeel(true);
+		this.setGeneratingPeel(false);
 		this.setGeneratingTail(true);
 	}
 

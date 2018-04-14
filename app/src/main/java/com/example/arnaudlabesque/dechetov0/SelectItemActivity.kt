@@ -96,7 +96,7 @@ class SelectItemActivity : AppCompatActivity() {
             tv.gravity = Gravity.CENTER
             tv.setTextColor(Color.BLACK)
             roundedSquareLayout.addView(tv)
-            if (nbLeg % 5 == 0) {
+            if (nbLeg % 4 == 0) {
                 var myspace = Space(this)
                 myspace.layoutParams = TableLayout.LayoutParams(0, Math.round(1 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)), 1f)
                 currentLine.addView(myspace, 0)
@@ -116,7 +116,7 @@ class SelectItemActivity : AppCompatActivity() {
                     var inflater = this.getSystemService(android.content.Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                     var popUpView = inflater.inflate(R.layout.layout_pop_up_bio, null)
 
-                    var values = arrayOf("1/4","1/3","1/2","1","2","3","4","5","8","10")
+                    var values = arrayOf("1","1/4","1/3","1/2","2","3","4","5","8","10")
                     var numberpicker = popUpView.findViewById<NumberPicker>(R.id.nbPickerQuantite)
                     numberpicker.minValue = 0
                     numberpicker.maxValue = (values.size - 1)

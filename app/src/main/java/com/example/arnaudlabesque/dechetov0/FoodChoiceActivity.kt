@@ -108,7 +108,7 @@ class FoodChoiceActivity : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.btnPatisserie).setOnClickListener{
             val intentSIA = Intent(this, SelectItemActivity::class.java)
             intentSIA.putExtra("categorie", "Patisserie")
-            intentSIA.putExtra("titre", "Ajout d'une pâtisserie")
+            intentSIA.putExtra("titre", "Ajout d'une aliment")
             intentSIA.putExtra("meal",intent.getStringExtra("meal"))
             intentSIA.putExtra("recipe",isRecipe)
             intentSIA.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
