@@ -17,21 +17,20 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 /**
-* Created by arnaud.labesque on 17/11/2017.
-*/
+ * Created by arnaud.labesque on 17/11/2017.
+ */
 class FoodChoiceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_food_choice)
 
-        var selectedMeal = ""
-
-        if (intent.getBooleanExtra("recipe", false)) {
-            selectedMeal = " : " + intent.getStringExtra("recipeName")
+        var selectedMeal = if (intent.getBooleanExtra("recipe", false)) {
+            " : " + intent.getStringExtra("recipeName")
         } else {
-            selectedMeal = " le " + intent.getStringExtra("meal")
+            " le " + intent.getStringExtra("meal")
         }
-        val isRecipe = intent.getBooleanExtra("recipe",false)
+
+        val isRecipe = intent.getBooleanExtra("recipe", false)
 
         val tl = findViewById<Toolbar>(R.id.my_toolbar)
         tl.title = "Ajout d'un aliment pour" + selectedMeal + " - " + SimpleDateFormat("dd-MMMM-yy", Locale.FRENCH).format(Date()).replace("-", " ")
@@ -45,126 +44,126 @@ class FoodChoiceActivity : AppCompatActivity() {
 
 
 
-        findViewById<LinearLayout>(R.id.btnFruit).setOnClickListener{
+        findViewById<LinearLayout>(R.id.btnFruit).setOnClickListener {
             val intentSIA = Intent(this, SelectItemActivity::class.java)
             intentSIA.putExtra("categorie", "Fruit")
             intentSIA.putExtra("titre", "Ajout d'un fruit")
-            intentSIA.putExtra("meal",intent.getStringExtra("meal"))
-            intentSIA.putExtra("recipe",isRecipe)
-            intentSIA.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
-            if(isRecipe){
-                startActivityForResult(intentSIA,7)
-            }else{
+            intentSIA.putExtra("meal", intent.getStringExtra("meal"))
+            intentSIA.putExtra("recipe", isRecipe)
+            intentSIA.putExtra("stockMeal", intent.getSerializableExtra("stockMeal"))
+            if (isRecipe) {
+                startActivityForResult(intentSIA, 7)
+            } else {
                 finish()
                 startActivity(intentSIA)
             }
         }
 
-        findViewById<LinearLayout>(R.id.btnLegume).setOnClickListener{
+        findViewById<LinearLayout>(R.id.btnLegume).setOnClickListener {
             val intentSIA = Intent(this, SelectItemActivity::class.java)
             intentSIA.putExtra("categorie", "Legume")
             intentSIA.putExtra("titre", "Ajout d'un légume")
-            intentSIA.putExtra("meal",intent.getStringExtra("meal"))
-            intentSIA.putExtra("recipe",isRecipe)
-            intentSIA.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
-            if(isRecipe){
-                startActivityForResult(intentSIA,7)
-            }else{
+            intentSIA.putExtra("meal", intent.getStringExtra("meal"))
+            intentSIA.putExtra("recipe", isRecipe)
+            intentSIA.putExtra("stockMeal", intent.getSerializableExtra("stockMeal"))
+            if (isRecipe) {
+                startActivityForResult(intentSIA, 7)
+            } else {
                 finish()
                 startActivity(intentSIA)
             }
         }
 
-        findViewById<LinearLayout>(R.id.btnFeculent).setOnClickListener{
+        findViewById<LinearLayout>(R.id.btnFeculent).setOnClickListener {
             val intentSIA = Intent(this, SelectItemActivity::class.java)
             intentSIA.putExtra("categorie", "Feculent")
             intentSIA.putExtra("titre", "Ajout d'un féculent")
-            intentSIA.putExtra("meal",intent.getStringExtra("meal"))
-            intentSIA.putExtra("recipe",isRecipe)
-            intentSIA.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
-            if(isRecipe){
-                startActivityForResult(intentSIA,7)
-            }else{
+            intentSIA.putExtra("meal", intent.getStringExtra("meal"))
+            intentSIA.putExtra("recipe", isRecipe)
+            intentSIA.putExtra("stockMeal", intent.getSerializableExtra("stockMeal"))
+            if (isRecipe) {
+                startActivityForResult(intentSIA, 7)
+            } else {
                 finish()
                 startActivity(intentSIA)
             }
         }
 
-        findViewById<LinearLayout>(R.id.btnProduitLaitier).setOnClickListener{
+        findViewById<LinearLayout>(R.id.btnProduitLaitier).setOnClickListener {
             val intentSIA = Intent(this, SelectItemActivity::class.java)
             intentSIA.putExtra("categorie", "Laitage")
             intentSIA.putExtra("titre", "Ajout d'un produit laitier")
-            intentSIA.putExtra("meal",intent.getStringExtra("meal"))
-            intentSIA.putExtra("recipe",isRecipe)
-            intentSIA.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
-            if(isRecipe){
-                startActivityForResult(intentSIA,7)
-            }else{
+            intentSIA.putExtra("meal", intent.getStringExtra("meal"))
+            intentSIA.putExtra("recipe", isRecipe)
+            intentSIA.putExtra("stockMeal", intent.getSerializableExtra("stockMeal"))
+            if (isRecipe) {
+                startActivityForResult(intentSIA, 7)
+            } else {
                 finish()
                 startActivity(intentSIA)
             }
         }
 
-        findViewById<LinearLayout>(R.id.btnPatisserie).setOnClickListener{
+        findViewById<LinearLayout>(R.id.btnPatisserie).setOnClickListener {
             val intentSIA = Intent(this, SelectItemActivity::class.java)
             intentSIA.putExtra("categorie", "Patisserie")
             intentSIA.putExtra("titre", "Ajout d'une aliment")
-            intentSIA.putExtra("meal",intent.getStringExtra("meal"))
-            intentSIA.putExtra("recipe",isRecipe)
-            intentSIA.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
-            if(isRecipe){
-                startActivityForResult(intentSIA,7)
-            }else{
+            intentSIA.putExtra("meal", intent.getStringExtra("meal"))
+            intentSIA.putExtra("recipe", isRecipe)
+            intentSIA.putExtra("stockMeal", intent.getSerializableExtra("stockMeal"))
+            if (isRecipe) {
+                startActivityForResult(intentSIA, 7)
+            } else {
                 finish()
                 startActivity(intentSIA)
             }
         }
 
-        findViewById<LinearLayout>(R.id.btnSauce).setOnClickListener{
+        findViewById<LinearLayout>(R.id.btnSauce).setOnClickListener {
             val intentSIA = Intent(this, SelectItemActivity::class.java)
             intentSIA.putExtra("categorie", "Sauce")
             intentSIA.putExtra("titre", "Ajout d'une sauce")
-            intentSIA.putExtra("meal",intent.getStringExtra("meal"))
-            intentSIA.putExtra("recipe",isRecipe)
-            intentSIA.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
-            if(isRecipe){
-                startActivityForResult(intentSIA,7)
-            }else{
+            intentSIA.putExtra("meal", intent.getStringExtra("meal"))
+            intentSIA.putExtra("recipe", isRecipe)
+            intentSIA.putExtra("stockMeal", intent.getSerializableExtra("stockMeal"))
+            if (isRecipe) {
+                startActivityForResult(intentSIA, 7)
+            } else {
                 finish()
                 startActivity(intentSIA)
             }
         }
 
-        findViewById<LinearLayout>(R.id.btnViande).setOnClickListener{
+        findViewById<LinearLayout>(R.id.btnViande).setOnClickListener {
             val intentSIA = Intent(this, SelectItemActivity::class.java)
             intentSIA.putExtra("categorie", "Viande")
             intentSIA.putExtra("titre", "Ajout d'une viande")
-            intentSIA.putExtra("meal",intent.getStringExtra("meal"))
-            intentSIA.putExtra("recipe",isRecipe)
-            intentSIA.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
-            if(isRecipe){
-                startActivityForResult(intentSIA,7)
-            }else{
+            intentSIA.putExtra("meal", intent.getStringExtra("meal"))
+            intentSIA.putExtra("recipe", isRecipe)
+            intentSIA.putExtra("stockMeal", intent.getSerializableExtra("stockMeal"))
+            if (isRecipe) {
+                startActivityForResult(intentSIA, 7)
+            } else {
                 finish()
                 startActivity(intentSIA)
             }
         }
 
-        findViewById<LinearLayout>(R.id.btnAutre).setOnClickListener{
+        findViewById<LinearLayout>(R.id.btnAutre).setOnClickListener {
             val intentSIA = Intent(this, SelectItemActivity::class.java)
             intentSIA.putExtra("categorie", "Autre")
             intentSIA.putExtra("titre", "Ajout d'un autre aliment")
-            intentSIA.putExtra("meal",intent.getStringExtra("meal"))
-            intentSIA.putExtra("recipe",isRecipe)
-            if(isRecipe){
-                startActivityForResult(intentSIA,7)
-            }else{
+            intentSIA.putExtra("meal", intent.getStringExtra("meal"))
+            intentSIA.putExtra("recipe", isRecipe)
+            if (isRecipe) {
+                startActivityForResult(intentSIA, 7)
+            } else {
                 finish()
                 startActivity(intentSIA)
             }
         }
 
-        findViewById<Button>(R.id.buttonAnnulerCategorie).setOnClickListener{
+        findViewById<Button>(R.id.buttonAnnulerCategorie).setOnClickListener {
             finish()
         }
     }
@@ -173,10 +172,10 @@ class FoodChoiceActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 7) {
             if (resultCode == Activity.RESULT_OK) {
-                val previousActivity = Intent(applicationContext,CreateRecipeActivity::class.java)
-                previousActivity.putExtra("items",data?.getSerializableExtra("items"))
-                previousActivity.putExtra("item",data?.getSerializableExtra("item"))
-                setResult(Activity.RESULT_OK,previousActivity)
+                val previousActivity = Intent(applicationContext, CreateRecipeActivity::class.java)
+                previousActivity.putExtra("items", data?.getSerializableExtra("items"))
+                previousActivity.putExtra("item", data?.getSerializableExtra("item"))
+                setResult(Activity.RESULT_OK, previousActivity)
                 finish()
             }
         }

@@ -4,7 +4,7 @@ public class ElementRiz extends Element {
 
 	protected ElementRiz(double quantity, boolean qtIsQuotient, boolean isBio, boolean isFromOwnGarden) {
 		super(quantity, qtIsQuotient, isBio, isFromOwnGarden);
-		this.setBasicName("Riz");
+		this.setBasicName("100g de riz");
 		this.setDefaultToxicityValue(0);
 		
 		this.setCompostable(true);

@@ -21,7 +21,6 @@ import kotlin.collections.ArrayList
 import android.widget.ArrayAdapter
 
 
-
 /**
  * Created by arnaud.labesque on 20/11/2017.
  */
@@ -43,24 +42,16 @@ class SelectItemActivity : AppCompatActivity() {
 
         val isRecipe = intent.getBooleanExtra("recipe", false)
 
-        if (intent.getStringExtra("categorie") == "Legume") {
-            createElements(R.array.legumes, R.drawable.rounded_square_legume, isRecipe)
-        } else if (intent.getStringExtra("categorie") == "Fruit") {
-            createElements(R.array.fruits, R.drawable.rounded_square_fruit, isRecipe)
-        } else if (intent.getStringExtra("categorie") == "Feculent") {
-            createElements(R.array.feculents, R.drawable.rounded_square_feculent, isRecipe)
-        } else if (intent.getStringExtra("categorie") == "Laitage") {
-            createElements(R.array.laitages, R.drawable.rounded_square_laitage, isRecipe)
-        } else if (intent.getStringExtra("categorie") == "Patisserie") {
-            createElements(R.array.patisseries, R.drawable.rounded_square_patisserie, isRecipe)
-        } else if (intent.getStringExtra("categorie") == "Sauce") {
-            createElements(R.array.sauces, R.drawable.rounded_square_sauce, isRecipe)
-        } else if (intent.getStringExtra("categorie") == "Viande") {
-            createElements(R.array.viandes, R.drawable.rounded_square_viande, isRecipe)
-        } else if (intent.getStringExtra("categorie") == "Autre") {
-            createElements(R.array.autres, R.drawable.rounded_square_autre, isRecipe)
+        when {
+            intent.getStringExtra("categorie") == "Legume" -> createElements(R.array.legumes, R.drawable.rounded_square_legume, isRecipe)
+            intent.getStringExtra("categorie") == "Fruit" -> createElements(R.array.fruits, R.drawable.rounded_square_fruit, isRecipe)
+            intent.getStringExtra("categorie") == "Feculent" -> createElements(R.array.feculents, R.drawable.rounded_square_feculent, isRecipe)
+            intent.getStringExtra("categorie") == "Laitage" -> createElements(R.array.laitages, R.drawable.rounded_square_laitage, isRecipe)
+            intent.getStringExtra("categorie") == "Patisserie" -> createElements(R.array.patisseries, R.drawable.rounded_square_patisserie, isRecipe)
+            intent.getStringExtra("categorie") == "Sauce" -> createElements(R.array.sauces, R.drawable.rounded_square_sauce, isRecipe)
+            intent.getStringExtra("categorie") == "Viande" -> createElements(R.array.viandes, R.drawable.rounded_square_viande, isRecipe)
+            intent.getStringExtra("categorie") == "Autre" -> createElements(R.array.autres, R.drawable.rounded_square_autre, isRecipe)
         }
-
 
     }
 
@@ -86,13 +77,13 @@ class SelectItemActivity : AppCompatActivity() {
 
             var imageView = ImageView(this)
             imageView.setImageResource(getIdPicture(element))
-            imageView.layoutParams = TableRow.LayoutParams(70, 70,0.5f)
+            imageView.layoutParams = TableRow.LayoutParams(70, 70, 0.5f)
             roundedSquareLayout.addView(imageView)
 
             var tv = TextView(this)
             tv.id = id++
             tv.text = element
-            tv.layoutParams = TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,1f)
+            tv.layoutParams = TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1f)
             tv.gravity = Gravity.CENTER
             tv.setTextColor(Color.BLACK)
             roundedSquareLayout.addView(tv)
@@ -116,7 +107,7 @@ class SelectItemActivity : AppCompatActivity() {
                     var inflater = this.getSystemService(android.content.Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                     var popUpView = inflater.inflate(R.layout.layout_pop_up_bio, null)
 
-                    var values = arrayOf("1","1/4","1/3","1/2","2","3","4","5","8","10")
+                    var values = arrayOf("1 unité", "2 moitiés", "3 tiers", "4 quarts", "2 unités", "3 unités", "4 unités", "5 unités", "8 unités", "10 unités")
                     var numberpicker = popUpView.findViewById<NumberPicker>(R.id.nbPickerQuantite)
                     numberpicker.minValue = 0
                     numberpicker.maxValue = (values.size - 1)
@@ -138,51 +129,50 @@ class SelectItemActivity : AppCompatActivity() {
                         var valQuantite = numberpicker.value
 
                         var isBio = false
-                        if (cbBio.isChecked && cbNonBio.isChecked) {
-                            var tvErrorBio = popUpView.findViewById<TextView>(R.id.textErrorBio)
-                            tvErrorBio.text = "Attention les cases aliment biologique et non biologique sont cochées !"
-                        } else {
-                            if (cbBio.isChecked) {
-                                isBio = true
+                        when {
+                            cbBio.isChecked && cbNonBio.isChecked -> {
+                                var tvErrorBio = popUpView.findViewById<TextView>(R.id.textErrorBio)
+                                tvErrorBio.text = """Attention les cases aliment biologique et non biologique sont cochées !"""
                             }
-                            var aliment = myfactory.getCustomElement(element, convertString2Double(values[valQuantite]), true, isBio, popUpView.findViewById<CheckBox>(R.id.checkBoxPotager).isChecked)
-                            var aliments = checkWaste(aliment,0,convertString2Double(values[valQuantite]),true,isBio,popUpView.findViewById<CheckBox>(R.id.checkBoxPotager).isChecked)
-                            if(intent.hasExtra("items")){
-                                val previousAliments = intent?.getSerializableExtra("items") as ArrayList<Element>
-                                for (previousAliment in previousAliments){
-                                    aliments.add(previousAliment)
+                            else -> {
+                                if (cbBio.isChecked) isBio = true
+
+                                var aliment = myfactory.getCustomElement(element, convertString2Double(values[valQuantite]), true, isBio, popUpView.findViewById<CheckBox>(R.id.checkBoxPotager).isChecked)
+                                var aliments = checkWaste(aliment, 0, 1.0, true, isBio, popUpView.findViewById<CheckBox>(R.id.checkBoxPotager).isChecked)
+                                if (intent.hasExtra("items")) {
+                                    val previousAliments = intent?.getSerializableExtra("items") as ArrayList<Element>
+                                    for (previousAliment in previousAliments) {
+                                        aliments.add(previousAliment)
+                                    }
                                 }
-                            }
 
-                            if (isRecipe) {
+                                if (isRecipe) {
 
-                                val previousIntent = Intent(this, FoodChoiceActivity::class.java)
-                                previousIntent.putExtra("items", aliments)
-                                previousIntent.putExtra("item", aliment)
-                                previousIntent.putExtra("idColorBG", idBg)
-                                setResult(Activity.RESULT_OK, previousIntent)
-                                popup.dismiss()
-                                finish()
+                                    val previousIntent = Intent(this, FoodChoiceActivity::class.java)
+                                    previousIntent.putExtra("items", aliments)
+                                    previousIntent.putExtra("item", aliment)
+                                    previousIntent.putExtra("idColorBG", idBg)
+                                    setResult(Activity.RESULT_OK, previousIntent)
+                                    popup.dismiss()
+                                    finish()
 
-                            } else {
+                                } else {
 
-                                aliments.add(aliment)
-                                inflater.inflate(R.layout.activity_treat_item, null)
-                                val myIntent = Intent(this, TreatItemActivity::class.java)
-                                myIntent.putExtra("items", aliments)
-                                myIntent.putExtra("idColorBG", idBg)
-                                myIntent.putExtra("stockMeal",intent.getSerializableExtra("stockMeal"))
-                                popup.dismiss()
-                                finish()
-                                startActivity(myIntent)
+                                    aliments.add(aliment)
+                                    inflater.inflate(R.layout.activity_treat_item, null)
+                                    val myIntent = Intent(this, TreatItemActivity::class.java)
+                                    myIntent.putExtra("items", aliments)
+                                    myIntent.putExtra("idColorBG", idBg)
+                                    myIntent.putExtra("stockMeal", intent.getSerializableExtra("stockMeal"))
+                                    popup.dismiss()
+                                    finish()
+                                    startActivity(myIntent)
 
+                                }
                             }
                         }
 
                     }
-
-
-
                 }
 
 
@@ -199,7 +189,7 @@ class SelectItemActivity : AppCompatActivity() {
         currentLine.addView(myfinalspace, 0)
     }
 
-    private fun checkWaste(aliment : Element, idBG : Int, quantity : Double, isQuotient : Boolean, isBio : Boolean, isFromOwnGarden : Boolean): ArrayList<Element> {
+    private fun checkWaste(aliment: Element, idBG: Int, quantity: Double, isQuotient: Boolean, isBio: Boolean, isFromOwnGarden: Boolean): ArrayList<Element> {
         var listeAliments = ArrayList<Element>()
         var myfactory = ElementFactory()
         if (aliment.isGeneratingBone) {
@@ -208,7 +198,7 @@ class SelectItemActivity : AppCompatActivity() {
             listeAliments.add(aliment)
         }
         if (aliment.isGeneratingCore) {
-            when (aliment.basicName){
+            when (aliment.basicName) {
                 "Pomme" -> {
                     var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
                     aliment.basicName = "Trognon de " + aliment.basicName
@@ -224,7 +214,7 @@ class SelectItemActivity : AppCompatActivity() {
                     aliment.basicName = "Trognon d' " + aliment.basicName
                     listeAliments.add(aliment)
                 }
-                else ->{
+                else -> {
                     var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
                     aliment.basicName = "Noyau de " + aliment.basicName
                     listeAliments.add(aliment)
@@ -233,9 +223,9 @@ class SelectItemActivity : AppCompatActivity() {
         }
 
         if (aliment.isGeneratingCrust) {
-                var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
-                aliment.basicName = "Croûte de " + aliment.basicName
-                listeAliments.add(aliment)
+            var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
+            aliment.basicName = "Croûte de " + aliment.basicName
+            listeAliments.add(aliment)
         }
         if (aliment.isGeneratingFat) {
             var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
@@ -248,9 +238,28 @@ class SelectItemActivity : AppCompatActivity() {
             listeAliments.add(aliment)
         }
         if (aliment.isGeneratingPeel) {
-            var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
-            aliment.basicName = "Peau de " + aliment.basicName
-            listeAliments.add(aliment)
+            when (aliment.basicName) {
+                "Noix" -> {
+                    var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
+                    aliment.basicName = "Coque de " + aliment.basicName
+                    listeAliments.add(aliment)
+                }
+                "Noisette" -> {
+                    var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
+                    aliment.basicName = "Coque de " + aliment.basicName
+                    listeAliments.add(aliment)
+                }
+                "NoixDeCoco" -> {
+                    var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
+                    aliment.basicName = "Coque de " + aliment.basicName
+                    listeAliments.add(aliment)
+                }
+                else -> {
+                    var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
+                    aliment.basicName = "Épluchures de " + aliment.basicName
+                    listeAliments.add(aliment)
+                }
+            }
         }
         if (aliment.isGeneratingMeatSkin) {
             var aliment = myfactory.getCustomElement(aliment.basicName, quantity, isQuotient, isBio, isFromOwnGarden)
@@ -266,20 +275,20 @@ class SelectItemActivity : AppCompatActivity() {
         return listeAliments
     }
 
-    private fun convertString2Double (str : String): Double =
-            when (str){
-                "1/4" -> 0.25
-                "1/3" -> 0.33
-                "1/2" -> 0.5
-                "1" -> 1.0
-                "2" -> 2.0
-                "3" -> 3.0
-                "4" -> 4.0
-                "5" -> 5.0
-                "8" -> 8.0
-                "10" -> 10.0
+    private fun convertString2Double(str: String): Double =
+            when (str) {
+                "4 quarts" -> 0.25
+                "3 tiers" -> 0.33
+                "2 moitiés" -> 0.5
+                "1 unité" -> 1.0
+                "2 unités" -> 2.0
+                "3 unités" -> 3.0
+                "4 unités" -> 4.0
+                "5 unités" -> 5.0
+                "8 unités" -> 8.0
+                "10 unités" -> 10.0
                 else -> 1.0
-    }
+            }
 
     private fun getIdPicture(element: String?): Int =
             when (element) {

@@ -18,6 +18,7 @@ public class ElementFactory implements Serializable{
 									boolean isFromOwnGarden)
 									throws NoSuchElementException{
 		Element tmp;
+		System.out.println(basicNameElement);
 		switch(basicNameElement){
 			case("Abricot")				: tmp = new ElementAbricot			(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
 			case("Ail")					: tmp = new ElementAil				(quantity, qtIsQuotient, isBio, isFromOwnGarden); break;
@@ -128,8 +129,9 @@ public class ElementFactory implements Serializable{
 		return tmp;
 	}
 	
-	public Element copyElement(Element elem, double quantity){
+	public Element copyElement(Element elem){
 		String basicNameElement = elem.getBasicName();
+		double quantity = elem.getQuantity();
 		boolean qtIsQuotient = elem.isQtIsQuotient();
 		boolean isBio = elem.isBio();
 		boolean isFromOwnGarden = elem.isFromOwnGarden();

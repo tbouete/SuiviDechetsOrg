@@ -77,7 +77,7 @@ public abstract class Element implements Serializable{
 		else return this.defaultToxicityValue;
 	}
 
-	public String getBasicName() {
+    public String getBasicName() {
 		return basicName;
 	}
 	

@@ -4,7 +4,7 @@ public class ElementPate extends Element {
 
 	protected ElementPate(double quantity, boolean qtIsQuotient, boolean isBio, boolean isFromOwnGarden) {
 		super(quantity, qtIsQuotient, isBio, isFromOwnGarden);
-		this.setBasicName("Pâte");
+		this.setBasicName("100g de pâtes");
 		this.setDefaultToxicityValue(0);
 		
 		this.setCompostable(true);

@@ -50,25 +50,19 @@ class ShowWasteActivity : AppCompatActivity() {
         stockMeal = intent.getSerializableExtra("stockMeal") as StockMeals?
 
         var listComposted = stockMeal!!.listSEM[stockMeal!!.listSEM.lastIndex].listElementComposted
-        for (elementComposted in listComposted) {
-            createElement(elementComposted,elementComposted.basicName,R.drawable.rounded_square,R.id.lCompost)
-        }
+        listComposted.forEach { elementComposted -> createElement(elementComposted,elementComposted.basicName,R.drawable.rounded_square,R.id.lCompost) }
+
         var listEaten = stockMeal!!.listSEM[stockMeal!!.listSEM.lastIndex].listElementEaten
-        for (elementEaten in listEaten) {
-            createElement(elementEaten,elementEaten.basicName,R.drawable.rounded_square,R.id.lAssiette)
-        }
+        listEaten.forEach { elementEaten -> createElement(elementEaten,elementEaten.basicName,R.drawable.rounded_square,R.id.lAssiette) }
+
         var listFed = stockMeal!!.listSEM[stockMeal!!.listSEM.lastIndex].listElementFed
-        for (elementFed in listFed) {
-            createElement(elementFed,elementFed.basicName,R.drawable.rounded_square,R.id.lChien)
-        }
+        listFed.forEach { elementFed -> createElement(elementFed,elementFed.basicName,R.drawable.rounded_square,R.id.lChien) }
+
         var listThrowed = stockMeal!!.listSEM[stockMeal!!.listSEM.lastIndex].listElementThrowed
-        for (elementThrowed in listThrowed) {
-            createElement(elementThrowed,elementThrowed.basicName,R.drawable.rounded_square,R.id.lPoubelle)
-        }
+        listThrowed.forEach { elementThrowed -> createElement(elementThrowed,elementThrowed.basicName,R.drawable.rounded_square,R.id.lPoubelle) }
+        
         var listStocked = stockMeal!!.listSEM[stockMeal!!.listSEM.lastIndex].listElementStocked
-        for (elementStocked in listStocked) {
-            createElement(elementStocked,elementStocked.basicName,R.drawable.rounded_square,R.id.lFrigo)
-        }
+        listStocked.forEach { elementStocked -> createElement(elementStocked,elementStocked.basicName,R.drawable.rounded_square,R.id.lFrigo) }
 
 
     }
@@ -94,7 +88,14 @@ class ShowWasteActivity : AppCompatActivity() {
         roundedSquareLayout.tag = elementName
         var tv = TextView(this)
         tv.id = id++
-        tv.text = elementName
+        var alimentLabel = when (aliment.quantity) {
+            0.25 -> "1/4 x $elementName"
+            0.33 -> "1/3 x $elementName"
+            0.5 -> "1/2 x $elementName"
+            1.0 -> elementName
+            else -> "${aliment.quantity.toString().split('.')[0]} x $elementName"
+        }
+        tv.text = alimentLabel
         tv.gravity = Gravity.CENTER
         tv.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         tv.setTextColor(Color.BLACK)
@@ -104,41 +105,5 @@ class ShowWasteActivity : AppCompatActivity() {
         val space = Space(this)
         space.layoutParams = TableLayout.LayoutParams(0, Math.round(1 * (this.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)), 1f)
         currentLine.addView(space)
-    }
-
-
-
-    private fun checkWaste(aliment : Element, idBG : Int, idLayout: Int) {
-
-        if (aliment.isGeneratingBone) {
-            createElement(aliment, "Os de " + aliment.basicName, idBG, idLayout)
-        }
-        if (aliment.isGeneratingCore) {
-            when (aliment.basicName){
-                "Pomme" -> createElement(aliment, "Trognon de " + aliment.basicName, idBG, idLayout)
-                "Poire" -> createElement(aliment, "Trognon de " + aliment.basicName, idBG, idLayout)
-                "Ananas" -> createElement(aliment, "Trognon d' " + aliment.basicName, idBG, idLayout)
-                else ->createElement(aliment, "Noyau de " + aliment.basicName, idBG, idLayout)
-            }
-        }
-
-        if (aliment.isGeneratingCrust) {
-            createElement(aliment, "Croûte de " + aliment.basicName, idBG, idLayout)
-        }
-        if (aliment.isGeneratingFat) {
-            createElement(aliment, "Gras de " + aliment.basicName, idBG, idLayout)
-        }
-        if (aliment.isGeneratingFilter) {
-            createElement(aliment, "Filtre de " + aliment.basicName, idBG, idLayout)
-        }
-        if (aliment.isGeneratingPeel) {
-            createElement(aliment, "Peau de " + aliment.basicName, idBG, idLayout)
-        }
-        if (aliment.isGeneratingMeatSkin) {
-            createElement(aliment, "Peau de " + aliment.basicName, idBG, idLayout)
-        }
-        if (aliment.isGeneratingTail) {
-            createElement(aliment, "Queue de " + aliment.basicName, idBG, idLayout)
-        }
     }
 }
