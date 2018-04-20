@@ -5,7 +5,7 @@ public class ElementWasteBetteraveRouge extends ElementWaste {
 	protected ElementWasteBetteraveRouge(Element elem) {
 		super(elem);
 		this.setBasicName("BetteraveRougeDechet(Enveloppe, queue)");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

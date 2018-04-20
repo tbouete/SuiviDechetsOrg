@@ -5,7 +5,7 @@ public class ElementWasteKaki extends ElementWaste {
 	protected ElementWasteKaki(Element elem) {
 		super(elem);
 		this.setBasicName("KakiDechet(Enveloppe)");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

@@ -5,7 +5,7 @@ public class ElementWasteOrange extends ElementWaste {
 	protected ElementWasteOrange(Element elem) {
 		super(elem);
 		this.setBasicName("OrangeDechet(Enveloppe)");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

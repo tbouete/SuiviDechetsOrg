@@ -5,7 +5,7 @@ public class ElementWastePasteque extends ElementWaste {
 	protected ElementWastePasteque(Element elem) {
 		super(elem);
 		this.setBasicName("PastèqueDechet(Enveloppe)");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

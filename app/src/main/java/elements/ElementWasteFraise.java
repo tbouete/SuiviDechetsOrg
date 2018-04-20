@@ -5,7 +5,7 @@ public class ElementWasteFraise extends ElementWaste {
 	protected ElementWasteFraise(Element elem) {
 		super(elem);
 		this.setBasicName("FraiseDechet(Queue)");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

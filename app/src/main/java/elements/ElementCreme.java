@@ -5,7 +5,7 @@ public class ElementCreme extends Element {
 	protected ElementCreme(double quantity, boolean qtIsQuotient, boolean isBio, boolean isFromOwnGarden) {
 		super(quantity, qtIsQuotient, isBio, isFromOwnGarden);
 		this.setBasicName("Crème");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

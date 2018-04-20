@@ -5,7 +5,7 @@ public class ElementWasteClementine extends ElementWaste{
 	protected ElementWasteClementine(Element elem) {
 		super(elem);
 		this.setBasicName("ClementineDechet(Enveloppe)");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

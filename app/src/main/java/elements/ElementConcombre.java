@@ -5,7 +5,7 @@ public class ElementConcombre extends Element {
 	protected ElementConcombre(double quantity, boolean qtIsQuotient, boolean isBio, boolean isFromOwnGarden) {
 		super(quantity, qtIsQuotient, isBio, isFromOwnGarden);
 		this.setBasicName("Concombre");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

@@ -5,7 +5,7 @@ public class ElementWasteLentille extends ElementWaste{
 	protected ElementWasteLentille(Element elem) {
 		super(elem);
 		this.setBasicName("LentilleDechet()");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

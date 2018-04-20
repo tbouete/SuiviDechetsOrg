@@ -16,8 +16,9 @@ public abstract class Element implements Serializable{
 	private String basicName;			//Basic name of the element used in everydayLife. Ex : 'apple'
 	private int id;
     
-    private int defaultToxicityValue;               //Set toxicity for a single element
-    private double quantity;               //Quantity, as a quotient or a mass (depending on qtIsQuotient)
+    private int minWeightCompost = 0;
+    private int maxWeightCompost = 0;
+    private double quantity;            //Quantity, as a quotient or a mass (depending on qtIsQuotient)
     private boolean qtIsQuotient;       //Determine whether quantity is a quotient or a mass
 
     private boolean isBio;              //If the element is bio
@@ -72,10 +73,6 @@ public abstract class Element implements Serializable{
 		return ret;
 	}
 
-	public int getToxicityValue(){
-		if (this.isBio) return 0;
-		else return this.defaultToxicityValue;
-	}
 
     public String getBasicName() {
 		return basicName;
@@ -85,8 +82,12 @@ public abstract class Element implements Serializable{
 		return id;
 	}
 
-	public int getDefaultToxicityValue() {
-		return defaultToxicityValue;
+	public int getMinWeightCompost() {
+		return minWeightCompost;
+	}
+	
+	public int getMaxWeightCompost() {
+		return maxWeightCompost;
 	}
 
 	public double getQuantity() {
@@ -165,8 +166,12 @@ public abstract class Element implements Serializable{
 		this.id = id;
 	}
 
-	public void setDefaultToxicityValue(int defaultToxicityValue) {
-		this.defaultToxicityValue = defaultToxicityValue;
+	public void setMinWeightCompost(int minWeightCompost) {
+		this.minWeightCompost = minWeightCompost;
+	}
+	
+	public void setMaxWeightCompost(int maxWeightCompost) {
+		this.maxWeightCompost = maxWeightCompost;
 	}
 
 	public void setCompostable(boolean isCompostable) {

@@ -5,7 +5,7 @@ public class ElementWastePotiron extends ElementWaste {
 	protected ElementWastePotiron(Element elem) {
 		super(elem);
 		this.setBasicName("PotironDechet(Enveloppe)");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

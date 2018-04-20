@@ -5,7 +5,7 @@ public class ElementWastePoireau extends ElementWaste {
 	protected ElementWastePoireau(Element elem) {
 		super(elem);
 		this.setBasicName("PoireauDechet()");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

@@ -5,7 +5,7 @@ public class ElementWasteFigue extends ElementWaste {
 	protected ElementWasteFigue(Element elem) {
 		super(elem);
 		this.setBasicName("FigueDechet(Enveloppe)");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

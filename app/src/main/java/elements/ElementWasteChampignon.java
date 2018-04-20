@@ -5,7 +5,7 @@ public class ElementWasteChampignon extends ElementWaste {
 	protected ElementWasteChampignon(Element elem) {
 		super(elem);
 		this.setBasicName("ChampignonDechet()");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

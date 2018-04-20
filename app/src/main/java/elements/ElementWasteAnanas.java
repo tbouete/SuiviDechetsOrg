@@ -5,7 +5,7 @@ public class ElementWasteAnanas extends ElementWaste {
 	protected ElementWasteAnanas(Element elem) {
 		super(elem);
 		this.setBasicName("AnanasDechet(Enveloppe, queue)");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

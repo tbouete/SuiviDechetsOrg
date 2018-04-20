@@ -5,7 +5,7 @@ public class ElementWastePlatPrepare extends ElementWaste{
 	protected ElementWastePlatPrepare(Element elem) {
 		super(elem);
 		this.setBasicName("PlatPréparéDechet()");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

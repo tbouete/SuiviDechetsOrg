@@ -5,7 +5,7 @@ public class ElementWasteCornichon extends ElementWaste {
 	protected ElementWasteCornichon(Element elem) {
 		super(elem);
 		this.setBasicName("CornichonDechet()");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

@@ -46,11 +46,16 @@ public class StockElementMeal extends Observable implements Serializable{
 	public void notifyObservers() { for(Observer o : this.listObserver) o.update(this, 0);	}
 	
 	/* Used in the final Excel file.
-	   Format : '(dateCreation.toString) (basicName)(id.toString)'
-	   Ex : '01/01/2017 Apple2'
+	   Ex : 'SaladeDeFruit1_du_10/02/2018_Pomme1_du_10/02/2018'
 	*/
 	public String getIdNameElement(Element elem){
-		return this.dayMeal.toString() + this.mealType + " " + elem.getBasicName() + elem.getId();
+		String ret = "";
+		
+		ret += elem.getBasicName();
+		ret += "_du_";
+		ret += this.getDayMealFormatedString();
+		
+		return ret;
 	}
 
 	public void addToComposted(Element e) { this.listElementComposted.add(e); 	notifyObservers(); }
@@ -152,7 +157,36 @@ public class StockElementMeal extends Observable implements Serializable{
     
     public String getMealType() { return this.mealType; }
     
-    public Date getDayMeal() { return this.dayMeal; }
+    public Date getDayMeal() {
+    	return this.dayMeal;
+    }
+    
+    public String getDayMealFormatedString() {
+    	String ret = "";
+    	String tmp = this.getDayMeal().toString();
+    	
+    	String[] bis = tmp.split(" ");
+    	String month = "101";
+    	
+    	switch(bis[1]) {
+    		case "Jan" : month = "01";
+    		case "Feb" : month = "02";
+    		case "Mar" : month = "03";
+    		case "Apr" : month = "04";
+    		case "May" : month = "05";
+    		case "Jun" : month = "06";
+    		case "Jul" : month = "07";
+    		case "Aug" : month = "08";
+    		case "Sep" : month = "09";
+    		case "Oct" : month = "10";
+    		case "Nov" : month = "11";
+    		case "Dec" : month = "12";
+    	}
+    	
+    	ret += bis[2] + "/" + month + "/" + bis[5];
+    	
+    	return ret;
+    }
     
     public Element getElementOnHold(){ return this.elementOnHold; }
     

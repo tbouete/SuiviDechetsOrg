@@ -5,7 +5,7 @@ public class ElementWastePanais extends ElementWaste {
 	protected ElementWastePanais(Element elem) {
 		super(elem);
 		this.setBasicName("PanaisDechet(Enveloppe, queue)");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

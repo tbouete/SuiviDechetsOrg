@@ -5,7 +5,7 @@ public class ElementWasteEchalote extends ElementWaste {
 	protected ElementWasteEchalote(Element elem) {
 		super(elem);
 		this.setBasicName("EchaloteDechet(Enveloppe)");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

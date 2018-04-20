@@ -5,7 +5,7 @@ public class ElementWasteChouDeBruxelles extends ElementWaste {
 	protected ElementWasteChouDeBruxelles(Element elem) {
 		super(elem);
 		this.setBasicName("ChouDeBruxellesDechet()");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

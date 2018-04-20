@@ -5,7 +5,7 @@ public class ElementWasteNoixDeCoco extends ElementWaste {
 	protected ElementWasteNoixDeCoco(Element elem) {
 		super(elem);
 		this.setBasicName("NoixDeCocoDechet(Enveloppe)");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

@@ -25,7 +25,8 @@ public class ComposedElement extends Element {
 		this.composition = composition;
 		
 		this.setBasicName(basicName);
-		this.setDefaultToxicityValue(setDefaultToxicityValue(composition));
+		this.setMinWeightCompost(setMinWeightCompost(composition));
+		this.setMaxWeightCompost(setMaxWeightCompost(composition));
 		
 		this.setCompostable(setIsCompostable(composition));
 		this.setEdible(setIsEdible(composition));
@@ -53,12 +54,20 @@ public class ComposedElement extends Element {
 	 * @param composition of this ComposedElement
 	 * @return the toxicity of this Composed Element
 	 */
-	private static int setDefaultToxicityValue(List<Element> composition){
-		int toxicityRet = 0;
+	private static int setMinWeightCompost(List<Element> composition){
+		int mWC = 0;
 		
-		for(Element e : composition) toxicityRet += e.getToxicityValue();
+		for(Element e : composition) mWC += e.getMinWeightCompost();
 		
-		return toxicityRet;
+		return mWC;
+	}
+	
+	private static int setMaxWeightCompost(List<Element> composition){
+		int mWC = 0;
+		
+		for(Element e : composition) mWC += e.getMaxWeightCompost();
+		
+		return mWC;
 	}
 	
 	

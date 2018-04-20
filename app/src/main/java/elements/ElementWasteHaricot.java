@@ -5,7 +5,7 @@ public class ElementWasteHaricot extends ElementWaste {
 	protected ElementWasteHaricot(Element elem) {
 		super(elem);
 		this.setBasicName("HaricotDechet(Queue)");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

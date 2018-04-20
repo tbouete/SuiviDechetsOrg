@@ -5,7 +5,7 @@ public class ElementWasteThe extends ElementWaste{
 	protected ElementWasteThe(Element elem) {
 		super(elem);
 		this.setBasicName("ThéDechet(Filtre)");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

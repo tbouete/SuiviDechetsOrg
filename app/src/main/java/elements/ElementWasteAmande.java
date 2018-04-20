@@ -5,7 +5,7 @@ public class ElementWasteAmande extends ElementWaste {
 	protected ElementWasteAmande(Element elem) {
 		super(elem);
 		this.setBasicName("AmandeDechet(Enveloppe)");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

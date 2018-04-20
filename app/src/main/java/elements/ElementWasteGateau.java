@@ -5,7 +5,7 @@ public class ElementWasteGateau extends ElementWaste{
 	protected ElementWasteGateau(Element elem) {
 		super(elem);
 		this.setBasicName("GâteauDechet()");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

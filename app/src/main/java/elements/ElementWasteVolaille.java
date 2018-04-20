@@ -5,7 +5,7 @@ public class ElementWasteVolaille extends ElementWaste{
 	protected ElementWasteVolaille(Element elem) {
 		super(elem);
 		this.setBasicName("VolailleDechet(Peau, gras, os)");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

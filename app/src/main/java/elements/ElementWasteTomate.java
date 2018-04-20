@@ -5,7 +5,7 @@ public class ElementWasteTomate extends ElementWaste {
 	protected ElementWasteTomate(Element elem) {
 		super(elem);
 		this.setBasicName("TomateDechet(Enveloppe)");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

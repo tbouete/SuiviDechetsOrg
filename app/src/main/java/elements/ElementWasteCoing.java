@@ -5,7 +5,7 @@ public class ElementWasteCoing extends ElementWaste {
 	protected ElementWasteCoing(Element elem) {
 		super(elem);
 		this.setBasicName("CoingDechet(Enveloppe, trognon)");
-		this.setDefaultToxicityValue(0);
+		this.setMinWeightCompost(0);
 		
 		this.setCompostable(true);
 		this.setEdible(true);
