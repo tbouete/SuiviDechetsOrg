@@ -5,7 +5,8 @@ public class ElementAubergine extends Element {
 	protected ElementAubergine(double quantity, boolean qtIsQuotient, boolean isBio, boolean isFromOwnGarden) {
 		super(quantity, qtIsQuotient, isBio, isFromOwnGarden);
 		this.setBasicName("Aubergine");
-		this.setMinWeightCompost(0);
+		this.setMinWeightCompost(193);
+		this.setMaxWeightCompost(536);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

@@ -5,7 +5,8 @@ public class ElementPommeDeTerre extends Element {
 	protected ElementPommeDeTerre(double quantity, boolean qtIsQuotient, boolean isBio, boolean isFromOwnGarden) {
 		super(quantity, qtIsQuotient, isBio, isFromOwnGarden);
 		this.setBasicName("Pomme de terre");
-		this.setMinWeightCompost(0);
+		this.setMinWeightCompost(74);
+		this.setMaxWeightCompost(380);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

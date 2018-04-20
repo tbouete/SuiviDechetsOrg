@@ -5,7 +5,8 @@ public class ElementPomme extends Element {
 	protected ElementPomme(double quantity, boolean qtIsQuotient, boolean isBio, boolean isFromOwnGarden) {
 		super(quantity, qtIsQuotient, isBio, isFromOwnGarden);
 		this.setBasicName("Pomme");
-		this.setMinWeightCompost(0);
+		this.setMinWeightCompost(92);
+		this.setMaxWeightCompost(118);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

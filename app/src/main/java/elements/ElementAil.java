@@ -5,7 +5,8 @@ public class ElementAil extends Element {
 	protected ElementAil(double quantity, boolean qtIsQuotient, boolean isBio, boolean isFromOwnGarden) {
 		super(quantity, qtIsQuotient, isBio, isFromOwnGarden);
 		this.setBasicName("Gousse d'ail");
-		this.setMinWeightCompost(0);
+		this.setMinWeightCompost(8);
+		this.setMaxWeightCompost(10);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

@@ -5,7 +5,8 @@ public class ElementPoireau extends Element {
 	protected ElementPoireau(double quantity, boolean qtIsQuotient, boolean isBio, boolean isFromOwnGarden) {
 		super(quantity, qtIsQuotient, isBio, isFromOwnGarden);
 		this.setBasicName("Poireau");
-		this.setMinWeightCompost(0);
+		this.setMinWeightCompost(78);
+		this.setMaxWeightCompost(189);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

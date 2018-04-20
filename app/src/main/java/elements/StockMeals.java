@@ -181,7 +181,7 @@ public class StockMeals implements Serializable, Observer{
 		SEM1.addToComposted(new ElementAbricot(2, true, false, false));
 		
 		try {
-			//SM.exportToCSV(new File("./test.csv"));
+			//SM.exportToCSV(new File("./Decheto_data.csv"));
 			SM.mailCSV(new File("./test.csv"), "titouan.bouete@gmail.com", "dechetotest@gmail.com", "dechetotest", "dechetotest31");
 		} catch (InvalidNameException e) {
 			// TODO Auto-generated catch block

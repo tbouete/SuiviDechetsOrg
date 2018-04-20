@@ -5,7 +5,8 @@ public class ElementOignonNouveau extends Element {
 	protected ElementOignonNouveau(double quantity, boolean qtIsQuotient, boolean isBio, boolean isFromOwnGarden) {
 		super(quantity, qtIsQuotient, isBio, isFromOwnGarden);
 		this.setBasicName("Oignon nouveau");
-		this.setMinWeightCompost(0);
+		this.setMinWeightCompost(21);
+		this.setMaxWeightCompost(22);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

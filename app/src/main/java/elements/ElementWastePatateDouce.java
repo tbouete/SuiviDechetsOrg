@@ -5,7 +5,8 @@ public class ElementWastePatateDouce extends ElementWaste {
 	protected ElementWastePatateDouce(Element elem) {
 		super(elem);
 		this.setBasicName("PatateDouceDechet(Enveloppe, queue)");
-		this.setMinWeightCompost(0);
+		this.setMinWeightCompost(81);
+		this.setMaxWeightCompost(81);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

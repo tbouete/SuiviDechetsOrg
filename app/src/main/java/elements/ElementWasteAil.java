@@ -5,7 +5,8 @@ public class ElementWasteAil extends ElementWaste {
 	protected ElementWasteAil(Element elem) {
 		super(elem);
 		this.setBasicName("AilDechet(Enveloppe)");
-		this.setMinWeightCompost(0);
+		this.setMinWeightCompost(2);
+		this.setMaxWeightCompost(2);
 		
 		this.setCompostable(true);
 		this.setEdible(true);

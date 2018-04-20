@@ -5,7 +5,8 @@ public class ElementWasteOignon extends ElementWaste {
 	protected ElementWasteOignon(Element elem) {
 		super(elem);
 		this.setBasicName("OignonDechet(Enveloppe)");
-		this.setMinWeightCompost(0);
+		this.setMinWeightCompost(11);
+		this.setMinWeightCompost(12);
 		
 		this.setCompostable(true);
 		this.setEdible(true);
