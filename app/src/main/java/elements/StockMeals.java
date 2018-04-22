@@ -103,11 +103,11 @@ public class StockMeals implements Serializable, Observer{
 		
 		ret += SEM.getMealType() + "_du_" + SEM.getDayMealFormatedString() + ";";;
 		
-		for(Element elem : SEM.getListElementThrowed()) ret += SEM.getIdNameElement(elem) + ";" + elem.getBasicName() + elem.getId() + " (" + elem.getQuantity() + ");-;-;-;-;0;0;";		
-		for(Element elem : SEM.getListElementStocked()) ret += SEM.getIdNameElement(elem) + ";-;" + elem.getBasicName() + elem.getId() + " (" + elem.getQuantity() + ");-;-;-;0;0;";	
-		for(Element elem : SEM.getListElementEaten()) ret += SEM.getIdNameElement(elem) + ";-;-;" + elem.getBasicName() + elem.getId() + " (" + elem.getQuantity() + ");-;-;0;0;";
-		for(Element elem : SEM.getListElementFed()) ret += SEM.getIdNameElement(elem) + ";-;-;-;" + elem.getBasicName() + elem.getId() + " (" + elem.getQuantity() + ");-;0;0;";	
-		for(Element elem : SEM.getListElementComposted()) ret += SEM.getIdNameElement(elem) + ";-;-;-;-;" + elem.getBasicName() + elem.getId() + " (" + elem.getQuantity() + ");0;0;";
+		for(Element elem : SEM.getListElementThrowed()) ret += SEM.getIdNameElement(elem) + ";" + elem.getBasicName() + elem.getId() + " (" + elem.getQuantity() + ");-;-;-;-;" + elem.getMinWeightCompost() + ";" + elem.getMaxWeightCompost() + ";";		
+		for(Element elem : SEM.getListElementStocked()) ret += SEM.getIdNameElement(elem) + ";-;" + elem.getBasicName() + elem.getId() + " (" + elem.getQuantity() + ");-;-;-;"+ elem.getMinWeightCompost() + ";" + elem.getMaxWeightCompost() + ";";	
+		for(Element elem : SEM.getListElementEaten()) ret += SEM.getIdNameElement(elem) + ";-;-;" + elem.getBasicName() + elem.getId() + " (" + elem.getQuantity() + ");-;-;"+ elem.getMinWeightCompost() + ";" + elem.getMaxWeightCompost() + ";";
+		for(Element elem : SEM.getListElementFed()) ret += SEM.getIdNameElement(elem) + ";-;-;-;" + elem.getBasicName() + elem.getId() + " (" + elem.getQuantity() + ");-;"+ elem.getMinWeightCompost() + ";" + elem.getMaxWeightCompost() + ";";	
+		for(Element elem : SEM.getListElementComposted()) ret += SEM.getIdNameElement(elem) + ";-;-;-;-;" + elem.getBasicName() + elem.getId() + " (" + elem.getQuantity() + ");"+ elem.getMinWeightCompost() + ";" + elem.getMaxWeightCompost() + ";";
 		
 		return ret;
 	}
@@ -171,7 +171,7 @@ public class StockMeals implements Serializable, Observer{
 		ElementPomme pommeBio = new ElementPomme(1, true, true, true);
 		ElementPasteque pastequePasBio = new ElementPasteque(1, true, false, false);
 		SEM.addToEaten(pommeBio);
-		SEM.addToComposted(new ElementWastePomme(pommeBio));
+		SEM.addToComposted(new ElementPoire(1, true, false, false));
 		SEM.addToFed(pastequePasBio);
 		
 		StockElementMeal SEM1 = new StockElementMeal(MealType.lunch.toString(), new Date());
@@ -182,7 +182,7 @@ public class StockMeals implements Serializable, Observer{
 		
 		try {
 			//SM.exportToCSV(new File("./Decheto_data.csv"));
-			SM.mailCSV(new File("./test.csv"), "titouan.bouete@gmail.com", "dechetotest@gmail.com", "dechetotest", "dechetotest31");
+			SM.mailCSV(new File("./Decheto_data.csv"), "titouan.bouete@gmail.com", "dechetotest@gmail.com", "dechetotest", "dechetotest31");
 		} catch (InvalidNameException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
